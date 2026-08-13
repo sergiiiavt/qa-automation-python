@@ -18,13 +18,14 @@ Honest framing on each:
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import pytest
 from axe_playwright_python.sync_playwright import Axe
 from playwright.sync_api import Page, Playwright, expect
 
-from framework.utils.reporting import attach_html, attach_text
+from framework.utils.reporting import attach_html, attach_png, attach_text
 from framework.web.pages import App
 
 axe = Axe()
@@ -150,20 +151,32 @@ def stable_page(page: Page) -> Page:
 
 
 @pytest.mark.regression
-def test_product_grid_matches_the_visual_baseline(stable_page: Page, request) -> None:
+def test_product_grid_matches_the_visual_baseline(stable_page: Page, browser_name: str) -> None:
     """A hand-rolled visual check, so you can see the mechanics.
 
     In production use a service (Percy, Applitools, Chromatic) or Playwright's
     own `expect(page).to_have_screenshot()` in the JS runner. What matters is
     that you understand the four levers below — every tool exposes the same ones.
+
+    ### A screenshot is only comparable within one environment
+
+    The first CI run of this test failed on all three engines. The baseline had
+    been recorded on Windows/Chromium, and Linux CI renders the same page with
+    different font rasterisation — before you even consider that Firefox and
+    WebKit are different engines entirely.
+
+    That is not a bug to work around, it is the defining property of visual
+    testing: a baseline belongs to one browser on one operating system. Hence
+    the platform- and engine-keyed filename below. In a real project you either
+    commit baselines generated inside the same container CI uses, or you use a
+    hosted service that manages exactly this problem for you.
     """
     products = App(stable_page).products.open()
     stable_page.add_style_tag(content=STABILISE_CSS)  # lever 1: no animation
     stable_page.wait_for_load_state("networkidle")  # lever 2: settled state
 
     BASELINE_DIR.mkdir(parents=True, exist_ok=True)
-    baseline_dir = BASELINE_DIR
-    baseline = baseline_dir / "product-grid.png"
+    baseline = BASELINE_DIR / f"product-grid.{browser_name}.{sys.platform}.png"
 
     shot = products.testid("product-grid").screenshot(
         mask=[products.testid("stock-badge")],  # lever 3: mask volatility
@@ -172,20 +185,27 @@ def test_product_grid_matches_the_visual_baseline(stable_page: Page, request) ->
 
     if not baseline.exists():
         baseline.write_bytes(shot)
-        pytest.skip(f"Baseline created at {baseline} — commit it and re-run")
+        pytest.skip(
+            f"No baseline for {browser_name} on {sys.platform}; recorded one at "
+            f"{baseline.name}. Commit it from the environment CI runs in, then this "
+            f"test starts comparing."
+        )
 
-    expected = baseline.read_bytes()
-    if shot != expected:
+    if shot != baseline.read_bytes():
         # lever 4: a real project diffs pixels with a tolerance instead of ==.
-        (baseline_dir / "product-grid.actual.png").write_bytes(shot)
+        actual = BASELINE_DIR / f"{baseline.stem}.actual.png"
+        actual.write_bytes(shot)
+        attach_png("visual-baseline", baseline.read_bytes())
+        attach_png("visual-actual", shot)
         attach_html(
             "visual-diff",
-            "<p>Baseline and actual differ. Compare "
-            "<code>product-grid.png</code> vs <code>product-grid.actual.png</code>.</p>",
+            f"<p>Baseline and actual differ. Compare <code>{baseline.name}</code> "
+            f"against <code>{actual.name}</code>.</p>",
         )
         pytest.fail(
-            "Visual difference detected. Review the artifacts; if the change is "
-            "intended, delete the baseline and re-run to re-record."
+            f"Visual difference detected for {browser_name} on {sys.platform}. "
+            f"Review the artifacts; if the change is intended, delete "
+            f"{baseline.name} and re-run to re-record."
         )
 
 

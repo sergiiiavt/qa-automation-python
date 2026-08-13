@@ -187,10 +187,25 @@ def test_layout_survives_rotation(
 
 @pytest.mark.regression
 def test_page_works_on_a_slow_3g_connection(
-    playwright: Playwright, browser: Browser, base_url: str, storage_state: str
+    playwright: Playwright,
+    browser: Browser,
+    base_url: str,
+    storage_state: str,
+    browser_name: str,
 ) -> None:
     """Network shaping via CDP. Emulating a slow link surfaces missing loading
-    states and races that a gigabit office connection hides completely."""
+    states and races that a gigabit office connection hides completely.
+
+    CDP is a Chromium protocol, so this test cannot run on Firefox or WebKit —
+    the first cross-browser CI run failed here with "CDP session is only
+    available in Chromium". Skipping with an explicit reason is the honest fix:
+    the capability genuinely does not exist elsewhere, and a silent pass would
+    misrepresent the coverage. For latency on other engines, fall back to
+    `page.route` with a delay in the handler, which works everywhere.
+    """
+    if browser_name != "chromium":
+        pytest.skip(f"CDP network shaping is Chromium-only; {browser_name} has no equivalent")
+
     descriptor = playwright.devices["Pixel 7"]
     context = browser.new_context(**descriptor, base_url=base_url, storage_state=storage_state)
     page = context.new_page()
