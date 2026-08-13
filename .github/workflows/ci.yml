@@ -193,6 +193,17 @@ jobs:
           allure_history: allure-history
           keep_reports: 30
 
+      # simple-elf/allure-report-action runs in a Docker container, which writes
+      # allure-history as root. The next step (running as the normal runner
+      # user) cannot fully delete a root-owned .git left inside it — the delete
+      # partially fails, a stale HEAD pointing at a stray "master" branch
+      # survives the copy, and the commit silently lands on the wrong branch.
+      # Symptom: "git push origin gh-pages" fails with "src refspec gh-pages
+      # does not match any", even though the orphan checkout and commit steps
+      # both reported success. Strip any nested git repo before it can happen.
+      - name: Remove any root-owned .git left by the report generator
+        run: sudo rm -rf allure-history/.git
+
       - name: Publish report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
