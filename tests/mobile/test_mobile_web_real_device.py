@@ -72,9 +72,7 @@ def test_soft_keyboard_does_not_hide_the_search_field(shop: MobileWebShop) -> No
 def test_search_works_end_to_end(shop: MobileWebShop) -> None:
     shop.search("aurora")
 
-    WebDriverWait(shop.driver, 15).until(
-        EC.presence_of_element_located(MobileWebShop.CARDS)
-    )
+    WebDriverWait(shop.driver, 15).until(EC.presence_of_element_located(MobileWebShop.CARDS))
 
     assert all("aurora" in name.lower() for name in shop.product_names)
 

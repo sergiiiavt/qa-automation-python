@@ -52,7 +52,9 @@ def test_tokens_are_unique_per_login(shop: ShopApi) -> None:
     ],
     ids=lambda v: v if isinstance(v, str) and " " in v else None,
 )
-def test_login_rejects_bad_credentials(shop: ShopApi, username: str, password: str, case: str) -> None:
+def test_login_rejects_bad_credentials(
+    shop: ShopApi, username: str, password: str, case: str
+) -> None:
     """One table, five behaviours. Note the ids: a failing run says
     `test_login_rejects_bad_credentials[username case mismatch]`, so triage
     starts before you open the log."""
@@ -97,9 +99,9 @@ def test_login_rejects_malformed_payloads(shop: ShopApi, payload: dict, case: st
     [
         None,
         "",
-        "wonderland",                    # no scheme
-        "Basic YWxpY2U6d29uZGVy",        # wrong scheme
-        "Bearer",                        # scheme with no token
+        "wonderland",  # no scheme
+        "Basic YWxpY2U6d29uZGVy",  # wrong scheme
+        "Bearer",  # scheme with no token
         "Bearer not-a-real-token",
         "bearer lowercase-scheme-valid-token-shape",
     ],

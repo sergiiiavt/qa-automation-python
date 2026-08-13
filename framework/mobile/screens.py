@@ -60,8 +60,9 @@ class ProductsScreen(BaseScreen):
 
     def search(self, term: str) -> ProductsScreen:
         self.type(self.SEARCH, term)
-        self.driver.execute_script("mobile: performEditorAction", {"action": "search"}) \
-            if self.is_android else self.hide_keyboard()
+        self.driver.execute_script(
+            "mobile: performEditorAction", {"action": "search"}
+        ) if self.is_android else self.hide_keyboard()
         return self
 
     @property
@@ -156,6 +157,5 @@ class MobileWebShop(BaseScreen):
     @property
     def product_names(self) -> list[str]:
         return [
-            e.text
-            for e in self.find_all((AppiumBy.CSS_SELECTOR, "[data-testid=product-name]"))
+            e.text for e in self.find_all((AppiumBy.CSS_SELECTOR, "[data-testid=product-name]"))
         ]

@@ -51,7 +51,8 @@ dependencies = [
 
 [project.optional-dependencies]
 bdd = ["pytest-bdd>=8.1"]
-lint = ["ruff>=0.7", "mypy>=1.13"]
+lint = ["ruff>=0.7", "mypy>=1.13", "types-PyYAML", "types-jsonschema"]
+docs = ["markdown>=3.7", "pygments>=2.18"]   # tools/build_site.py
 
 [tool.setuptools.packages.find]
 include = ["framework*", "sut*"]

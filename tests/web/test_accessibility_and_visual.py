@@ -47,7 +47,9 @@ def _format(violations: list[dict]) -> str:
     lines = []
     for v in violations:
         targets = ", ".join(str(node["target"]) for node in v["nodes"][:3])
-        lines.append(f"[{v['impact']}] {v['id']}: {v['help']}\n    -> {targets}\n    {v['helpUrl']}")
+        lines.append(
+            f"[{v['impact']}] {v['id']}: {v['help']}\n    -> {targets}\n    {v['helpUrl']}"
+        )
     return "\n".join(lines)
 
 
@@ -156,15 +158,15 @@ def test_product_grid_matches_the_visual_baseline(stable_page: Page, request) ->
     that you understand the four levers below — every tool exposes the same ones.
     """
     products = App(stable_page).products.open()
-    stable_page.add_style_tag(content=STABILISE_CSS)          # lever 1: no animation
-    stable_page.wait_for_load_state("networkidle")            # lever 2: settled state
+    stable_page.add_style_tag(content=STABILISE_CSS)  # lever 1: no animation
+    stable_page.wait_for_load_state("networkidle")  # lever 2: settled state
 
     BASELINE_DIR.mkdir(parents=True, exist_ok=True)
     baseline_dir = BASELINE_DIR
     baseline = baseline_dir / "product-grid.png"
 
     shot = products.testid("product-grid").screenshot(
-        mask=[products.testid("stock-badge")],                # lever 3: mask volatility
+        mask=[products.testid("stock-badge")],  # lever 3: mask volatility
         animations="disabled",
     )
 

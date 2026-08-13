@@ -99,7 +99,11 @@ def test_touch_targets_meet_the_minimum_size(mobile_page: Page) -> None:
         pytest.skip("Desktop-width layout — touch sizing does not apply")
 
     too_small: list[str] = []
-    for selector in ["[data-testid=menu-toggle]", "[data-testid=add-to-cart]", "[data-testid=apply-filters]"]:
+    for selector in [
+        "[data-testid=menu-toggle]",
+        "[data-testid=add-to-cart]",
+        "[data-testid=apply-filters]",
+    ]:
         box = products.page.locator(selector).first.bounding_box()
         if box and (box["width"] < 44 or box["height"] < 44):
             too_small.append(f"{selector}: {box['width']:.0f}x{box['height']:.0f}")
@@ -111,7 +115,9 @@ def test_device_reports_a_mobile_user_agent(mobile_page: Page) -> None:
     App(mobile_page).products.open()
 
     ua = mobile_page.evaluate("() => navigator.userAgent")
-    has_touch = mobile_page.evaluate("() => 'ontouchstart' in window || navigator.maxTouchPoints > 0")
+    has_touch = mobile_page.evaluate(
+        "() => 'ontouchstart' in window || navigator.maxTouchPoints > 0"
+    )
 
     assert any(token in ua for token in ("iPhone", "Android", "iPad")), ua
     assert has_touch, "Device emulation did not enable touch — descriptor may be wrong"
@@ -195,7 +201,7 @@ def test_page_works_on_a_slow_3g_connection(
             "Network.emulateNetworkConditions",
             {
                 "offline": False,
-                "latency": 400,                     # ms RTT
+                "latency": 400,  # ms RTT
                 "downloadThroughput": 400 * 1024 / 8,
                 "uploadThroughput": 400 * 1024 / 8,
             },

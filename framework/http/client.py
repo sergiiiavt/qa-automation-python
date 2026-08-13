@@ -167,7 +167,9 @@ class ApiClient:
         response.read()  # event hooks run before the body is consumed
         request = response.request
         elapsed_ms = response.elapsed.total_seconds() * 1000
-        log.info("%s %s -> %s (%.0f ms)", request.method, request.url, response.status_code, elapsed_ms)
+        log.info(
+            "%s %s -> %s (%.0f ms)", request.method, request.url, response.status_code, elapsed_ms
+        )
 
         body = _pretty(request.content)
         attach_text(

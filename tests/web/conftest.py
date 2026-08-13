@@ -51,8 +51,10 @@ def browser_context_args(browser_context_args: dict, base_url: str) -> dict:
         "base_url": base_url,
         "viewport": {"width": settings.web.viewport_width, "height": settings.web.viewport_height},
         "locale": "en-US",
-        "timezone_id": "UTC",           # pin it: date assertions break across TZs
-        "ignore_https_errors": not settings.web.verify_ssl if hasattr(settings.web, "verify_ssl") else False,
+        "timezone_id": "UTC",  # pin it: date assertions break across TZs
+        "ignore_https_errors": not settings.web.verify_ssl
+        if hasattr(settings.web, "verify_ssl")
+        else False,
         # Recording video is cheap to enable and expensive to keep; the
         # `page` fixture below deletes it when the test passes.
         "record_video_dir": str(settings.artifacts_dir / "video"),
@@ -80,7 +82,9 @@ def _configure_timeouts(page: Page) -> None:
 # Authentication via storage state
 # ---------------------------------------------------------------------------
 @pytest.fixture(scope="session")
-def storage_state(browser: Browser, base_url: str, worker_account: tuple[str, str], worker_id: str) -> str:
+def storage_state(
+    browser: Browser, base_url: str, worker_account: tuple[str, str], worker_id: str
+) -> str:
     """Log in once per session through the real UI, then persist the state.
 
     Note it authenticates through the *form*, not by injecting a token: the

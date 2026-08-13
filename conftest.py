@@ -23,6 +23,7 @@ import time
 import uuid
 from collections.abc import Iterator
 from pathlib import Path
+from typing import IO
 
 import pytest
 
@@ -31,7 +32,9 @@ from framework.http.client import wait_for_service
 from framework.utils.reporting import attach_text
 
 ROOT = Path(__file__).parent
-logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)-7s | %(name)s | %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s | %(levelname)-7s | %(name)s | %(message)s"
+)
 
 
 # ---------------------------------------------------------------------------
@@ -58,12 +61,22 @@ def pytest_addoption(parser: pytest.Parser) -> None:
     )
 
 
+#: Where the controller keeps the demo-app process it owns. A stash key rather
+#: than a module global, so the value cannot leak between runs in the same process.
+SUT_PROCESS: pytest.StashKey[tuple[subprocess.Popen, IO[str]]] = pytest.StashKey()
+
+
 def pytest_configure(config: pytest.Config) -> None:
     if env := config.getoption("--env"):
         os.environ["QA_ENV"] = env
     if platform := config.getoption("--platform"):
         os.environ["QA_PLATFORM"] = platform
     settings.artifacts_dir.mkdir(parents=True, exist_ok=True)
+
+    # Only the controller owns the shared demo app. See `_start_sut` for the
+    # xdist lifecycle bug that made this necessary.
+    if not _is_xdist_worker(config):
+        _start_sut(config)
 
     # Stamp environment metadata into the Allure report. Six months from now,
     # "which build was this?" is the first question anyone asks about a red run.
@@ -87,6 +100,12 @@ def pytest_configure(config: pytest.Config) -> None:
         )
 
 
+def pytest_unconfigure(config: pytest.Config) -> None:
+    """Runs after every xdist worker has finished — the only safe moment to stop
+    a server they all share."""
+    _stop_sut(config)
+
+
 # ---------------------------------------------------------------------------
 # System under test lifecycle
 # ---------------------------------------------------------------------------
@@ -96,21 +115,40 @@ def _port_open(host: str, port: int) -> bool:
         return sock.connect_ex((host, port)) == 0
 
 
-@pytest.fixture(scope="session", autouse=True)
-def sut(request: pytest.FixtureRequest) -> Iterator[str]:
-    """Start the bundled demo app once per session, if it isn't already up.
-
-    Session-scoped and autouse because *every* layer needs the app running.
-    The `_port_open` check makes local development pleasant: leave uvicorn
-    running in a terminal and the suite reuses it instead of fighting for a port.
-    """
+def _sut_endpoint() -> tuple[str, str, int]:
     base_url = settings.api.base_url
     host, _, port_str = base_url.removeprefix("http://").removeprefix("https://").partition(":")
-    port = int(port_str or 80)
+    return base_url, host, int(port_str or 80)
 
-    if request.config.getoption("--no-sut") or _port_open(host, port):
+
+def _is_xdist_worker(config: pytest.Config) -> bool:
+    """True inside a `-n` worker subprocess, False in the controller (and in a
+    plain single-process run, which is its own controller)."""
+    return hasattr(config, "workerinput")
+
+
+def _start_sut(config: pytest.Config) -> None:
+    """Start the demo app, owned by the process that owns the whole run.
+
+    ### Why this is a hook and not a fixture
+
+    It *was* a session-scoped autouse fixture. That is wrong under xdist, and
+    the bug it caused is worth keeping in mind: "session" means **once per
+    worker**, so with `-n 4` one worker won the race to bind the port, started
+    uvicorn as its child, and then — the moment *its* last test finished —
+    its fixture teardown killed the server while the other three workers were
+    still running. The symptom was an intermittent `ConnectionRefusedError` in
+    whichever tests happened to be in flight, which looks like a network blip
+    and is actually a lifecycle bug.
+
+    `pytest_configure` / `pytest_unconfigure` run in the **controller** process,
+    before any worker starts and after every worker has finished. That is the
+    only place a resource shared by all workers can correctly live.
+    """
+    base_url, host, port = _sut_endpoint()
+
+    if config.getoption("--no-sut") or _port_open(host, port):
         wait_for_service(f"{base_url}/api/health")
-        yield base_url
         return
 
     # Log to a file rather than a PIPE: an unread pipe fills its buffer and
@@ -119,30 +157,50 @@ def sut(request: pytest.FixtureRequest) -> Iterator[str]:
     settings.artifacts_dir.mkdir(parents=True, exist_ok=True)
     log_file = (settings.artifacts_dir / "sut.log").open("w", encoding="utf-8")
     process = subprocess.Popen(  # noqa: S603
-        [sys.executable, "-m", "uvicorn", "sut.app:app", "--host", host, "--port", str(port),
-         "--log-level", "warning"],
+        [
+            sys.executable,
+            "-m",
+            "uvicorn",
+            "sut.app:app",
+            "--host",
+            host,
+            "--port",
+            str(port),
+            "--log-level",
+            "warning",
+        ],
         cwd=ROOT,
         stdout=log_file,
         stderr=subprocess.STDOUT,
     )
+    config.stash[SUT_PROCESS] = (process, log_file)
+    wait_for_service(f"{base_url}/api/health", timeout=40)
+
+
+def _stop_sut(config: pytest.Config) -> None:
+    owned = config.stash.get(SUT_PROCESS, None)
+    if owned is None:
+        return
+    process, log_file = owned
+    process.terminate()
     try:
-        try:
-            wait_for_service(f"{base_url}/api/health", timeout=40)
-        except TimeoutError:
-            # Race: with `-n auto` several workers can see a closed port at the
-            # same instant and all try to bind it. Exactly one wins; the losers
-            # land here and simply use the winner's server.
-            if process.poll() is None:
-                raise
-            wait_for_service(f"{base_url}/api/health", timeout=40)
-        yield base_url
-    finally:
-        process.terminate()
-        try:
-            process.wait(timeout=10)
-        except subprocess.TimeoutExpired:
-            process.kill()
-        log_file.close()
+        process.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        process.kill()
+    log_file.close()
+
+
+@pytest.fixture(scope="session", autouse=True)
+def sut() -> str:
+    """The base URL of a demo app that is already running.
+
+    Workers never start or stop it — they only confirm it is reachable. Keeping
+    the fixture autouse means a missing server fails loudly at setup rather than
+    as a confusing connection error in the middle of an assertion.
+    """
+    base_url, _, _ = _sut_endpoint()
+    wait_for_service(f"{base_url}/api/health", timeout=40)
+    return base_url
 
 
 @pytest.fixture(scope="session")

@@ -89,6 +89,8 @@ not writing assertions.
 | Mobile-web touch-target test | Hamburger button was 40×40 px, below the 44 px minimum |
 | Dark-mode axe audit | White text on the light accent colour: 2.7:1 contrast, fails WCAG AA |
 | `pytest -n 4` | Three cart tests passed alone and failed in parallel — all four workers shared one account |
+| `pytest -n 4`, later | Intermittent `ConnectionRefusedError`: the demo app was owned by a session fixture, so whichever worker finished first killed the server the other three were still using |
+| `pytest -n 4`, later still | Intermittent `FailedHealthCheck` from Hypothesis on the two parameterless operations — a finding about the *tooling*, not the product |
 | BOLA test | Any user can read any other user's order (documented as `xfail`, ticket SHOP-114) |
 
 ## Requirements

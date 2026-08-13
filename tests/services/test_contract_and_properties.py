@@ -41,9 +41,19 @@ schema = schemathesis.openapi.from_asgi("/openapi.json", sut_app)
 @pytest.mark.contract
 @schema.parametrize()
 @hypothesis_settings(
-    max_examples=15,                     # keep CI honest; raise to 200 for a nightly run
-    deadline=None,                       # server latency is not the property under test
-    suppress_health_check=[HealthCheck.too_slow, HealthCheck.function_scoped_fixture],
+    max_examples=15,  # keep CI honest; raise to 200 for a nightly run
+    deadline=None,  # server latency is not the property under test
+    suppress_health_check=[
+        HealthCheck.too_slow,
+        HealthCheck.function_scoped_fixture,
+        # `GET /api/cart` and `POST /api/orders` take no parameters and no body,
+        # so the only thing Hypothesis can vary is headers. It runs out of
+        # distinct examples, filters the duplicates, and trips `filter_too_much`
+        # — intermittently, because it depends on the random seed. That is a
+        # property of the generator meeting a tiny input space, not a signal
+        # about the API, so it is suppressed rather than worked around.
+        HealthCheck.filter_too_much,
+    ],
 )
 def test_api_conforms_to_its_openapi_spec(case: schemathesis.Case) -> None:
     """One generated test per operation in the spec.
@@ -71,6 +81,14 @@ def test_api_conforms_to_its_openapi_spec(case: schemathesis.Case) -> None:
     Finding (3) is excluded below, *with the reason recorded next to the code*.
     Excluding a check without writing down why is how contract testing decays
     into a permanently-yellow job everyone ignores.
+
+    A fourth finding appeared later, and only under `pytest -n 4`: an
+    intermittent `FailedHealthCheck: Too many generated examples are filtered
+    out`. Also not a product bug — see the `filter_too_much` note on the
+    settings below. Two lessons in one test: generated-testing tools produce
+    findings about *themselves* as well as about the system, and a flake that
+    only appears in parallel is still a flake that must be diagnosed rather
+    than retried.
     """
     from schemathesis.specs.openapi.checks import positive_data_acceptance
 
@@ -87,7 +105,9 @@ def test_api_conforms_to_its_openapi_spec(case: schemathesis.Case) -> None:
     deadline=None,
     suppress_health_check=[HealthCheck.function_scoped_fixture],
 )
-def test_cart_total_always_equals_sum_of_lines(shop_as_user: ShopApi, quantities: list[int]) -> None:
+def test_cart_total_always_equals_sum_of_lines(
+    shop_as_user: ShopApi, quantities: list[int]
+) -> None:
     """The invariant, not the example.
 
     Note the health-check suppression: `shop_as_user` is function-scoped, so
@@ -155,7 +175,9 @@ def test_search_rejects_injection_payloads_safely(shop: ShopApi, payload: str) -
 
     assert response.status_code == 200
     assert response.json() == [], f"Injection payload {payload!r} matched products"
-    assert "49" not in response.text or "7*7" not in payload, "Template injection: {{7*7}} evaluated"
+    assert "49" not in response.text or "7*7" not in payload, (
+        "Template injection: {{7*7}} evaluated"
+    )
 
 
 # ---------------------------------------------------------------------------

@@ -41,8 +41,8 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12", cache: pip }
       - run: pip install -e ".[lint]"
-      - run: ruff check framework tests sut
-      - run: ruff format --check framework tests sut
+      - run: ruff check framework tests sut conftest.py tools
+      - run: ruff format --check framework tests sut conftest.py tools
       - name: Type-check the framework
         # The framework is library code that tests depend on; it earns stricter
         # checking than the tests themselves.

@@ -69,7 +69,7 @@ def test_removing_a_product_that_is_not_in_the_cart_is_idempotent(shop_as_user: 
     shop_as_user.cart.add_item(product.id, 1)
 
     shop_as_user.cart.remove_item(product.id)
-    cart = shop_as_user.cart.remove_item(product.id)   # second delete
+    cart = shop_as_user.cart.remove_item(product.id)  # second delete
 
     assert cart.items == []
 

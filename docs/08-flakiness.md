@@ -67,6 +67,49 @@ pytest tests -n 4     # red, and the failures move around
 
 Failures that *move between runs* are the signature.
 
+#### A second, subtler version: shared *resources*, not just shared data
+
+This repo hit it twice. The second time looked like an infrastructure blip:
+
+```
+httpcore.ConnectError: [WinError 10061] No connection could be made
+```
+
+The demo app was started by a `scope="session"` autouse fixture. Under `-n 4`
+one worker won the race to bind the port and started the server as its child
+process — then, the moment *its* last test finished, its fixture teardown killed
+the server while the other three workers were still running. Roughly one run in
+four went red, in whichever tests happened to be in flight.
+
+The fix is not a retry. A resource shared by all workers must be owned by the
+**controller**, not by a worker:
+
+```python
+def pytest_configure(config):
+    if not hasattr(config, "workerinput"):   # controller, not a worker
+        _start_sut(config)
+
+def pytest_unconfigure(config):              # after every worker has finished
+    _stop_sut(config)
+```
+
+Generalise it: ask of every session-scoped fixture, *"if four copies of this
+run, and any one of them tears down first, what breaks?"*
+
+#### And sometimes the flake is in your tooling
+
+The third parallel flake in this repo was
+`FailedHealthCheck: Too many generated examples are filtered out`, from
+Hypothesis, on the only two API operations that take no parameters and no body.
+With nothing to vary, the generator ran out of distinct examples and filtered
+the duplicates — intermittently, because it depends on the random seed.
+
+That is a fact about the generator meeting a tiny input space, not a fact about
+the API. Suppressing that one health check, with the reason written next to the
+code, is the correct fix. Knowing the difference between a finding about the
+*system* and a finding about the *tool* is a large part of working with
+generated tests.
+
 ### 4. Environment differences — ~10%
 
 Timezone, locale, screen size, fonts, browser version, DST.

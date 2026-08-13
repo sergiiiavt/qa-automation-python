@@ -36,9 +36,19 @@ SECTIONS = [
     (DOCS / "cheatsheet.md", "cheatsheet", "Cheat sheet", "Reference"),
 ]
 
-MODULE_ID = {"00": "mod-00", "01": "mod-01", "02": "mod-02", "03": "mod-03", "04": "mod-04",
-             "05": "mod-05", "06": "mod-06", "07": "mod-07", "08": "mod-08", "09": "mod-09",
-             "10": "mod-10"}
+MODULE_ID = {
+    "00": "mod-00",
+    "01": "mod-01",
+    "02": "mod-02",
+    "03": "mod-03",
+    "04": "mod-04",
+    "05": "mod-05",
+    "06": "mod-06",
+    "07": "mod-07",
+    "08": "mod-08",
+    "09": "mod-09",
+    "10": "mod-10",
+}
 
 
 def rewrite_links(text: str) -> str:
@@ -55,9 +65,7 @@ def rewrite_links(text: str) -> str:
         text,
     )
     # 2. Cheat sheet.
-    text = re.sub(
-        r"\[([^\]]*)\]\((?:\.\./)?(?:docs/)?cheatsheet\.md\)", r"[\1](#cheatsheet)", text
-    )
+    text = re.sub(r"\[([^\]]*)\]\((?:\.\./)?(?:docs/)?cheatsheet\.md\)", r"[\1](#cheatsheet)", text)
     # 3. Repo files referenced from docs/ (../path) -> inline code.
     text = re.sub(r"\[[^\]]*\]\(\.\./([^)#]+)\)", r"`\1`", text)
     # 4. Repo files referenced from the README (bare relative path) -> inline code.
@@ -104,7 +112,6 @@ STYLE = """
   --rule:       #dfe3e9;
   --rule-soft:  #ebeef2;
   --accent:     #0d6a63;
-  --accent-소:  #0d6a63;
   --accent-bg:  #e4f1ef;
   --rust:       #9a4a26;
   --rust-bg:    #f8ece5;
@@ -425,9 +432,13 @@ def build() -> Path:
             f"<span>{html.escape(label)}</span></a></li>"
         )
 
-        heading = "" if sid == "overview" else (
-            f'<div class="eyebrow">{html.escape(eyebrow)}</div>'
-            f'<h2 class="sec">{html.escape(title)}</h2>'
+        heading = (
+            ""
+            if sid == "overview"
+            else (
+                f'<div class="eyebrow">{html.escape(eyebrow)}</div>'
+                f'<h2 class="sec">{html.escape(title)}</h2>'
+            )
         )
         sections.append(
             f'<section id="{sid}">\n<div class="wrap">\n{heading}\n{body}\n</div>\n</section>'

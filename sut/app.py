@@ -26,6 +26,7 @@ from pydantic import BaseModel, Field, field_validator
 
 STATIC_DIR = Path(__file__).parent / "static"
 
+
 class ErrorResponse(BaseModel):
     detail: str
 
@@ -120,15 +121,21 @@ class Order(BaseModel):
 USERS = {"alice": "wonderland", "bob": "builder"}
 
 PRODUCTS: list[Product] = [
-    Product(id=1, name="Aurora Headphones", category="audio", price=199.99, in_stock=True, rating=4.6),
-    Product(id=2, name="Bassline Speaker", category="audio", price=89.50, in_stock=True, rating=4.1),
+    Product(
+        id=1, name="Aurora Headphones", category="audio", price=199.99, in_stock=True, rating=4.6
+    ),
+    Product(
+        id=2, name="Bassline Speaker", category="audio", price=89.50, in_stock=True, rating=4.1
+    ),
     Product(id=3, name="Comet Keyboard", category="input", price=129.00, in_stock=True, rating=4.8),
     Product(id=4, name="Drift Mouse", category="input", price=49.00, in_stock=False, rating=3.9),
-    Product(id=5, name="Ember Monitor", category="display", price=349.00, in_stock=True, rating=4.4),
+    Product(
+        id=5, name="Ember Monitor", category="display", price=349.00, in_stock=True, rating=4.4
+    ),
     Product(id=6, name="Flux Webcam", category="video", price=79.99, in_stock=True, rating=3.5),
 ]
 
-_SESSIONS: dict[str, str] = {}       # token -> username
+_SESSIONS: dict[str, str] = {}  # token -> username
 _CARTS: dict[str, list[CartItem]] = {}  # username -> items
 _ORDERS: dict[str, Order] = {}
 
@@ -142,7 +149,9 @@ def _reset_state() -> None:
 def current_user(authorization: Annotated[str | None, Header()] = None) -> str:
     """Bearer-token auth. Deliberately strict: a missing header is 401, not 403."""
     if not authorization or not authorization.lower().startswith("bearer "):
-        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Missing or malformed Authorization header")
+        raise HTTPException(
+            status.HTTP_401_UNAUTHORIZED, "Missing or malformed Authorization header"
+        )
     token = authorization.split(" ", 1)[1].strip()
     username = _SESSIONS.get(token)
     if username is None:
@@ -156,7 +165,9 @@ CurrentUser = Annotated[str, Depends(current_user)]
 # ---------------------------------------------------------------------------
 # API
 # ---------------------------------------------------------------------------
-@app.post("/api/auth/login", response_model=LoginResponse, responses={401: {"model": ErrorResponse}})
+@app.post(
+    "/api/auth/login", response_model=LoginResponse, responses={401: {"model": ErrorResponse}}
+)
 def login(payload: LoginRequest) -> LoginResponse:
     if USERS.get(payload.username) != payload.password:
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Invalid credentials")
@@ -204,7 +215,9 @@ def list_products(
     return items[:limit]
 
 
-@app.get("/api/products/{product_id}", response_model=Product, responses={404: {"model": ErrorResponse}})
+@app.get(
+    "/api/products/{product_id}", response_model=Product, responses={404: {"model": ErrorResponse}}
+)
 def get_product(product_id: int) -> Product:
     for p in PRODUCTS:
         if p.id == product_id:
@@ -263,7 +276,9 @@ def remove_from_cart(product_id: int, user: CurrentUser) -> Cart:
 def create_order(user: CurrentUser) -> Order:
     cart = _build_cart(user)
     if not cart.items:
-        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "Cannot place an order with an empty cart")
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY, "Cannot place an order with an empty cart"
+        )
     order = Order(
         id=f"ord_{secrets.token_hex(6)}",
         status="confirmed",

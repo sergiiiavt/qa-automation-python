@@ -56,9 +56,11 @@ class ProductsApi(BaseApi):
         in_stock: bool | None = None,
         limit: int | None = None,
     ) -> list[Product]:
-        params = {k: v for k, v in
-                  {"category": category, "q": q, "in_stock": in_stock, "limit": limit}.items()
-                  if v is not None}
+        params = {
+            k: v
+            for k, v in {"category": category, "q": q, "in_stock": in_stock, "limit": limit}.items()
+            if v is not None
+        }
         with step(f"API: list products {params or '(no filter)'}"):
             response = self.client.get(self.PATH, params=params, expect=200)
             return [Product.model_validate(item) for item in response.json()]

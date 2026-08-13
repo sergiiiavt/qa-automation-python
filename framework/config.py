@@ -61,7 +61,7 @@ class MobileSettings(BaseModel):
     device_name: str = "Pixel_7_API_34"
     platform_version: str = "14"
     app_path: str | None = None
-    mobile_browser: str | None = None       # set -> drive the browser, not an app
+    mobile_browser: str | None = None  # set -> drive the browser, not an app
     new_command_timeout: int = 120
     # Real-device cloud (BrowserStack / Sauce / LambdaTest). Empty -> local Appium.
     cloud_user: str | None = None
@@ -86,7 +86,7 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(
         env_prefix="QA_",
-        env_nested_delimiter="__",   # QA_API__TIMEOUT=5 also works
+        env_nested_delimiter="__",  # QA_API__TIMEOUT=5 also works
         env_file=(ROOT / ".env"),
         env_file_encoding="utf-8",
         extra="ignore",

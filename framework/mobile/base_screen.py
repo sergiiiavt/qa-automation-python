@@ -14,12 +14,17 @@ Never use index-based XPath (`(//android.widget.TextView)[3]`).
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from typing import Self
 
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.webdriver.webdriver import WebDriver
-from appium.webdriver.webelement import WebElement
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+
+# Selenium's WebElement, not Appium's: `WebDriverWait.until` is typed as returning
+# the base class, and Appium's element subclasses it. Annotating with the base
+# type keeps mypy happy and loses nothing — every Appium method still resolves.
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -53,7 +58,9 @@ class BaseScreen:
     def find_clickable(self, locator: Locator, timeout: int | None = None) -> WebElement:
         return self._wait(timeout).until(EC.element_to_be_clickable(locator))
 
-    def find_all(self, locator: Locator) -> list[WebElement]:
+    def find_all(self, locator: Locator) -> Sequence[WebElement]:
+        # Sequence, not list: `list` is invariant, so a list of Appium elements is
+        # not a list of Selenium elements even though each item is one.
         self.find(locator)
         return self.driver.find_elements(*locator)
 
@@ -84,8 +91,10 @@ class BaseScreen:
     def text_of(self, locator: Locator) -> str:
         element = self.find_visible(locator)
         # Android exposes 'text', iOS exposes 'value'/'label'. Normalise here so
-        # screens stay platform-agnostic.
-        return (element.text or element.get_attribute("value") or "").strip()
+        # screens stay platform-agnostic. `get_attribute` can return a dict for
+        # some drivers, hence the explicit str() rather than a bare `or`.
+        value = element.get_attribute("value")
+        return (element.text or (value if isinstance(value, str) else "") or "").strip()
 
     def hide_keyboard(self) -> Self:
         """Guarded: iOS raises if the keyboard isn't up, Android sometimes lies."""
@@ -122,7 +131,7 @@ class BaseScreen:
         """Android gets a native scroll-into-view; iOS falls back to swiping."""
         if self.is_android:
             selector = (
-                'new UiScrollable(new UiSelector().scrollable(true))'
+                "new UiScrollable(new UiSelector().scrollable(true))"
                 f'.scrollIntoView(new UiSelector().textContains("{text}"))'
             )
             return self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, selector)
