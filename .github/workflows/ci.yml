@@ -1,0 +1,201 @@
+name: QA Suite
+
+# The pipeline shape that matters more than any single tool choice:
+#
+#   push / PR  ->  lint  ->  services (fast)  ->  web + mobile-web (parallel)  ->  report
+#   nightly    ->  the above + real devices + long property-based runs
+#
+# Fast layers gate slow ones. There is no point spending eight minutes on
+# browsers when a 40-second API run already proved the build is broken.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 2 * * *"        # nightly, 02:00 UTC
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment
+        type: choice
+        options: [local, dev, stage]
+        default: local
+
+concurrency:
+  # A new push makes the in-flight run obsolete. Cancelling saves runner minutes
+  # and stops stale red X's from confusing reviewers.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  QA_ENV: ${{ inputs.environment || 'local' }}
+  PYTHONUNBUFFERED: "1"
+  FORCE_COLOR: "1"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -e ".[lint]"
+      - run: ruff check framework tests sut
+      - run: ruff format --check framework tests sut
+      - name: Type-check the framework
+        # The framework is library code that tests depend on; it earns stricter
+        # checking than the tests themselves.
+        run: mypy framework
+
+  services:
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -e .
+      - name: Run API tests
+        run: pytest tests/services -n auto --alluredir=allure-results --junitxml=junit-services.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-services
+          path: allure-results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: junit-services, path: junit-services.xml }
+
+  web:
+    needs: services            # don't burn browser minutes on a broken API
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false         # one browser failing must not hide the others
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -e .
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+      - run: playwright install --with-deps ${{ matrix.browser }}
+      - name: Run web + emulated mobile-web tests
+        run: |
+          pytest tests/web \
+            --browser=${{ matrix.browser }} \
+            -n auto \
+            --reruns 1 --reruns-delay 2 \
+            --alluredir=allure-results \
+            --junitxml=junit-web-${{ matrix.browser }}.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-web-${{ matrix.browser }}
+          path: allure-results
+      - name: Upload failure artifacts
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: failure-artifacts-${{ matrix.browser }}
+          path: |
+            artifacts/**/*.png
+            artifacts/**/*.webm
+            artifacts/sut.log
+          retention-days: 7
+
+  mobile:
+    # Real devices are slow and cost money — nightly and on demand only.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    needs: services
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -e .
+
+      - name: Enable KVM for the Android emulator
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: Install Appium 3 and drivers
+        run: |
+          npm install -g appium@next
+          appium driver install uiautomator2
+          appium --version
+
+      - name: Run Android tests on an emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_7
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          script: |
+            appium --log appium.log &
+            npx wait-on http://127.0.0.1:4723/status -t 60000
+            pytest tests/mobile -m "smoke or mobile_web" \
+              --alluredir=allure-results --junitxml=junit-mobile.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-mobile
+          path: |
+            allure-results
+            appium.log
+
+  report:
+    needs: [services, web]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/download-artifact@v4
+        with: { pattern: allure-*, path: all-results, merge-multiple: true }
+
+      - name: Restore Allure history
+        # Without history, every report is a snapshot. With it, you get trends:
+        # flaky-test detection, duration drift, pass-rate over time. This is the
+        # step teams forget, and it is what makes the report worth opening.
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with: { ref: gh-pages, path: gh-pages }
+      - run: |
+          mkdir -p all-results
+          cp -r gh-pages/last-history all-results/history 2>/dev/null || true
+
+      - uses: simple-elf/allure-report-action@master
+        with:
+          allure_results: all-results
+          allure_history: allure-history
+          keep_reports: 30
+
+      - name: Publish report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
+
+      - name: Publish the test summary on the PR
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: "**/junit-*.xml"
+          check_name: Test results

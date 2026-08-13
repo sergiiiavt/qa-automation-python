@@ -1,0 +1,57 @@
+# Reproducible runs: the same container locally and in CI.
+#
+# "Works on my machine" in test automation is almost always one of three things:
+# a different browser build, a different font set, or a different timezone.
+# Containers pin all three.
+
+services:
+  sut:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn sut.app:app --host 0.0.0.0 --port 8000
+    ports: ["8000:8000"]
+    healthcheck:
+      # Depending on "container started" is a race; depend on "service healthy".
+      test: ["CMD", "python", "-c", "import httpx;httpx.get('http://localhost:8000/api/health').raise_for_status()"]
+      interval: 3s
+      timeout: 3s
+      retries: 15
+      start_period: 5s
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      sut: { condition: service_healthy }
+    environment:
+      QA_ENV: local
+      QA_API_BASE_URL: http://sut:8000
+      QA_WEB_BASE_URL: http://sut:8000
+      QA_HEADLESS: "true"
+      TZ: UTC                     # pin the timezone: date assertions depend on it
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./artifacts:/app/artifacts
+    # --no-sut: the app is a separate container here, not a child process.
+    command: >
+      pytest tests/services tests/web -n auto --no-sut
+      --alluredir=allure-results
+
+  # Optional: Selenium Grid style browser containers, if you prefer remote
+  # browsers over in-container ones.
+  # playwright-server:
+  #   image: mcr.microsoft.com/playwright/python:v1.62.0-noble
+  #   command: npx playwright run-server --port 3000 --host 0.0.0.0
+  #   ports: ["3000:3000"]
+
+  allure:
+    image: frankescobar/allure-docker-service
+    profiles: [report]            # `docker compose --profile report up allure`
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: 3
+      KEEP_HISTORY: 1
+    ports: ["5050:5050"]
+    volumes:
+      - ./allure-results:/app/allure-results

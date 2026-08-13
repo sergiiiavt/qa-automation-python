@@ -1,0 +1,128 @@
+[project]
+name = "qa-automation-python"
+version = "1.0.0"
+description = "Learning framework: test automation for Web, Mobile and Services in Python"
+requires-python = ">=3.11"
+
+# Core testing runtime — everything the course needs.
+dependencies = [
+    # --- runner & plugins -------------------------------------------------
+    "pytest>=9.1,<10",
+    "pytest-xdist>=3.6",            # parallel execution (-n auto)
+    "pytest-rerunfailures>=15.0",   # quarantine / flake retry
+    "pytest-timeout>=2.3",
+    "pytest-sugar>=1.0",
+    "pytest-check>=2.4",            # soft assertions
+    "pytest-base-url>=2.1",
+    "pytest-dotenv>=0.5.2",
+
+    # --- config & data ----------------------------------------------------
+    "pydantic>=2.9",
+    "pydantic-settings>=2.6",
+    "faker>=30.0",
+    "polyfactory>=2.18",            # typed factories from pydantic models
+    "pyyaml>=6.0",
+
+    # --- services (API) layer --------------------------------------------
+    "httpx>=0.28,<0.29",
+    "tenacity>=9.0",                # retry policies
+    "jsonschema>=4.23",
+    "schemathesis>=4.24",           # OpenAPI property-based / contract testing
+    "hypothesis>=6.112",
+    "respx>=0.22",                  # httpx mocking for unit-level tests
+
+    # --- web layer --------------------------------------------------------
+    "playwright>=1.62",
+    "pytest-playwright>=0.7",
+    "axe-playwright-python>=0.1.4", # accessibility audits
+
+    # --- mobile layer -----------------------------------------------------
+    "Appium-Python-Client>=6.0,<7",
+    "selenium>=4.26,<5",
+
+    # --- system under test (bundled demo app) -----------------------------
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+
+    # --- reporting --------------------------------------------------------
+    "allure-pytest>=2.16",
+    "pytest-html>=4.1",
+]
+
+[project.optional-dependencies]
+bdd = ["pytest-bdd>=8.1"]
+lint = ["ruff>=0.7", "mypy>=1.13"]
+
+[tool.setuptools.packages.find]
+include = ["framework*", "sut*"]
+
+# ---------------------------------------------------------------------------
+# pytest configuration — the single source of truth for how the suite runs.
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+minversion = "9.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+# addopts is deliberately conservative: CI adds -n auto / --alluredir itself.
+addopts = [
+    "-ra",                       # summary of all non-passing outcomes
+    "--strict-markers",          # a typo in a marker is an error, not a silent skip
+    "--strict-config",
+    "--import-mode=importlib",   # modern import mode: no __init__.py needed in tests/
+    "--tb=short",
+    "--durations=10",
+]
+
+# Every marker must be declared here (enforced by --strict-markers).
+markers = [
+    "smoke: minimal always-green set, must run in < 2 minutes",
+    "regression: full functional coverage",
+    "services: API / backend layer tests",
+    "web: desktop browser tests",
+    "mobile_web: mobile browser (emulated viewport or real device)",
+    "mobile_native: Appium tests against a native app",
+    "contract: schema / contract verification",
+    "a11y: accessibility audits",
+    "slow: expected to take > 30s",
+    "flaky: known-unstable, quarantined from the gating suite",
+]
+
+log_cli = false
+log_cli_level = "INFO"
+log_format = "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+log_date_format = "%H:%M:%S"
+
+timeout = 300
+xfail_strict = true              # an xfail that passes is a failure — keeps xfails honest
+
+# "error" first, then narrowly-scoped exemptions. Promoting warnings to failures
+# is how a suite notices a deprecation a year before it becomes a breakage —
+# but each exemption below must name *why* it exists, or the list rots into
+# a blanket "ignore everything".
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning:selenium.*",
+    "ignore::UserWarning:schemathesis.*",
+    # Schemathesis drives the SUT through an in-process ASGI transport; anyio's
+    # memory streams are garbage-collected rather than closed, which is noisy
+    # but harmless. Scoped to anyio so a real leak in our own code still fails.
+    "ignore::ResourceWarning:anyio.*",
+    "ignore:unclosed:ResourceWarning",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "PT"]  # PT = flake8-pytest-style
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_unused_ignores = true
+disallow_untyped_defs = false
+plugins = ["pydantic.mypy"]

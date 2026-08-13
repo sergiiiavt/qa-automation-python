@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.hypothesis/
+
+# Generated output
+artifacts/
+allure-results/
+allure-report/
+junit-*.xml
+*.log
+
+# Secrets and machine-local config
+.env
+
+# Visual baselines are NOT ignored — they are reviewed source.
+# tests/web/baselines/  <- keep in git
+site/
+
+# Build metadata
+*.egg-info/
+build/
+dist/

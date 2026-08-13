@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopAPI — Cart</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header>
+    <span class="brand">ShopAPI</span>
+    <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" data-testid="menu-toggle">☰</button>
+    <nav id="main-nav" data-testid="main-nav">
+      <a href="/">Products</a>
+      <a href="/cart" data-testid="cart-link">Cart (<span id="cart-count" data-testid="cart-count">0</span>)</a>
+      <button id="logout" data-testid="logout" hidden>Log out</button>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Your cart</h1>
+    <table data-testid="cart-table">
+      <thead>
+        <tr><th>Product</th><th>Unit</th><th>Qty</th><th>Total</th><th></th></tr>
+      </thead>
+      <tbody id="cart-body"></tbody>
+    </table>
+    <p id="empty" data-testid="empty-cart" hidden>Your cart is empty.</p>
+    <p><strong>Total: <span data-testid="cart-total" id="total">$0.00</span></strong></p>
+    <button id="checkout" class="primary" data-testid="checkout">Place order</button>
+    <p id="status" data-testid="status" role="status"></p>
+  </main>
+
+  <script type="module">
+    import { api, mountHeader, requireAuth, refreshCartCount } from "/static/app.js";
+    mountHeader();
+
+    const body = document.getElementById("cart-body");
+    const status = document.getElementById("status");
+
+    async function render() {
+      if (!requireAuth()) return;
+      const cart = await api.cart();
+      body.replaceChildren();
+      for (const line of cart.items) {
+        const tr = document.createElement("tr");
+        tr.dataset.testid = "cart-row";
+        tr.dataset.productId = String(line.product_id);
+        tr.innerHTML = `
+          <td data-testid="row-name">${line.name}</td>
+          <td>$${line.unit_price.toFixed(2)}</td>
+          <td data-testid="row-qty">${line.quantity}</td>
+          <td data-testid="row-total">$${line.line_total.toFixed(2)}</td>
+          <td><button data-testid="remove" aria-label="Remove ${line.name}">Remove</button></td>`;
+        tr.querySelector("[data-testid=remove]").addEventListener("click", async () => {
+          await api.removeFromCart(line.product_id);
+          await render(); await refreshCartCount();
+        });
+        body.appendChild(tr);
+      }
+      document.getElementById("empty").hidden = cart.items.length > 0;
+      document.getElementById("total").textContent = `$${cart.total.toFixed(2)}`;
+      document.getElementById("checkout").disabled = cart.items.length === 0;
+      document.body.dataset.cartLoaded = "true";
+    }
+
+    document.getElementById("checkout").addEventListener("click", async () => {
+      try {
+        const order = await api.order();
+        status.textContent = `Order ${order.id} confirmed`;
+        await render(); await refreshCartCount();
+      } catch (err) { status.textContent = err.message; status.classList.add("error"); }
+    });
+
+    render();
+  </script>
+</body>
+</html>

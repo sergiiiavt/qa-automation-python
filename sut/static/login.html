@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopAPI — Login</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header>
+    <span class="brand">ShopAPI</span>
+    <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" data-testid="menu-toggle">☰</button>
+    <nav id="main-nav" data-testid="main-nav">
+      <a href="/">Products</a>
+      <a href="/cart" data-testid="cart-link">Cart (<span id="cart-count" data-testid="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Log in</h1>
+    <form id="login-form" data-testid="login-form" novalidate>
+      <label for="username">Username</label>
+      <input id="username" name="username" data-testid="username" autocomplete="username" required>
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" data-testid="password"
+             autocomplete="current-password" required>
+
+      <button type="submit" class="primary" data-testid="submit">Log in</button>
+      <p id="error" class="error" role="alert" data-testid="error"></p>
+    </form>
+    <p class="muted">Demo users: <code>alice / wonderland</code>, <code>bob / builder</code></p>
+  </main>
+
+  <script type="module">
+    import { api, mountHeader, store } from "/static/app.js";
+    mountHeader();
+
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const error = document.getElementById("error");
+      error.textContent = "";
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      if (!username || !password) { error.textContent = "Username and password are required"; return; }
+      try {
+        const res = await api.login(username, password);
+        store.token = res.token;
+        location.href = "/";
+      } catch (err) {
+        error.textContent = err.message;   // "Invalid credentials"
+      }
+    });
+  </script>
+</body>
+</html>

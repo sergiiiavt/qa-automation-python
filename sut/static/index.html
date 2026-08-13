@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopAPI — Products</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header>
+    <span class="brand">ShopAPI</span>
+    <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" data-testid="menu-toggle">☰</button>
+    <nav id="main-nav" data-testid="main-nav">
+      <a href="/">Products</a>
+      <a href="/cart" data-testid="cart-link">Cart (<span id="cart-count" data-testid="cart-count">0</span>)</a>
+      <a href="/login">Login</a>
+      <button id="logout" data-testid="logout" hidden>Log out</button>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Products</h1>
+    <div class="toolbar">
+      <label class="visually-hidden" for="search">Search products</label>
+      <input id="search" data-testid="search-input" placeholder="Search products" aria-label="Search products">
+      <select id="category" data-testid="category-filter" aria-label="Filter by category">
+        <option value="">All categories</option>
+        <option value="audio">audio</option>
+        <option value="input">input</option>
+        <option value="display">display</option>
+        <option value="video">video</option>
+      </select>
+      <button id="apply" class="primary" data-testid="apply-filters">Apply</button>
+    </div>
+
+    <p id="status" data-testid="status" role="status"></p>
+    <section id="products" class="grid" data-testid="product-grid" aria-label="Product list"></section>
+  </main>
+
+  <script type="module">
+    import { api, mountHeader, refreshCartCount, store } from "/static/app.js";
+
+    const grid = document.getElementById("products");
+    const status = document.getElementById("status");
+
+    function card(p) {
+      const el = document.createElement("article");
+      el.className = "card";
+      el.dataset.testid = "product-card";
+      el.dataset.productId = String(p.id);
+      el.innerHTML = `
+        <h3 data-testid="product-name">${p.name}</h3>
+        <span class="muted" data-testid="product-category">${p.category}</span>
+        <span class="price" data-testid="product-price">$${p.price.toFixed(2)}</span>
+        <span class="badge ${p.in_stock ? "" : "out"}" data-testid="stock-badge">
+          ${p.in_stock ? "In stock" : "Out of stock"}</span>
+        <button class="primary" data-testid="add-to-cart" ${p.in_stock ? "" : "disabled"}>Add to cart</button>`;
+      el.querySelector("[data-testid=add-to-cart]").addEventListener("click", async (e) => {
+        if (!store.token) { location.href = "/login"; return; }
+        e.target.disabled = true;
+        try { await api.addToCart(p.id, 1); await refreshCartCount(); status.textContent = `${p.name} added to cart`; }
+        catch (err) { status.textContent = err.message; status.classList.add("error"); }
+        finally { e.target.disabled = false; }
+      });
+      return el;
+    }
+
+    async function load() {
+      status.textContent = "Loading…";
+      grid.replaceChildren();
+      const products = await api.products({
+        q: document.getElementById("search").value,
+        category: document.getElementById("category").value,
+      });
+      products.forEach((p) => grid.appendChild(card(p)));
+      status.textContent = `${products.length} product(s)`;
+      grid.dataset.loaded = "true";   // a deterministic hook for waits
+    }
+
+    document.getElementById("apply").addEventListener("click", load);
+    document.getElementById("search").addEventListener("keydown", (e) => { if (e.key === "Enter") load(); });
+    mountHeader();
+    load();
+  </script>
+</body>
+</html>

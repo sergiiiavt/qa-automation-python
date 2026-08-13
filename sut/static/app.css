@@ -1,0 +1,66 @@
+:root {
+  --bg: #ffffff;
+  --fg: #14161a;
+  --muted: #5b6270;
+  --line: #e3e6ec;
+  --accent: #2f6fed;
+  --danger: #c3352b;
+  --on-accent: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#101215; --fg:#eef1f5; --muted:#9aa3b2; --line:#272b32;
+    --accent:#6b9bff; --danger:#ff8a80;
+    /* White-on-#6b9bff is 2.7:1 and fails WCAG AA — caught by
+       test_dark_mode_renders_with_readable_contrast. Dark ink on the light
+       accent gives 8.4:1. A light accent needs dark text; that is the rule. */
+    --on-accent:#0b1220;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+header {
+  display: flex; align-items: center; gap: 12px; justify-content: space-between;
+  padding: 12px 16px; border-bottom: 1px solid var(--line); position: sticky; top: 0;
+  background: var(--bg); z-index: 10;
+}
+header .brand { font-weight: 700; letter-spacing: -0.01em; }
+nav { display: flex; gap: 14px; align-items: center; }
+main { padding: 16px; max-width: 1100px; margin: 0 auto; }
+a { color: var(--accent); }
+input, button, select {
+  font: inherit; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--fg);
+  /* 44x44 CSS px minimum touch target (iOS HIG / Material). min-height alone was
+     not enough — test_touch_targets_meet_the_minimum_size caught the hamburger
+     at 40x46 because nothing constrained its width. */
+  min-height: 44px; min-width: 44px;
+}
+button { cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.toolbar input { flex: 1 1 220px; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.card { border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+.card h3 { margin: 0; font-size: 1rem; }
+.price { font-weight: 700; }
+.muted { color: var(--muted); font-size: 0.875rem; }
+.badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); width: fit-content; }
+.badge.out { color: var(--danger); border-color: var(--danger); }
+.error { color: var(--danger); }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+form { display: flex; flex-direction: column; gap: 12px; max-width: 360px; }
+
+/* The hamburger is the mobile-only affordance the mobile-web tests assert on. */
+#menu-toggle { display: none; }
+@media (max-width: 640px) {
+  #menu-toggle { display: inline-flex; }
+  nav#main-nav { display: none; }
+  nav#main-nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; right: 12px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  .grid { grid-template-columns: 1fr; }
+}
