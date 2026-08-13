@@ -1,0 +1,2 @@
+2026-08-13 21:05:28,943 | INFO    | test | START tests/web/test_shopping_flow.py::test_anonymous_user_is_sent_to_login_when_adding_to_cart[webkit]
+2026-08-13 21:05:30,200 | INFO    | test | END   tests/web/test_shopping_flow.py::test_anonymous_user_is_sent_to_login_when_adding_to_cart[webkit] (1.26s)

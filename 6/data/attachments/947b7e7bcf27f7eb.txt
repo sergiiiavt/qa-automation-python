@@ -1,0 +1,2 @@
+2026-08-13 21:04:19,193 | INFO    | test | START tests/web/test_mobile_web.py::test_content_is_readable_without_zooming[iPhone 15-chromium]
+2026-08-13 21:04:19,891 | INFO    | test | END   tests/web/test_mobile_web.py::test_content_is_readable_without_zooming[iPhone 15-chromium] (0.70s)

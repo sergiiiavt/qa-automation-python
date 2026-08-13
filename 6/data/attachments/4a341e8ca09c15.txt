@@ -1,0 +1,2 @@
+2026-08-13 21:05:20,145 | INFO    | test | START tests/web/test_shopping_flow.py::test_search_filters_the_grid[webkit]
+2026-08-13 21:05:21,389 | INFO    | test | END   tests/web/test_shopping_flow.py::test_search_filters_the_grid[webkit] (1.24s)

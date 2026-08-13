@@ -1,0 +1,2 @@
+21:04:48 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_add_to_cart_updates_the_badge[firefox]
+21:04:52 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_add_to_cart_updates_the_badge[firefox] (3.97s)

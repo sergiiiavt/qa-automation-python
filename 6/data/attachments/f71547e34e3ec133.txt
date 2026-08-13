@@ -1,0 +1,2 @@
+2026-08-13 21:05:37,704 | INFO    | test | START tests/web/test_mobile_web.py::test_no_horizontal_scrolling[Galaxy S9+-webkit]
+2026-08-13 21:05:39,748 | INFO    | test | END   tests/web/test_mobile_web.py::test_no_horizontal_scrolling[Galaxy S9+-webkit] (2.04s)

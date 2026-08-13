@@ -1,0 +1,2 @@
+2026-08-13 21:04:15,518 | INFO    | test | START tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[iPhone 15-chromium]
+2026-08-13 21:04:16,260 | INFO    | test | END   tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[iPhone 15-chromium] (0.74s)

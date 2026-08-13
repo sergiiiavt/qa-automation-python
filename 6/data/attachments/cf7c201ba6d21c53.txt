@@ -1,0 +1,2 @@
+2026-08-13 21:05:26,585 | INFO    | test | START tests/web/test_shopping_flow.py::test_add_to_cart_updates_the_badge[webkit]
+2026-08-13 21:05:28,924 | INFO    | test | END   tests/web/test_shopping_flow.py::test_add_to_cart_updates_the_badge[webkit] (2.34s)

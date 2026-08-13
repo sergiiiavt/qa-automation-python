@@ -1,0 +1,2 @@
+21:05:21 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_search_with_no_results_shows_zero_and_no_error[webkit]
+21:05:22 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_search_with_no_results_shows_zero_and_no_error[webkit] (1.20s)

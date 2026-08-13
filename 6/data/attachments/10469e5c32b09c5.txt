@@ -1,0 +1,2 @@
+2026-08-13 21:04:20,329 | INFO    | test | START tests/web/test_shopping_flow.py::test_product_grid_renders_the_catalogue[chromium]
+2026-08-13 21:04:20,794 | INFO    | test | END   tests/web/test_shopping_flow.py::test_product_grid_renders_the_catalogue[chromium] (0.46s)

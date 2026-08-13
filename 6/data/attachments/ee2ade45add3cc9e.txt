@@ -1,0 +1,5 @@
+21:03:08 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/health "HTTP/1.1 200 OK"
+21:03:08 | [32mINFO    [0m | test | START tests/services/test_auth.py::test_protected_endpoint_requires_valid_bearer_token[wonderland]
+21:03:08 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 401 Unauthorized"
+21:03:08 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/cart -> 401 (5 ms)
+21:03:08 | [32mINFO    [0m | test | END   tests/services/test_auth.py::test_protected_endpoint_requires_valid_bearer_token[wonderland] (0.04s)

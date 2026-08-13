@@ -1,0 +1,31 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/cart
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+
+<empty body>
+
+--- RESPONSE (2 ms) ---
+200
+date: Thu, 13 Aug 2026 21:03:09 GMT
+server: uvicorn
+content-length: 140
+content-type: application/json
+
+{
+  "items": [
+    {
+      "product_id": 1,
+      "name": "Aurora Headphones",
+      "unit_price": 199.99,
+      "quantity": 1,
+      "line_total": 199.99
+    }
+  ],
+  "total": 199.99,
+  "currency": "USD"
+}

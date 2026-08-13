@@ -1,0 +1,2 @@
+2026-08-13 21:04:15,300 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_page_has_exactly_one_h1_and_a_language[chromium]
+2026-08-13 21:04:15,831 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_page_has_exactly_one_h1_and_a_language[chromium] (0.53s)

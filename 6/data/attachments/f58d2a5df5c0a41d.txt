@@ -1,0 +1,4 @@
+2026-08-13 21:03:11,848 | INFO    | test | START tests/services/test_products.py::test_search_is_case_insensitive_substring_match[  -None]
+2026-08-13 21:03:11,874 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?q=++ "HTTP/1.1 200 OK"
+2026-08-13 21:03:11,875 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?q=++ -> 200 (3 ms)
+2026-08-13 21:03:11,882 | INFO    | test | END   tests/services/test_products.py::test_search_is_case_insensitive_substring_match[  -None] (0.03s)

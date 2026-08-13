@@ -1,0 +1,2 @@
+2026-08-13 21:05:41,299 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[iPad (gen 7)-webkit]
+2026-08-13 21:05:43,284 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[iPad (gen 7)-webkit] (1.99s)

@@ -1,0 +1,13 @@
+2026-08-13 21:03:09,000 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
+2026-08-13 21:03:09,001 | INFO    | test | START tests/services/test_cart_flow.py::test_quantity_boundaries[100-422-above maximum]
+2026-08-13 21:03:09,044 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-13 21:03:09,044 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (4 ms)
+2026-08-13 21:03:09,050 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-13 21:03:09,051 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (5 ms)
+2026-08-13 21:03:09,056 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-13 21:03:09,056 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (3 ms)
+2026-08-13 21:03:09,060 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 422 Unprocessable Entity"
+2026-08-13 21:03:09,060 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 422 (3 ms)
+2026-08-13 21:03:09,067 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-13 21:03:09,068 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (4 ms)
+2026-08-13 21:03:09,070 | INFO    | test | END   tests/services/test_cart_flow.py::test_quantity_boundaries[100-422-above maximum] (0.07s)

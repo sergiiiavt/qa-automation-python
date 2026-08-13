@@ -1,0 +1,3 @@
+2026-08-13 21:04:16,406 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
+2026-08-13 21:04:16,839 | INFO    | test | START tests/web/test_mobile_web.py::test_page_works_on_a_slow_3g_connection[chromium]
+2026-08-13 21:04:19,553 | INFO    | test | END   tests/web/test_mobile_web.py::test_page_works_on_a_slow_3g_connection[chromium] (2.71s)

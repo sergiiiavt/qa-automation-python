@@ -1,0 +1,60 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/products?in_stock=true
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+
+<empty body>
+
+--- RESPONSE (6 ms) ---
+200
+date: Thu, 13 Aug 2026 21:03:08 GMT
+server: uvicorn
+content-length: 479
+content-type: application/json
+
+[
+  {
+    "id": 1,
+    "name": "Aurora Headphones",
+    "category": "audio",
+    "price": 199.99,
+    "in_stock": true,
+    "rating": 4.6
+  },
+  {
+    "id": 2,
+    "name": "Bassline Speaker",
+    "category": "audio",
+    "price": 89.5,
+    "in_stock": true,
+    "rating": 4.1
+  },
+  {
+    "id": 3,
+    "name": "Comet Keyboard",
+    "category": "input",
+    "price": 129.0,
+    "in_stock": true,
+    "rating": 4.8
+  },
+  {
+    "id": 5,
+    "name": "Ember Monitor",
+    "category": "display",
+    "price": 349.0,
+    "in_stock": true,
+    "rating": 4.4
+  },
+  {
+    "id": 6,
+    "name": "Flux Webcam",
+    "category": "video",
+    "price": 79.99,
+    "in_stock": true,
+    "rating": 3.5
+  }
+]

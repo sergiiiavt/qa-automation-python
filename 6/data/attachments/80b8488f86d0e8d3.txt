@@ -1,0 +1,4 @@
+2026-08-13 21:03:11,826 | INFO    | test | START tests/services/test_products.py::test_search_is_case_insensitive_substring_match[AURORA-Aurora]
+2026-08-13 21:03:11,866 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?q=AURORA "HTTP/1.1 200 OK"
+2026-08-13 21:03:11,868 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?q=AURORA -> 200 (4 ms)
+2026-08-13 21:03:11,871 | INFO    | test | END   tests/services/test_products.py::test_search_is_case_insensitive_substring_match[AURORA-Aurora] (0.05s)
