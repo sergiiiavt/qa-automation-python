@@ -162,6 +162,14 @@ jobs:
     needs: [services, web]
     if: always()
     runs-on: ubuntu-latest
+    # The default token is read-only. Publishing the report needs to push the
+    # gh-pages branch, and annotating the pull request needs to write checks.
+    # Granting these per-job rather than workflow-wide keeps the test jobs —
+    # the ones that run third-party test code — on a read-only token.
+    permissions:
+      contents: write
+      checks: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
