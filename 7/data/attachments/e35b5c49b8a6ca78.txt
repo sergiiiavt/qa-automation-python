@@ -1,0 +1,2 @@
+2026-08-13 21:41:18,615 | INFO    | test | START tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[firefox]
+2026-08-13 21:41:22,043 | INFO    | test | END   tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[firefox] (3.43s)

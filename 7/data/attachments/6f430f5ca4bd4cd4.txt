@@ -1,0 +1,6 @@
+2026-08-13 21:40:00,830 | INFO    | test | START tests/services/test_products.py::test_get_product_by_id_matches_list_entry
+2026-08-13 21:40:00,868 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products "HTTP/1.1 200 OK"
+2026-08-13 21:40:00,868 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products -> 200 (3 ms)
+2026-08-13 21:40:00,874 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products/1 "HTTP/1.1 200 OK"
+2026-08-13 21:40:00,874 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products/1 -> 200 (5 ms)
+2026-08-13 21:40:00,876 | INFO    | test | END   tests/services/test_products.py::test_get_product_by_id_matches_list_entry (0.05s)

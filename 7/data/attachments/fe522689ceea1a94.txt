@@ -1,0 +1,2 @@
+21:39:59 | [32mINFO    [0m | test | START tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[GET /login]
+21:39:59 | [32mINFO    [0m | test | END   tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[GET /login] (0.06s)

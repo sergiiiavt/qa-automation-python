@@ -1,0 +1,5 @@
+2026-08-13 21:39:58,450 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/health "HTTP/1.1 200 OK"
+2026-08-13 21:39:58,452 | INFO    | test | START tests/services/test_auth.py::test_login_rejects_bad_credentials[alice -wonderland-trailing whitespace in username]
+2026-08-13 21:39:58,492 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 401 Unauthorized"
+2026-08-13 21:39:58,492 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 401 (5 ms)
+2026-08-13 21:39:58,499 | INFO    | test | END   tests/services/test_auth.py::test_login_rejects_bad_credentials[alice -wonderland-trailing whitespace in username] (0.05s)

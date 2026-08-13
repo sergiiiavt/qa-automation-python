@@ -1,0 +1,2 @@
+2026-08-13 21:41:19,738 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[chromium--wonderland-Username and password are required]
+2026-08-13 21:41:20,390 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[chromium--wonderland-Username and password are required] (0.65s)

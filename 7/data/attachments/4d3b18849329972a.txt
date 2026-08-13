@@ -1,0 +1,2 @@
+21:41:21 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[iPad (gen 7)-chromium]
+21:41:22 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[iPad (gen 7)-chromium] (0.72s)

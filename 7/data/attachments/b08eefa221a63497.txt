@@ -1,0 +1,2 @@
+2026-08-13 21:41:53,853 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPad (gen 7)-firefox]
+2026-08-13 21:41:56,850 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPad (gen 7)-firefox] (3.00s)

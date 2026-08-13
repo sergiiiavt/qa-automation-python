@@ -1,0 +1,36 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/auth/login
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+content-length: 20
+content-type: application/json
+
+{
+  "username": "alice"
+}
+
+--- RESPONSE (3 ms) ---
+422
+date: Thu, 13 Aug 2026 21:39:58 GMT
+server: uvicorn
+content-length: 109
+content-type: application/json
+
+{
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "password"
+      ],
+      "msg": "Field required",
+      "input": {
+        "username": "alice"
+      }
+    }
+  ]
+}

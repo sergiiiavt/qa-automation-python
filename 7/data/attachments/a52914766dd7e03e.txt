@@ -1,0 +1,6 @@
+2026-08-13 21:41:36,151 | INFO    | test | START tests/web/test_shopping_flow.py::test_checkout_button_is_disabled_for_an_empty_cart[webkit]
+2026-08-13 21:41:37,867 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-13 21:41:37,868 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (4 ms)
+2026-08-13 21:41:37,877 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-13 21:41:37,877 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (3 ms)
+2026-08-13 21:41:38,738 | INFO    | test | END   tests/web/test_shopping_flow.py::test_checkout_button_is_disabled_for_an_empty_cart[webkit] (2.59s)

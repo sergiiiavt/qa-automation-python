@@ -1,0 +1,2 @@
+2026-08-13 21:40:00,515 | INFO    | test | START tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[POST /api/cart/items]
+2026-08-13 21:40:01,402 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[POST /api/cart/items] (0.89s)

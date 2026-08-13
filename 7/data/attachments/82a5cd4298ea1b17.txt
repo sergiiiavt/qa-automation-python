@@ -1,0 +1,2 @@
+2026-08-13 21:41:41,254 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[webkit-/login]
+2026-08-13 21:41:42,594 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[webkit-/login] (1.34s)

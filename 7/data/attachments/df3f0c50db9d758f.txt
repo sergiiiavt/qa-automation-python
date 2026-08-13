@@ -1,0 +1,2 @@
+2026-08-13 21:41:38,752 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Pixel 7-webkit]
+2026-08-13 21:41:40,666 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Pixel 7-webkit] (1.91s)

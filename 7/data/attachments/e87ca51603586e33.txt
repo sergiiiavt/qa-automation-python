@@ -1,0 +1,8 @@
+2026-08-13 21:41:48,373 | INFO    | test | START tests/web/test_mobile_web.py::test_can_complete_a_purchase_on_a_phone[Galaxy S9+-firefox]
+2026-08-13 21:41:50,351 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-13 21:41:50,352 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (17 ms)
+2026-08-13 21:41:50,367 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-13 21:41:50,368 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (5 ms)
+2026-08-13 21:41:50,376 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-13 21:41:50,376 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (7 ms)
+2026-08-13 21:41:51,785 | INFO    | test | END   tests/web/test_mobile_web.py::test_can_complete_a_purchase_on_a_phone[Galaxy S9+-firefox] (3.41s)

@@ -1,0 +1,2 @@
+2026-08-13 21:41:43,166 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[firefox--wonderland-Username and password are required]
+2026-08-13 21:41:46,395 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[firefox--wonderland-Username and password are required] (3.23s)
