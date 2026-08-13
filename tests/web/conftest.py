@@ -34,13 +34,21 @@ AUTH_STATE = settings.artifacts_dir / "storage_state.json"
 # pytest-playwright overrides
 # ---------------------------------------------------------------------------
 @pytest.fixture(scope="session")
-def browser_type_launch_args(browser_type_launch_args: dict) -> dict:
-    """Merge, never replace — pytest-playwright puts `--headed`/`--slowmo` in here."""
+def browser_type_launch_args(browser_type_launch_args: dict, browser_name: str) -> dict:
+    """Merge, never replace — pytest-playwright puts `--headed`/`--slowmo` in here.
+
+    Launch `args` are **engine-specific**. `--disable-dev-shm-usage` is a Chromium
+    switch; passing it to WebKit makes the browser exit during launch, and every
+    test in the job then fails with `TargetClosedError: BrowserType.launch`.
+    That is what a cross-browser matrix is for — the bug was invisible on
+    Chromium and Firefox and only WebKit reported it.
+    """
+    args = ["--disable-dev-shm-usage"] if browser_name == "chromium" else []
     return {
         **browser_type_launch_args,
         "headless": settings.web.headless,
         "slow_mo": settings.web.slow_mo,
-        "args": ["--disable-dev-shm-usage"],  # avoids /dev/shm exhaustion in Docker
+        "args": args,
     }
 
 
