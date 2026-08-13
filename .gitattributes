@@ -1,0 +1,12 @@
+# Binary files must never go through line-ending conversion. Git's own
+# heuristic usually gets this right, but core.autocrlf is a per-clone setting
+# this repo doesn't control — a contributor with it set to `true` on Windows
+# is one CRLF pass away from a corrupted apk that fails to install with no
+# useful error message. Be explicit instead of relying on the heuristic.
+*.apk binary
+*.png binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.webm binary
+*.zip binary

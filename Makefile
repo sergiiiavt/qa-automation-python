@@ -35,8 +35,8 @@ mobile:  ## Native Appium tests (needs a running Appium server + device)
 headed:  ## Watch the browser tests run — the fastest way to debug a UI failure
 	$(PYTEST) tests/web --headed --slowmo 400 -x
 
-trace:  ## Record Playwright traces, then: playwright show-trace artifacts/trace.zip
-	$(PYTEST) tests/web --tracing retain-on-failure
+trace:  ## Record traces + video for failures only, then: playwright show-trace artifacts/<test-nodeid>/trace.zip
+	$(PYTEST) tests/web --tracing retain-on-failure --video retain-on-failure --output artifacts
 
 all:  ## Everything that can run without a device
 	$(PYTEST) tests -n auto

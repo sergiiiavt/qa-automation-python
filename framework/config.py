@@ -60,7 +60,10 @@ class MobileSettings(BaseModel):
     platform: Platform = Platform.ANDROID
     device_name: str = "Pixel_7_API_34"
     platform_version: str = "14"
-    app_path: str | None = None
+    # Sauce Labs' MIT-licensed "My Demo App" — see apps/README.md. Bundled so
+    # tests/mobile runs offline, the same way sut/ keeps the web+API layers
+    # offline. Point this elsewhere for your own app.
+    app_path: str | None = "apps/mda-2.2.0-25.apk"
     mobile_browser: str | None = None  # set -> drive the browser, not an app
     new_command_timeout: int = 120
     # Real-device cloud (BrowserStack / Sauce / LambdaTest). Empty -> local Appium.

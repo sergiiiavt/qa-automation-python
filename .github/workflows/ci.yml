@@ -91,6 +91,7 @@ jobs:
         run: |
           pytest tests/web \
             --browser=${{ matrix.browser }} \
+            --video=retain-on-failure --output=artifacts \
             -n auto \
             --reruns 1 --reruns-delay 2 \
             --alluredir=allure-results \

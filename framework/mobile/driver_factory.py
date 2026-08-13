@@ -52,8 +52,15 @@ def _android_options(*, browser: str | None, app: str | None) -> UiAutomator2Opt
         opts.set_capability("appium:chromedriverAutodownload", True)
     elif app:
         opts.app = app
-        # Keep app state clean between sessions but skip the slow full reinstall.
-        opts.set_capability("appium:noReset", False)
+        # noReset=True skips wiping app data (and fullReset=True would also
+        # uninstall it) between sessions, so Appium reuses the existing install
+        # instead of a full reinstall each test. The previous version of this
+        # factory set noReset=False — Appium's *default* — while the comment
+        # claimed it skipped the reset; it did not. That mismatch was caught by
+        # comparing against a working reference config, not by reading this
+        # code in isolation, which is itself worth remembering: a comment that
+        # describes what code *should* do is not evidence that it does.
+        opts.set_capability("appium:noReset", True)
         opts.set_capability("appium:fullReset", False)
     else:
         raise ValueError("Provide either mobile.app_path or mobile.mobile_browser")

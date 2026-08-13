@@ -27,8 +27,22 @@ def mobile_platform(request: pytest.FixtureRequest) -> Platform:
 
 
 @pytest.fixture
-def driver(request: pytest.FixtureRequest, base_url: str) -> Iterator:
+def driver(request: pytest.FixtureRequest) -> Iterator:
     """One Appium session per test.
+
+    Does not depend on `base_url`. An earlier version of this fixture took it
+    as a parameter without ever using it in the body — a leftover from when a
+    native test cross-checked totals against the FastAPI SUT. That coupling is
+    gone now that the native tests are self-contained against the bundled
+    apk, so the unused parameter was dead code, not a real dependency.
+
+    It does *not* stop the SUT from starting when you run `tests/mobile` —
+    `sut` in the root conftest is `autouse=True` for the whole session, on
+    purpose, because the mobile-web tests in this same directory still need
+    it. Untangling that so a pure native-only run skips the web server
+    entirely is a real improvement and a reasonable exercise, but it touches
+    session-wide fixture architecture rather than this file — out of scope
+    for what changed here.
 
     Note the teardown order: capture diagnostics *before* quitting, because a
     quit session can no longer produce a screenshot or a page source — the most
@@ -74,23 +88,33 @@ def mobile_web_driver(request: pytest.FixtureRequest) -> Iterator:
 
 
 @pytest.fixture
-def login_screen(driver):
-    from framework.mobile.screens import LoginScreen
+def catalog_screen(driver):
+    """The app's landing screen after launch — no login needed to reach it."""
+    from framework.mobile.screens import CatalogScreen
 
-    return LoginScreen(driver).wait_until_loaded()
+    return CatalogScreen(driver).wait_until_loaded()
 
 
 @pytest.fixture
-def products_screen(driver):
+def login_screen(catalog_screen):
+    """The login screen, reached the only way the app allows: through the
+    hamburger menu on the catalog screen. There is no direct deep link."""
+    return catalog_screen.open_menu().open_login()
+
+
+@pytest.fixture
+def logged_in_catalog_screen(login_screen):
     """Logged-in starting point.
 
     On mobile, seeding session state is harder than on web (no storage_state),
     so this pays the login cost once per test. If your app supports a deep link
     or a debug launch argument that skips login, use it — it is worth asking the
     mobile team for one; it can cut a device suite's runtime in half.
-    """
-    from framework.data.factories import persona
-    from framework.mobile.screens import LoginScreen
 
-    user = persona("standard")
-    return LoginScreen(driver).wait_until_loaded().login(user.username, user.password)
+    Uses the bundled app's own fixed demo account (see
+    framework/mobile/screens.py) — a separate, unrelated identity system from
+    this course's FastAPI SUT, which is why it is not `persona("standard")`.
+    """
+    from framework.mobile.screens import VALID_PASSWORD, VALID_USERNAME
+
+    return login_screen.login(VALID_USERNAME, VALID_PASSWORD)

@@ -1,8 +1,11 @@
-"""Native app tests (Appium).
+"""Native app tests (Appium), against the bundled Sauce Labs "My Demo App".
 
 These skip automatically unless an Appium server is reachable — see the root
-conftest. Point `QA_APP_PATH` at your .apk/.ipa and adjust the locators in
-`framework/mobile/screens.py` to run them against a real app.
+conftest. See [apps/README.md](../../apps/README.md) for what the app is and
+[framework/mobile/screens.py](../../framework/mobile/screens.py) for which
+screens have verified locators. To target your own app instead, point
+`QA_APP_PATH` at it and replace the screen objects — the fixtures and test
+shapes below transfer; the locators do not.
 
 What is worth automating on a real device, in priority order:
 
@@ -13,128 +16,102 @@ What is worth automating on a real device, in priority order:
 
 What is NOT worth automating on device: business-rule permutations, validation
 tables, error messages. Push those to the services layer — they run in
-milliseconds there and take minutes here.
+milliseconds there and take minutes here. (This app has no service layer of
+its own to push them to, which is exactly why its own validation checks below
+are kept to the two the login form actually has — not padded out with more.)
 """
 
 from __future__ import annotations
 
 import pytest
 
-from framework.data.factories import persona
-from framework.mobile.screens import CartScreen, LoginScreen, ProductsScreen
-from framework.utils.assertions import approx_money, soft
+from framework.mobile.screens import (
+    LOCKED_OUT_USERNAME,
+    VALID_PASSWORD,
+    VALID_USERNAME,
+    CatalogScreen,
+    LoginScreen,
+)
 
 pytestmark = pytest.mark.mobile_native
 
 
 @pytest.mark.smoke
 def test_user_can_log_in(login_screen: LoginScreen) -> None:
-    user = persona("standard")
+    catalog = login_screen.login(VALID_USERNAME, VALID_PASSWORD)
 
-    products = login_screen.login(user.username, user.password)
-
-    assert products.is_displayed(ProductsScreen.root), "Products screen did not appear after login"
+    assert catalog.is_displayed(CatalogScreen.root), "Catalog did not reappear after login"
 
 
-def test_invalid_credentials_show_an_error(login_screen: LoginScreen) -> None:
-    login_screen.login_expecting_failure("alice", "definitely-wrong")
+def test_login_requires_a_username(login_screen: LoginScreen) -> None:
+    login_screen.login_expecting_failure("", VALID_PASSWORD)
 
-    assert "invalid" in login_screen.error_text.lower()
+    assert login_screen.username_error, "No validation error shown for a blank username"
+
+
+def test_login_requires_a_password(login_screen: LoginScreen) -> None:
+    login_screen.login_expecting_failure(VALID_USERNAME, "")
+
+    assert login_screen.password_error, "No validation error shown for a blank password"
 
 
 @pytest.mark.smoke
-def test_add_to_cart_and_checkout(products_screen: ProductsScreen) -> None:
-    name = products_screen.product_names[0]
+def test_locked_out_user_is_rejected(login_screen: LoginScreen) -> None:
+    """The app's one *business-rule* validation, not just a required-field
+    check — worth the device time because it is specific to this account's
+    server-side state, not something a unit test could stand in for."""
+    login_screen.login_expecting_failure(LOCKED_OUT_USERNAME, VALID_PASSWORD)
 
-    products_screen.add_to_cart(name)
-
-    soft(products_screen.cart_count == 1, f"Badge shows {products_screen.cart_count}, expected 1")
-    cart = products_screen.open_cart()
-    soft(not cart.is_empty, "Cart screen reports empty after adding an item")
-
-    cart.checkout()
-
-    assert "confirmed" in cart.confirmation_text.lower()
+    assert "locked out" in login_screen.password_error.lower()
 
 
-def test_scrolling_reveals_products_below_the_fold(products_screen: ProductsScreen) -> None:
-    """`scroll_to_text` uses UiScrollable on Android — a native, fast scroll.
-    Hand-rolled swipe loops are the slow, flaky alternative."""
-    last_product = "Flux Webcam"
-
-    element = products_screen.scroll_to_text(last_product)
-
-    assert element.is_displayed()
-
-
-def test_app_survives_backgrounding(products_screen: ProductsScreen) -> None:
+def test_app_survives_backgrounding(logged_in_catalog_screen: CatalogScreen) -> None:
     """Backgrounding is where mobile apps lose state, drop sockets and crash.
-    This is a device-only scenario and one of the highest-value mobile tests."""
-    name = products_screen.product_names[0]
-    products_screen.add_to_cart(name)
+    This is a device-only scenario and one of the highest-value mobile tests —
+    nothing at the API or emulated-web layer can produce it."""
+    logged_in_catalog_screen.driver.background_app(5)
 
-    products_screen.driver.background_app(5)
+    assert logged_in_catalog_screen.is_displayed(CatalogScreen.root), (
+        "Catalog did not survive being backgrounded and foregrounded"
+    )
 
-    assert products_screen.cart_count == 1, "Cart contents were lost when the app was backgrounded"
 
-
-def test_rotation_preserves_state(products_screen: ProductsScreen) -> None:
+def test_rotation_does_not_lose_the_session(logged_in_catalog_screen: CatalogScreen) -> None:
     """On Android, rotation destroys and recreates the Activity. Anything not
     saved in onSaveInstanceState is gone — a defect class unique to mobile."""
-    name = products_screen.product_names[0]
-    products_screen.add_to_cart(name)
-
-    products_screen.driver.orientation = "LANDSCAPE"
+    driver = logged_in_catalog_screen.driver
+    driver.orientation = "LANDSCAPE"
     try:
-        assert products_screen.cart_count == 1, "Cart was cleared by rotation"
+        assert logged_in_catalog_screen.is_displayed(CatalogScreen.root), (
+            "Rotation lost the logged-in session"
+        )
     finally:
-        products_screen.driver.orientation = "PORTRAIT"
+        driver.orientation = "PORTRAIT"
 
 
-def test_back_navigation_returns_to_the_previous_screen(products_screen: ProductsScreen) -> None:
+def test_back_navigation_returns_to_the_catalog(catalog_screen: CatalogScreen) -> None:
     """Android's hardware back button has no web equivalent and is a reliable
     source of broken navigation stacks."""
-    cart = products_screen.open_cart()
-    assert cart.is_displayed(CartScreen.root)
+    login = catalog_screen.open_menu().open_login()
+    assert login.is_displayed(LoginScreen.root)
 
-    cart.driver.back()
+    login.driver.back()
 
-    assert products_screen.is_displayed(ProductsScreen.root), "Back did not return to products"
+    assert catalog_screen.is_displayed(CatalogScreen.root), "Back did not return to the catalog"
 
 
 @pytest.mark.slow
-def test_app_handles_loss_of_connectivity(products_screen: ProductsScreen) -> None:
+def test_app_handles_loss_of_connectivity(catalog_screen: CatalogScreen) -> None:
     """Airplane-mode simulation. `set_network_connection` is Android-only; the
     skip is explicit rather than a silent pass."""
-    if not products_screen.is_android:
+    if not catalog_screen.is_android:
         pytest.skip("Network condition control is Android-only via UiAutomator2")
 
-    driver = products_screen.driver
+    driver = catalog_screen.driver
     driver.set_network_connection(1)  # 1 = airplane mode
     try:
-        products_screen.search("aurora")
-        assert products_screen.is_displayed(
-            (products_screen.root[0], products_screen.root[1]), timeout=5
-        ), "App crashed or showed a blank screen when offline"
+        assert catalog_screen.is_displayed(CatalogScreen.root, timeout=5), (
+            "App crashed or showed a blank screen when offline"
+        )
     finally:
         driver.set_network_connection(6)  # 6 = wifi + data
-
-
-def test_totals_match_the_backend(products_screen: ProductsScreen, base_url: str) -> None:
-    """Cross-layer verification on mobile: drive the UI, verify at the API.
-
-    The device shows what the user sees; the API shows what the business
-    recorded. A mismatch between them is the bug worth finding.
-    """
-    from framework.api.shop import ShopApi
-    from framework.http.client import ApiClient
-
-    user = persona("standard")
-    name = products_screen.product_names[0]
-    products_screen.add_to_cart(name)
-    ui_total = products_screen.open_cart().total
-
-    with ApiClient(base_url=base_url) as client:
-        api_total = ShopApi(client).login_as(user.username, user.password).cart.get().total
-
-    approx_money(ui_total, api_total)

@@ -10,7 +10,19 @@ policy. Two ideas dominate this file:
 
   * **Artifacts on failure only.** Traces and videos for every green test are
     gigabytes of noise. `rep_call.failed` (set by the root conftest hook) makes
-    "capture only what a human will actually open" a two-line policy.
+    "capture only what a human will actually open" a two-line policy for the
+    screenshot/DOM/console capture below. Video and trace are heavier still —
+    heavy enough that pytest-playwright ships its own retention flags
+    (`--video=retain-on-failure`, `--tracing=retain-on-failure`) rather than
+    recording unconditionally; opt in per command (see the Makefile's `trace`
+    target and the CI web job) instead of hand-rolling the same policy twice.
+    An earlier version of this file *did* hand-roll it — set
+    `record_video_dir` directly in `browser_context_args`, unconditionally,
+    with a comment claiming "the page fixture below deletes it when the test
+    passes." No such deletion existed. Every test in every run recorded a
+    video that was never cleaned up — 222 files after one local run. Prefer
+    the plugin's tested mechanism over reimplementing it from a comment that
+    was never checked against the code.
 """
 
 from __future__ import annotations
@@ -63,10 +75,6 @@ def browser_context_args(browser_context_args: dict, base_url: str) -> dict:
         "ignore_https_errors": not settings.web.verify_ssl
         if hasattr(settings.web, "verify_ssl")
         else False,
-        # Recording video is cheap to enable and expensive to keep; the
-        # `page` fixture below deletes it when the test passes.
-        "record_video_dir": str(settings.artifacts_dir / "video"),
-        "record_video_size": {"width": 1280, "height": 720},
     }
 
 

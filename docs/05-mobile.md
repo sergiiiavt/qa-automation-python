@@ -288,16 +288,37 @@ brew install carthage ios-deploy
 xcrun simctl list devices
 ```
 
-Then:
+Then, with no extra download — the app is bundled at
+[apps/mda-2.2.0-25.apk](../apps/mda-2.2.0-25.apk), Sauce Labs' MIT-licensed
+"My Demo App" (see [apps/README.md](../apps/README.md)):
 
 ```bash
-export QA_APP_PATH=./apps/demo.apk
 pytest tests/mobile -m smoke
 ```
 
 Without a running Appium server the mobile tests **skip cleanly** — see
 `pytest_collection_modifyitems` in [conftest.py](../conftest.py). A framework
 that explodes on a laptop without Appium is a framework developers route around.
+
+### Finding real locators: Appium Inspector
+
+Every locator this course ships was found the same way you will find your
+own — not guessed, not copied from a tutorial written for a different app:
+
+```bash
+appium                                    # server running in one terminal
+npx @appium/inspector                     # or the desktop app, in another
+```
+
+Point Inspector at the same capabilities `driver_factory.py` builds (same
+`app` path, same `platformName`/`deviceName`), start a session, and click an
+element to see its resource id, content-desc, class and full attribute set.
+That is genuinely the whole workflow — `framework/mobile/screens.py`'s
+`LoginScreen`, `MenuScreen` and `CatalogScreen` were built exactly this way
+against the bundled app. The product-detail, add-to-cart and checkout screens
+were deliberately left unmodelled so Exercise 22b in
+[Module 10](10-exercises.md) asks you to do this yourself rather than read
+locators someone else already found.
 
 ### Device clouds
 

@@ -14,6 +14,7 @@ here is pseudocode and nothing depends on a third-party demo site staying up.
 |---|---|
 | **A framework** | Layered, typed, documented. `framework/` is library code you can lift into a real project. |
 | **A system under test** | `sut/` — a FastAPI shop with a real OpenAPI schema and a responsive UI. API, web and mobile-web tests all target it. |
+| **A real native app** | `apps/` — Sauce Labs' MIT-licensed "My Demo App" (Android), bundled so `tests/mobile` runs against something real, not placeholder locators. |
 | **A course** | `docs/` — 11 modules from pytest fundamentals to CI, flakiness and strategy. |
 | **Exercises** | `docs/10-exercises.md` — 30 graded tasks with solution criteria. |
 
@@ -48,11 +49,12 @@ framework/          The reusable library — no test logic lives here
 └── utils/            Assertions, waits, reporting adapters
 
 tests/
-├── services/       90 API tests: CRUD, auth, boundaries, contract, property-based
-├── web/            60 browser tests: flows, mobile-web emulation, a11y, visual
-└── mobile/         15 Appium tests: native app + real-device mobile web
+├── services/       92 API tests: CRUD, auth, boundaries, contract, property-based
+├── web/            64 browser tests: flows, mobile-web emulation, a11y, visual
+└── mobile/         14 Appium tests: native app + real-device mobile web
 
 sut/                The demo application under test
+apps/               A bundled, MIT-licensed real app for the native-mobile tests
 docs/               The course
 conftest.py         Root fixtures, hooks, CLI options
 ```
@@ -92,11 +94,17 @@ not writing assertions.
 | `pytest -n 4`, later | Intermittent `ConnectionRefusedError`: the demo app was owned by a session fixture, so whichever worker finished first killed the server the other three were still using |
 | `pytest -n 4`, later still | Intermittent `FailedHealthCheck` from Hypothesis on the two parameterless operations — a finding about the *tooling*, not the product |
 | BOLA test | Any user can read any other user's order (documented as `xfail`, ticket SHOP-114) |
+| Cross-browser CI matrix | A Chromium-only launch flag made every WebKit test fail; invisible until three engines actually ran |
+| Cross-browser CI matrix | A visual baseline recorded on Windows/Chromium failed on every engine on Linux CI — a screenshot is only comparable within one environment |
+| Reviewing a sibling framework | This repo's own `browser_context_args` always recorded video and never deleted it — 222 files after one local run, contradicting the "failure-only artifacts" principle the docs teach. Fixed by using pytest-playwright's own `--video=retain-on-failure` instead of hand-rolling the policy |
+| Same review | The native-mobile driver factory set `noReset=False` while its comment claimed the opposite — the comment was never checked against the code |
 
 ## Requirements
 
 - Python 3.11+ (developed on 3.14)
-- Node 20+ and Appium 3 — only for `tests/mobile`
+- Node 20+, Appium 3 + the UiAutomator2 driver, and an Android emulator or
+  device — only for `tests/mobile`. The app itself (`apps/mda-2.2.0-25.apk`)
+  is already bundled; nothing to download.
 - Docker — optional, for reproducible runs (`docker compose up tests`)
 
 ## Licence

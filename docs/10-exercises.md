@@ -126,13 +126,29 @@ file green.
 unbroken string) and confirm the overflow test catches it. Then fix the CSS.
 *Accept:* red → fix → green, and you can name the CSS property that fixed it.
 
-**22. An Appium screen object.** Pick any open-source sample app, install Appium
-3 + UiAutomator2, and write a `LoginScreen` with intent methods.
-*Accept:* accessibility ids where available; XPath nowhere; explicit waits only.
+**22a. Verify the bundled screens yourself.** Install Appium 3 + UiAutomator2,
+start `appium` and `npx @appium/inspector`, point Inspector at
+`apps/mda-2.2.0-25.apk` with the same capabilities `driver_factory.py` builds,
+and confirm every locator in `CatalogScreen`, `MenuScreen` and `LoginScreen`
+against what Inspector actually reports.
+*Accept:* you can point at the exact attribute (resource-id or content-desc)
+each locator in `framework/mobile/screens.py` was built from.
 
-**23. Device-only scenarios.** From the list in [Module 5](05-mobile.md), write
-tests for backgrounding and rotation.
-*Accept:* each test's docstring states what it proves that no web test could.
+**22b. Build the screens this course deliberately left out.** Using Appium
+Inspector, find the real locators for the product-detail screen, the
+add-to-cart control, and the cart/checkout screens of the bundled app. Add a
+`ProductDetailScreen` and a `CartScreen` to `framework/mobile/screens.py`
+following the existing style, plus tests in `tests/mobile/test_native_app.py`
+for adding an item and completing checkout.
+*Accept:* every new locator was confirmed in Inspector, not guessed from the
+visible UI; the tests pass against a real emulator running the bundled APK.
+
+**23. Device-only scenarios.** From the list in [Module 5](05-mobile.md), add
+one more test — for a scenario not already covered in
+`tests/mobile/test_native_app.py` — for either the hardware back button or
+network loss.
+*Accept:* the docstring states what it proves that no web test could, and the
+locators used are ones you verified in Exercise 22a rather than reused blind.
 
 ---
 
