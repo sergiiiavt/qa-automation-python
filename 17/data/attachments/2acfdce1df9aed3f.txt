@@ -1,0 +1,4 @@
+09:24:24 | [32mINFO    [0m | test | START tests/services/test_products.py::test_unknown_product_returns_404[999999]
+09:24:24 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products/999999 "HTTP/1.1 404 Not Found"
+09:24:24 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/products/999999 -> 404 (3 ms)
+09:24:24 | [32mINFO    [0m | test | END   tests/services/test_products.py::test_unknown_product_returns_404[999999] (0.05s)

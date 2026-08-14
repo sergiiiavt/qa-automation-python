@@ -1,0 +1,2 @@
+2026-08-14 09:25:43,953 | INFO    | test | START tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[webkit]
+2026-08-14 09:25:46,183 | INFO    | test | END   tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[webkit] (2.23s)

@@ -1,0 +1,348 @@
+2026-08-14 09:24:22,907 | INFO    | test | START tests/services/test_contract_and_properties.py::test_cart_total_always_equals_sum_of_lines
+2026-08-14 09:24:22,949 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,949 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (3 ms)
+2026-08-14 09:24:22,951 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,952 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:22,962 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,962 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:22,964 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,964 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (1 ms)
+2026-08-14 09:24:22,967 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:22,967 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:22,970 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,970 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:22,974 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,974 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:22,976 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,976 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:22,979 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,979 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:22,981 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:22,981 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:22,984 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,984 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:22,989 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,989 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:22,992 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,992 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:22,995 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:22,995 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:22,998 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:22,998 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,000 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,001 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,006 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,006 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,009 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,009 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,011 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,011 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (1 ms)
+2026-08-14 09:24:23,014 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,014 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,016 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,017 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,019 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,020 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,024 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,024 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,027 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,027 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,029 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,030 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,032 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,033 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,036 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,036 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,039 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,039 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,042 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,042 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,045 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,045 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,048 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,048 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,061 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,061 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,064 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,065 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,068 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,068 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,070 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,070 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,073 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/5 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,073 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/5 -> 200 (2 ms)
+2026-08-14 09:24:23,076 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,076 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,079 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,079 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,082 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,082 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,085 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,085 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,089 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,089 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,092 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,092 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,096 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,096 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,099 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,099 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,102 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,102 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,105 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,105 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,108 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/5 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,108 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/5 -> 200 (2 ms)
+2026-08-14 09:24:23,111 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,111 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,114 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,114 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,117 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,117 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,120 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,120 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,124 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,125 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,127 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,127 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,130 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,130 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,132 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,132 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,135 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,135 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,138 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,139 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (3 ms)
+2026-08-14 09:24:23,144 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,144 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (3 ms)
+2026-08-14 09:24:23,146 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,147 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,151 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,151 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,154 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,154 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,157 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,157 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,161 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,161 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (3 ms)
+2026-08-14 09:24:23,165 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,165 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (4 ms)
+2026-08-14 09:24:23,168 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,168 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,171 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,171 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,174 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,174 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,176 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,177 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (1 ms)
+2026-08-14 09:24:23,180 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,181 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,183 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,183 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,186 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,186 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,188 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,188 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (1 ms)
+2026-08-14 09:24:23,192 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,193 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (4 ms)
+2026-08-14 09:24:23,195 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,195 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (1 ms)
+2026-08-14 09:24:23,198 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,198 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,200 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,201 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,205 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,205 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (4 ms)
+2026-08-14 09:24:23,207 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,208 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,214 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,214 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,216 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,216 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,218 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,219 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,221 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,221 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,224 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/5 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,224 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/5 -> 200 (3 ms)
+2026-08-14 09:24:23,227 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,227 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,230 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,230 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,233 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,233 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,238 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,239 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,241 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,241 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,244 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,244 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,247 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,248 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,250 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,251 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,256 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,257 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,259 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,260 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,262 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,263 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,266 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,266 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,269 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,269 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,272 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,272 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,275 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,275 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,279 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,280 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,282 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,282 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,285 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,285 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,288 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,288 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,290 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,290 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,293 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,293 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,296 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,296 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,299 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,299 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,302 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,302 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,308 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,309 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,311 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,312 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,314 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,315 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,317 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,317 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,320 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,320 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,323 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,323 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,326 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,326 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,329 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,329 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,332 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,333 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (3 ms)
+2026-08-14 09:24:23,337 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,338 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,340 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,340 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,343 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,343 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,346 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,346 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,349 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,349 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,352 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,352 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,355 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,355 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,358 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,358 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,361 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,361 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,367 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,367 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (3 ms)
+2026-08-14 09:24:23,370 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,371 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,374 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,374 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,377 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,377 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,380 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,380 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,383 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,383 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,386 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,386 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,389 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,390 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,392 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,393 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,395 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,395 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,400 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,401 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,403 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,404 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,406 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,406 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,409 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,409 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,411 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/5 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,412 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/5 -> 200 (2 ms)
+2026-08-14 09:24:23,414 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,414 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,417 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,418 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,420 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,421 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,424 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,424 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,427 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,427 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,430 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,430 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,435 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,435 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,438 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,438 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,441 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,441 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,444 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,444 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,446 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/5 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,446 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/5 -> 200 (2 ms)
+2026-08-14 09:24:23,449 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,449 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,452 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,453 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,455 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,456 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,458 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,459 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,461 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,462 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,464 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,465 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,470 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,470 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,473 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,473 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,475 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,476 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,478 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,478 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,481 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/5 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,481 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/5 -> 200 (2 ms)
+2026-08-14 09:24:23,483 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,484 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 09:24:23,487 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,487 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,491 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,491 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (3 ms)
+2026-08-14 09:24:23,494 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,494 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,497 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:24:23,497 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 09:24:23,499 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,499 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (1 ms)
+2026-08-14 09:24:23,503 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,503 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (2 ms)
+2026-08-14 09:24:23,506 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,507 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (2 ms)
+2026-08-14 09:24:23,509 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/2 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,509 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/2 -> 200 (2 ms)
+2026-08-14 09:24:23,512 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/3 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,512 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/3 -> 200 (2 ms)
+2026-08-14 09:24:23,515 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/5 "HTTP/1.1 200 OK"
+2026-08-14 09:24:23,515 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/5 -> 200 (2 ms)
+2026-08-14 09:24:23,518 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_cart_total_always_equals_sum_of_lines (0.61s)

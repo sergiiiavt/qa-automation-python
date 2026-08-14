@@ -1,0 +1,33 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/products?limit=101
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+
+<empty body>
+
+--- RESPONSE (1 ms) ---
+422
+date: Fri, 14 Aug 2026 09:24:24 GMT
+server: uvicorn
+content-length: 144
+content-type: application/json
+
+{
+  "detail": [
+    {
+      "type": "less_than_equal",
+      "loc": [
+        "query",
+        "limit"
+      ],
+      "msg": "Input should be less than or equal to 100",
+      "input": "101",
+      "ctx": {
+        "le": 100
+      }
+    }
+  ]
+}

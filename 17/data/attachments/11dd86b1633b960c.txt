@@ -1,0 +1,2 @@
+2026-08-14 09:25:38,369 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_dark_mode_renders_with_readable_contrast[webkit]
+2026-08-14 09:25:40,904 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_dark_mode_renders_with_readable_contrast[webkit] (2.54s)

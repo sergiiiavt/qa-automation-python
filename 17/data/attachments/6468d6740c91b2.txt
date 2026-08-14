@@ -1,0 +1,2 @@
+2026-08-14 09:25:35,528 | INFO    | test | START tests/web/test_login.py::test_user_can_log_in_with_valid_credentials[firefox]
+2026-08-14 09:25:37,447 | INFO    | test | END   tests/web/test_login.py::test_user_can_log_in_with_valid_credentials[firefox] (1.92s)

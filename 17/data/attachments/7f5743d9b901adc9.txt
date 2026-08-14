@@ -1,0 +1,2 @@
+2026-08-14 09:26:00,734 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit--wonderland-Username and password are required]
+2026-08-14 09:26:01,803 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit--wonderland-Username and password are required] (1.07s)

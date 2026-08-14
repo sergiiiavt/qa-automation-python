@@ -1,0 +1,2 @@
+2026-08-14 09:25:42,114 | INFO    | test | START tests/web/test_shopping_flow.py::test_category_filter[firefox]
+2026-08-14 09:25:43,636 | INFO    | test | END   tests/web/test_shopping_flow.py::test_category_filter[firefox] (1.52s)

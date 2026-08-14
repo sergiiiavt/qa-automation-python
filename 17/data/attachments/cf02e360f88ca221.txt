@@ -1,0 +1,2 @@
+2026-08-14 09:25:41,991 | INFO    | test | START tests/web/test_mobile_web.py::test_page_works_on_a_slow_3g_connection[firefox]
+2026-08-14 09:25:42,997 | INFO    | test | END   tests/web/test_mobile_web.py::test_page_works_on_a_slow_3g_connection[firefox] (1.01s)

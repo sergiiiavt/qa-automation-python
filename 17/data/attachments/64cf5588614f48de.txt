@@ -1,0 +1,2 @@
+2026-08-14 09:25:54,933 | INFO    | test | START tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Pixel 7-webkit]
+2026-08-14 09:25:56,687 | INFO    | test | END   tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Pixel 7-webkit] (1.75s)

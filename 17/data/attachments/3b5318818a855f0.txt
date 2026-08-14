@@ -1,0 +1,10 @@
+2026-08-14 09:25:51,725 | INFO    | test | START tests/web/test_shopping_flow.py::test_cart_survives_a_page_reload[firefox]
+2026-08-14 09:25:53,623 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 09:25:53,623 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (10 ms)
+2026-08-14 09:25:53,632 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:25:53,632 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (5 ms)
+2026-08-14 09:25:53,636 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 09:25:53,636 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (3 ms)
+2026-08-14 09:25:53,656 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 09:25:53,656 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (19 ms)
+2026-08-14 09:25:54,655 | INFO    | test | END   tests/web/test_shopping_flow.py::test_cart_survives_a_page_reload[firefox] (2.93s)

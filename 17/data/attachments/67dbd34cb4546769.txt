@@ -1,0 +1,2 @@
+2026-08-14 09:25:53,590 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_survives_rotation[firefox-portrait]
+2026-08-14 09:25:56,493 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_survives_rotation[firefox-portrait] (2.90s)

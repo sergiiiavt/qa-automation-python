@@ -1,0 +1,2 @@
+2026-08-14 09:25:59,899 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Pixel 7-firefox]
+2026-08-14 09:26:02,637 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Pixel 7-firefox] (2.74s)

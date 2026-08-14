@@ -1,0 +1,2 @@
+2026-08-14 09:25:43,062 | INFO    | test | START tests/web/test_mobile_web.py::test_no_horizontal_scrolling[iPhone 15-firefox]
+2026-08-14 09:25:45,935 | INFO    | test | END   tests/web/test_mobile_web.py::test_no_horizontal_scrolling[iPhone 15-firefox] (2.87s)

@@ -1,0 +1,2 @@
+2026-08-14 09:25:47,794 | INFO    | test | START tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[iPhone 15-chromium]
+2026-08-14 09:25:48,301 | INFO    | test | END   tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[iPhone 15-chromium] (0.51s)

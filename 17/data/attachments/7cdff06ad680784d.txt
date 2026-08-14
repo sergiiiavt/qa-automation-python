@@ -1,0 +1,4 @@
+2026-08-14 09:24:21,973 | INFO    | test | START tests/services/test_auth.py::test_login_rejects_bad_credentials[alice-wonderland -trailing whitespace in password]
+2026-08-14 09:24:22,013 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 401 Unauthorized"
+2026-08-14 09:24:22,013 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 401 (3 ms)
+2026-08-14 09:24:22,017 | INFO    | test | END   tests/services/test_auth.py::test_login_rejects_bad_credentials[alice-wonderland -trailing whitespace in password] (0.04s)

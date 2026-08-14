@@ -1,0 +1,2 @@
+09:25:40 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_search_with_no_results_shows_zero_and_no_error[firefox]
+09:25:42 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_search_with_no_results_shows_zero_and_no_error[firefox] (1.64s)

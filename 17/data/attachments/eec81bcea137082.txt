@@ -1,0 +1,2 @@
+2026-08-14 09:25:40,502 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_keyboard_focus_is_visible[webkit]
+2026-08-14 09:25:41,757 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_keyboard_focus_is_visible[webkit] (1.25s)

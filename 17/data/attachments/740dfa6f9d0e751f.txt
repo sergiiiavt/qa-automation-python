@@ -1,0 +1,4 @@
+2026-08-14 09:24:22,069 | INFO    | test | START tests/services/test_auth.py::test_login_rejects_bad_credentials[nosuchuser-wonderland-unknown user]
+2026-08-14 09:24:22,108 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 401 Unauthorized"
+2026-08-14 09:24:22,109 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 401 (3 ms)
+2026-08-14 09:24:22,112 | INFO    | test | END   tests/services/test_auth.py::test_login_rejects_bad_credentials[nosuchuser-wonderland-unknown user] (0.04s)

@@ -1,0 +1,50 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/auth/login
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+content-length: 29
+content-type: application/json
+
+{
+  "username": "",
+  "password": ""
+}
+
+--- RESPONSE (8 ms) ---
+422
+date: Fri, 14 Aug 2026 09:24:21 GMT
+server: uvicorn
+content-length: 284
+content-type: application/json
+
+{
+  "detail": [
+    {
+      "type": "string_too_short",
+      "loc": [
+        "body",
+        "username"
+      ],
+      "msg": "String should have at least 1 character",
+      "input": "",
+      "ctx": {
+        "min_length": 1
+      }
+    },
+    {
+      "type": "string_too_short",
+      "loc": [
+        "body",
+        "password"
+      ],
+      "msg": "String should have at least 1 character",
+      "input": "",
+      "ctx": {
+        "min_length": 1
+      }
+    }
+  ]
+}
