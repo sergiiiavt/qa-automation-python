@@ -141,23 +141,43 @@ jobs:
           repository: saucelabs/my-demo-app-android
           ref: 36b012eecdf6a2b488b9504e16b3d0c3ca9a0e7b
           path: my-demo-app-android
+      # Two JDKs, deliberately, for two different consumers with two different
+      # floors — both discovered by running the previous version of this job
+      # and reading the exact error, not assumed up front:
+      #   - sdkmanager itself (whichever cmdline-tools revision — even the one
+      #     already preinstalled on the runner) is a JDK 17+ binary: JDK 11
+      #     first failed it with "This tool requires JDK 17 or later", and
+      #     switching to the preinstalled sdkmanager instead of downloading a
+      #     newer one still failed with UnsupportedClassVersionError (class
+      #     file version 61 vs. the JDK 11 runtime's 55) — the SAME floor,
+      #     just a less friendly error message.
+      #   - Gradle 7.2 / AGP 7.0.2, the toolchain this 2021-era project
+      #     actually builds with, needs JDK 11 — that's what its own working
+      #     publish-on-release.yml uses, and Gradle 7.2 does not support
+      #     JDK 17 as the daemon's own runtime.
+      # actions/setup-java installs every listed version and exposes each as
+      # JAVA_HOME_<major>_X64, so each command below picks the JDK it needs
+      # rather than fighting over one shared JAVA_HOME.
       - uses: actions/setup-java@v4
-        with: { distribution: temurin, java-version: "11" }
+        with:
+          distribution: temurin
+          java-version: |
+            17
+            11
       # NOT android-actions/setup-android: its default cmdline-tools download
-      # (revision 12266719) now hard-requires JDK 17+, which conflicts with
-      # the JDK 11 this old (2021-era) Gradle/AGP project needs — confirmed by
-      # running it and reading "This tool requires JDK 17 or later. Your
-      # version was detected as 11.0.32", not assumed. GitHub's own
-      # ubuntu-latest runner already ships a working Android SDK (cmdline-tools
-      # 12.0, no such JDK floor) at ANDROID_HOME — it just doesn't include the
-      # specific old platform/build-tools versions this project pins, so fetch
-      # only those with the pre-installed sdkmanager instead of replacing it.
+      # is the same JDK-17-only binary as the preinstalled one, and the
+      # runner's own Android SDK at ANDROID_HOME already has everything except
+      # the specific old platform/build-tools versions this project pins.
       - name: Install the platform/build-tools versions this project pins
+        env:
+          JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
         run: |
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
             "platforms;android-31" "build-tools;30.0.2"
       - name: Compile a fresh debug apk from source
         working-directory: my-demo-app-android
+        env:
+          JAVA_HOME: ${{ env.JAVA_HOME_11_X64 }}
         run: ./gradlew app:assembleDebug
       - uses: actions/upload-artifact@v4
         with:
