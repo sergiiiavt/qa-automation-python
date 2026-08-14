@@ -1,0 +1,2 @@
+09:47:50 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_add_to_cart_updates_the_badge[webkit]
+09:47:52 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_add_to_cart_updates_the_badge[webkit] (2.07s)

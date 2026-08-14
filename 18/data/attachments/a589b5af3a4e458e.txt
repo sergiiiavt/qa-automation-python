@@ -1,0 +1,4 @@
+09:46:10 | [32mINFO    [0m | test | START tests/services/test_auth.py::test_login_rejects_bad_credentials[nosuchuser-wonderland-unknown user]
+09:46:10 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 401 Unauthorized"
+09:46:10 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 401 (3 ms)
+09:46:10 | [32mINFO    [0m | test | END   tests/services/test_auth.py::test_login_rejects_bad_credentials[nosuchuser-wonderland-unknown user] (0.04s)

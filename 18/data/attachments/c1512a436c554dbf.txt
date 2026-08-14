@@ -1,0 +1,2 @@
+2026-08-14 09:47:16,835 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[iPhone 15-firefox]
+2026-08-14 09:47:19,423 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[iPhone 15-firefox] (2.59s)

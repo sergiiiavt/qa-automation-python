@@ -1,0 +1,2 @@
+2026-08-14 09:47:49,367 | INFO    | test | START tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Galaxy S9+-firefox]
+2026-08-14 09:47:51,804 | INFO    | test | END   tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Galaxy S9+-firefox] (2.44s)

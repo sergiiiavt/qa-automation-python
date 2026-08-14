@@ -1,0 +1,8 @@
+2026-08-14 09:47:48,500 | INFO    | test | START tests/web/test_shopping_flow.py::test_complete_purchase_journey[webkit]
+2026-08-14 09:47:49,923 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 09:47:49,923 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (3 ms)
+2026-08-14 09:47:49,931 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:47:49,931 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (6 ms)
+2026-08-14 09:47:50,491 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 09:47:50,492 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (10 ms)
+2026-08-14 09:47:50,846 | INFO    | test | END   tests/web/test_shopping_flow.py::test_complete_purchase_journey[webkit] (2.35s)

@@ -1,0 +1,2 @@
+2026-08-14 09:46:10,911 | INFO    | test | START tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[GET /api/products/{product_id}]
+2026-08-14 09:46:11,475 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[GET /api/products/{product_id}] (0.56s)

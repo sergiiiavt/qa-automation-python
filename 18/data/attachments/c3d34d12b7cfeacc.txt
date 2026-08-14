@@ -1,0 +1,2 @@
+2026-08-14 09:47:15,997 | INFO    | test | START tests/web/test_login.py::test_login_form_is_keyboard_operable[firefox]
+2026-08-14 09:47:17,520 | INFO    | test | END   tests/web/test_login.py::test_login_form_is_keyboard_operable[firefox] (1.52s)

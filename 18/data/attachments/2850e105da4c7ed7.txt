@@ -1,0 +1,4 @@
+09:46:14 | [32mINFO    [0m | test | START tests/services/test_contract_and_properties.py::test_api_error_message_includes_request_and_response_detail
+09:46:14 | [32mINFO    [0m | httpx | HTTP Request: GET http://sut.test/api/cart "HTTP/1.1 403 Forbidden"
+09:46:14 | [32mINFO    [0m | framework.http | GET http://sut.test/api/cart -> 403 (1 ms)
+09:46:14 | [32mINFO    [0m | test | END   tests/services/test_contract_and_properties.py::test_api_error_message_includes_request_and_response_detail (0.02s)

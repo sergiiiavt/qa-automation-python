@@ -1,0 +1,4 @@
+2026-08-14 09:46:10,454 | INFO    | test | START tests/services/test_auth.py::test_login_rejects_malformed_payloads[payload1-missing password]
+2026-08-14 09:46:10,494 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+2026-08-14 09:46:10,494 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 422 (2 ms)
+2026-08-14 09:46:10,498 | INFO    | test | END   tests/services/test_auth.py::test_login_rejects_malformed_payloads[payload1-missing password] (0.04s)

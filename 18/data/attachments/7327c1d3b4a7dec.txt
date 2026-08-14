@@ -1,0 +1,2 @@
+09:46:10 | [32mINFO    [0m | test | START tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[POST /api/orders]
+09:46:12 | [32mINFO    [0m | test | END   tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[POST /api/orders] (1.18s)

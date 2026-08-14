@@ -1,0 +1,4 @@
+2026-08-14 09:46:13,192 | INFO    | test | START tests/services/test_products.py::test_limit_parameter_boundaries[100-200]
+2026-08-14 09:46:13,234 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?limit=100 "HTTP/1.1 200 OK"
+2026-08-14 09:46:13,234 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?limit=100 -> 200 (3 ms)
+2026-08-14 09:46:13,238 | INFO    | test | END   tests/services/test_products.py::test_limit_parameter_boundaries[100-200] (0.05s)

@@ -1,0 +1,2 @@
+2026-08-14 09:48:05,962 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit---Username and password are required]
+2026-08-14 09:48:06,836 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit---Username and password are required] (0.87s)

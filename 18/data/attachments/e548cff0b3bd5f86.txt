@@ -1,0 +1,2 @@
+2026-08-14 09:46:11,136 | INFO    | test | START tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[POST /api/auth/login]
+2026-08-14 09:46:12,146 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[POST /api/auth/login] (1.01s)

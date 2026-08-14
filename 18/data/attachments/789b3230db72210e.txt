@@ -1,0 +1,2 @@
+2026-08-14 09:47:40,899 | INFO    | test | START tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[Pixel 7-firefox]
+2026-08-14 09:47:43,740 | INFO    | test | END   tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[Pixel 7-firefox] (2.84s)

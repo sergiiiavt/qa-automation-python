@@ -1,0 +1,4 @@
+09:46:12 | [32mINFO    [0m | test | START tests/services/test_contract_and_properties.py::test_search_rejects_injection_payloads_safely[' OR '1'='1]
+09:46:12 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?q=%27+OR+%271%27%3D%271 "HTTP/1.1 200 OK"
+09:46:12 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/products?q=%27+OR+%271%27%3D%271 -> 200 (3 ms)
+09:46:12 | [32mINFO    [0m | test | END   tests/services/test_contract_and_properties.py::test_search_rejects_injection_payloads_safely[' OR '1'='1] (0.04s)

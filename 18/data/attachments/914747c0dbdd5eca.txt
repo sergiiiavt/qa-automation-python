@@ -1,0 +1,2 @@
+2026-08-14 09:48:00,850 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Galaxy S9+-webkit]
+2026-08-14 09:48:02,771 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Galaxy S9+-webkit] (1.92s)

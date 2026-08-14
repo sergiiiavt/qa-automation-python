@@ -1,0 +1,2 @@
+2026-08-14 09:47:59,743 | INFO    | test | START tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Galaxy S9+-webkit]
+2026-08-14 09:48:01,708 | INFO    | test | END   tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Galaxy S9+-webkit] (1.96s)

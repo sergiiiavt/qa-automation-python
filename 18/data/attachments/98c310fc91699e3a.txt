@@ -1,0 +1,3 @@
+2026-08-14 09:47:10,279 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/health "HTTP/1.1 200 OK"
+2026-08-14 09:47:11,213 | INFO    | test | START tests/web/test_login.py::test_error_message_is_announced_to_assistive_technology[chromium]
+2026-08-14 09:47:12,644 | INFO    | test | END   tests/web/test_login.py::test_error_message_is_announced_to_assistive_technology[chromium] (1.43s)
