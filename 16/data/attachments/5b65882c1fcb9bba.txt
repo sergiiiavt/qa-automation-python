@@ -1,0 +1,3 @@
+08:34:42 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/health "HTTP/1.1 200 OK"
+08:34:44 | [32mINFO    [0m | test | START tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[chromium-/]
+08:34:46 | [32mINFO    [0m | test | END   tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[chromium-/] (1.75s)

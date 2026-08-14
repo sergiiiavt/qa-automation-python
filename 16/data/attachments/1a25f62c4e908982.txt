@@ -1,0 +1,23 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/cart
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+
+<empty body>
+
+--- RESPONSE (4 ms) ---
+200
+date: Fri, 14 Aug 2026 08:34:49 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{
+  "items": [],
+  "total": 0.0,
+  "currency": "USD"
+}

@@ -1,0 +1,2 @@
+2026-08-14 08:34:49,358 | INFO    | test | START tests/web/test_shopping_flow.py::test_search_with_no_results_shows_zero_and_no_error[chromium]
+2026-08-14 08:34:49,896 | INFO    | test | END   tests/web/test_shopping_flow.py::test_search_with_no_results_shows_zero_and_no_error[chromium] (0.54s)

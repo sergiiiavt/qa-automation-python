@@ -1,0 +1,2 @@
+2026-08-14 08:34:54,334 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[firefox-alice-nope-Invalid credentials]
+2026-08-14 08:34:55,920 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[firefox-alice-nope-Invalid credentials] (1.59s)

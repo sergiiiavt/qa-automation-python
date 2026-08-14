@@ -1,0 +1,2 @@
+2026-08-14 08:35:09,217 | INFO    | test | START tests/web/test_shopping_flow.py::test_api_failure_is_surfaced_to_the_user[firefox]
+2026-08-14 08:35:11,628 | INFO    | test | END   tests/web/test_shopping_flow.py::test_api_failure_is_surfaced_to_the_user[firefox] (2.41s)

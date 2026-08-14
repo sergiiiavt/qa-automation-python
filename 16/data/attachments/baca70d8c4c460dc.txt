@@ -1,0 +1,8 @@
+2026-08-14 08:33:45,426 | INFO    | test | START tests/services/test_contract_and_properties.py::test_api_client_retries_transient_5xx_on_idempotent_requests
+2026-08-14 08:33:45,460 | INFO    | httpx | HTTP Request: GET http://sut.test/api/products "HTTP/1.1 503 Service Unavailable"
+2026-08-14 08:33:45,460 | INFO    | framework.http | GET http://sut.test/api/products -> 503 (2 ms)
+2026-08-14 08:33:46,574 | INFO    | httpx | HTTP Request: GET http://sut.test/api/products "HTTP/1.1 503 Service Unavailable"
+2026-08-14 08:33:46,574 | INFO    | framework.http | GET http://sut.test/api/products -> 503 (1 ms)
+2026-08-14 08:33:47,639 | INFO    | httpx | HTTP Request: GET http://sut.test/api/products "HTTP/1.1 200 OK"
+2026-08-14 08:33:47,639 | INFO    | framework.http | GET http://sut.test/api/products -> 200 (1 ms)
+2026-08-14 08:33:47,641 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_api_client_retries_transient_5xx_on_idempotent_requests (2.21s)

@@ -1,0 +1,4 @@
+2026-08-14 08:33:45,708 | INFO    | test | START tests/services/test_products.py::test_product_catalogue_is_not_empty
+2026-08-14 08:33:45,745 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products "HTTP/1.1 200 OK"
+2026-08-14 08:33:45,746 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products -> 200 (3 ms)
+2026-08-14 08:33:45,749 | INFO    | test | END   tests/services/test_products.py::test_product_catalogue_is_not_empty (0.04s)

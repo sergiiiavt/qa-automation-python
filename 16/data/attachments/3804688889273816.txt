@@ -1,0 +1,3 @@
+08:33:46 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/openapi.json "HTTP/1.1 200 OK"
+08:33:46 | [32mINFO    [0m | test | START tests/services/test_products.py::test_openapi_declares_every_endpoint_the_tests_use
+08:33:46 | [32mINFO    [0m | test | END   tests/services/test_products.py::test_openapi_declares_every_endpoint_the_tests_use (0.00s)

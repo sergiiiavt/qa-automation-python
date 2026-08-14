@@ -1,0 +1,2 @@
+2026-08-14 08:34:56,943 | INFO    | test | START tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[Galaxy S9+-chromium]
+2026-08-14 08:34:57,659 | INFO    | test | END   tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[Galaxy S9+-chromium] (0.72s)

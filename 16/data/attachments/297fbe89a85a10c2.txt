@@ -1,0 +1,10 @@
+08:33:43 | [32mINFO    [0m | test | START tests/services/test_cart_flow.py::test_adding_unknown_product_is_rejected[999999]
+08:33:44 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+08:33:44 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (6 ms)
+08:33:44 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+08:33:44 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (3 ms)
+08:33:44 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 404 Not Found"
+08:33:44 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 404 (7 ms)
+08:33:44 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+08:33:44 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (3 ms)
+08:33:44 | [32mINFO    [0m | test | END   tests/services/test_cart_flow.py::test_adding_unknown_product_is_rejected[999999] (0.06s)

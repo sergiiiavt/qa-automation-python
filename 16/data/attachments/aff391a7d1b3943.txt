@@ -1,0 +1,2 @@
+08:34:51 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[chromium]
+08:34:52 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[chromium] (0.77s)

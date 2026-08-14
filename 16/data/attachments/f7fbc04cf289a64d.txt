@@ -1,0 +1,2 @@
+2026-08-14 08:35:30,003 | INFO    | test | START tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[iPad (gen 7)-firefox]
+2026-08-14 08:35:32,889 | INFO    | test | END   tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[iPad (gen 7)-firefox] (2.89s)

@@ -1,0 +1,2 @@
+08:35:04 | [32mINFO    [0m | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit-alice-nope-Invalid credentials]
+08:35:05 | [32mINFO    [0m | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit-alice-nope-Invalid credentials] (1.35s)

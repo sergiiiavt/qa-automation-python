@@ -1,0 +1,2 @@
+2026-08-14 08:35:16,799 | INFO    | test | START tests/web/test_shopping_flow.py::test_slow_api_does_not_break_the_page[webkit]
+2026-08-14 08:35:21,661 | INFO    | test | END   tests/web/test_shopping_flow.py::test_slow_api_does_not_break_the_page[webkit] (4.86s)

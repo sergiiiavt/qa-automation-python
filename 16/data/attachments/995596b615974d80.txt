@@ -1,0 +1,8 @@
+08:35:04 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_complete_purchase_journey[firefox]
+08:35:06 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+08:35:06 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (11 ms)
+08:35:06 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+08:35:06 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (16 ms)
+08:35:08 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+08:35:08 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (11 ms)
+08:35:11 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_complete_purchase_journey[firefox] (6.94s)

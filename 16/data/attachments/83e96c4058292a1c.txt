@@ -1,0 +1,27 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/auth/login
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+content-length: 59
+content-type: application/json
+
+{
+  "username": "qa_gw2_6ac2a141",
+  "password": "Str0ng!Passw0rd"
+}
+
+--- RESPONSE (3 ms) ---
+200
+date: Fri, 14 Aug 2026 08:35:17 GMT
+server: uvicorn
+content-length: 91
+content-type: application/json
+
+{
+  "token": "d080b6bf730f8c71831cd2606131330e",
+  "expires_in": 3600,
+  "username": "qa_gw2_6ac2a141"
+}

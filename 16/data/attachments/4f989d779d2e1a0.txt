@@ -1,0 +1,2 @@
+2026-08-14 08:34:52,507 | INFO    | test | START tests/web/test_login.py::test_password_field_is_masked[firefox]
+2026-08-14 08:34:53,733 | INFO    | test | END   tests/web/test_login.py::test_password_field_is_masked[firefox] (1.23s)

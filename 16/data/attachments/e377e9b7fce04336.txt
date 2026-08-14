@@ -1,0 +1,2 @@
+08:33:45 | [32mINFO    [0m | test | START tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[POST /api/cart/items]
+08:33:46 | [32mINFO    [0m | test | END   tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[POST /api/cart/items] (1.17s)

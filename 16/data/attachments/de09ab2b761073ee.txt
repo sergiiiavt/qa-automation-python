@@ -1,0 +1,2 @@
+2026-08-14 08:34:53,994 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[Pixel 7-chromium]
+2026-08-14 08:34:54,530 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[Pixel 7-chromium] (0.54s)

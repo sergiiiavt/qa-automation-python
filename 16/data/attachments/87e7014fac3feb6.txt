@@ -1,0 +1,22 @@
+2026-08-14 08:33:43,771 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
+2026-08-14 08:33:43,772 | INFO    | test | START tests/services/test_auth.py::test_two_users_have_isolated_carts
+2026-08-14 08:33:43,803 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 08:33:43,804 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (2 ms)
+2026-08-14 08:33:43,806 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 08:33:43,806 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (1 ms)
+2026-08-14 08:33:43,837 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
+2026-08-14 08:33:43,867 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 08:33:43,867 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (2 ms)
+2026-08-14 08:33:43,871 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 08:33:43,872 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
+2026-08-14 08:33:43,874 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 08:33:43,874 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (2 ms)
+2026-08-14 08:33:43,876 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 08:33:43,877 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (1 ms)
+2026-08-14 08:33:43,879 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 08:33:43,880 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (3 ms)
+2026-08-14 08:33:43,886 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 08:33:43,886 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (4 ms)
+2026-08-14 08:33:43,893 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
+2026-08-14 08:33:43,894 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (6 ms)
+2026-08-14 08:33:43,896 | INFO    | test | END   tests/services/test_auth.py::test_two_users_have_isolated_carts (0.12s)

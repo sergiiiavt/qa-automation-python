@@ -1,0 +1,4 @@
+2026-08-14 08:34:42,379 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/health "HTTP/1.1 200 OK"
+2026-08-14 08:34:44,416 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
+2026-08-14 08:34:44,907 | INFO    | test | START tests/web/test_login.py::test_logout_clears_the_session[chromium]
+2026-08-14 08:34:46,464 | INFO    | test | END   tests/web/test_login.py::test_logout_clears_the_session[chromium] (1.56s)

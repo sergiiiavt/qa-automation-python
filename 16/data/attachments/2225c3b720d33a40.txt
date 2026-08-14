@@ -1,0 +1,10 @@
+2026-08-14 08:35:13,679 | INFO    | test | START tests/web/test_shopping_flow.py::test_removing_an_item_updates_the_total[webkit]
+2026-08-14 08:35:15,547 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 08:35:15,548 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (6 ms)
+2026-08-14 08:35:15,556 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 08:35:15,557 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (4 ms)
+2026-08-14 08:35:15,566 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+2026-08-14 08:35:15,566 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (8 ms)
+2026-08-14 08:35:15,576 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+2026-08-14 08:35:15,577 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (9 ms)
+2026-08-14 08:35:16,555 | INFO    | test | END   tests/web/test_shopping_flow.py::test_removing_an_item_updates_the_total[webkit] (2.88s)

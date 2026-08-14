@@ -1,0 +1,2 @@
+08:35:28 | [32mINFO    [0m | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit-alice--Username and password are required]
+08:35:29 | [32mINFO    [0m | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit-alice--Username and password are required] (1.35s)

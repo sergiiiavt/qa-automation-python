@@ -1,0 +1,10 @@
+2026-08-14 08:33:43,973 | INFO    | test | START tests/services/test_cart_flow.py::test_adding_unknown_product_is_rejected[999999]
+2026-08-14 08:33:44,009 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 08:33:44,010 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (6 ms)
+2026-08-14 08:33:44,013 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 08:33:44,014 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (3 ms)
+2026-08-14 08:33:44,022 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 404 Not Found"
+2026-08-14 08:33:44,023 | INFO    | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 404 (7 ms)
+2026-08-14 08:33:44,027 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+2026-08-14 08:33:44,027 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (3 ms)
+2026-08-14 08:33:44,029 | INFO    | test | END   tests/services/test_cart_flow.py::test_adding_unknown_product_is_rejected[999999] (0.06s)

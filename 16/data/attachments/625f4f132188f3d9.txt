@@ -1,0 +1,2 @@
+2026-08-14 08:35:04,914 | INFO    | test | START tests/web/test_shopping_flow.py::test_out_of_stock_products_cannot_be_added[firefox]
+2026-08-14 08:35:10,828 | INFO    | test | END   tests/web/test_shopping_flow.py::test_out_of_stock_products_cannot_be_added[firefox] (5.91s)

@@ -1,0 +1,2 @@
+2026-08-14 08:34:50,259 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_dark_mode_renders_with_readable_contrast[firefox]
+2026-08-14 08:34:52,566 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_dark_mode_renders_with_readable_contrast[firefox] (2.31s)
