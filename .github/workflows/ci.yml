@@ -143,9 +143,19 @@ jobs:
           path: my-demo-app-android
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: "11" }
-      - uses: android-actions/setup-android@v3
-        with:
-          packages: "tools platform-tools platforms;android-31 build-tools;30.0.2"
+      # NOT android-actions/setup-android: its default cmdline-tools download
+      # (revision 12266719) now hard-requires JDK 17+, which conflicts with
+      # the JDK 11 this old (2021-era) Gradle/AGP project needs — confirmed by
+      # running it and reading "This tool requires JDK 17 or later. Your
+      # version was detected as 11.0.32", not assumed. GitHub's own
+      # ubuntu-latest runner already ships a working Android SDK (cmdline-tools
+      # 12.0, no such JDK floor) at ANDROID_HOME — it just doesn't include the
+      # specific old platform/build-tools versions this project pins, so fetch
+      # only those with the pre-installed sdkmanager instead of replacing it.
+      - name: Install the platform/build-tools versions this project pins
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            "platforms;android-31" "build-tools;30.0.2"
       - name: Compile a fresh debug apk from source
         working-directory: my-demo-app-android
         run: ./gradlew app:assembleDebug
