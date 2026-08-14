@@ -227,12 +227,20 @@ jobs:
           arch: x86_64
           profile: pixel_7
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          # reactivecircus/android-emulator-runner executes each line of
+          # `script` as its own separate `sh -c` call — not as one continuous
+          # multi-line script — so a `\` line continuation across lines
+          # silently does not work here the way it would in a normal `run:`
+          # step. A live run confirmed this the hard way: the emulator booted,
+          # Appium started, wait-on succeeded, and then this exact line split
+          # across two lines with a trailing backslash failed with
+          # `sh: 1: \: not found`, after which the action hung until the
+          # job's own 45-minute timeout force-cancelled it rather than
+          # failing fast. Every command below is one unbroken physical line.
           script: |
             appium --log appium.log &
             npx wait-on http://127.0.0.1:4723/status -t 60000
-            QA_APP_PATH=apps/ci-build/app-debug.apk \
-              pytest tests/mobile -m "smoke or mobile_web" \
-              --alluredir=allure-results --junitxml=junit-mobile.xml
+            QA_APP_PATH=apps/ci-build/app-debug.apk pytest tests/mobile -m "smoke or mobile_web" --alluredir=allure-results --junitxml=junit-mobile.xml
       - uses: actions/upload-artifact@v4
         if: always()
         with:
