@@ -7,9 +7,14 @@ Three rules this base enforces:
    (`expect(...).to_be_visible()`), not a duration.
 
 2. **Locators are lazy, elements are not.** `page.get_by_test_id("x")` is a
-   query description, resolved at action time. Storing a resolved element handle
-   in `__init__` is what makes Page Objects go stale on re-render. Every locator
-   here is a `@property` returning a fresh `Locator`.
+   query description, not a resolved node — Playwright re-resolves it against
+   the live DOM on every action and every `expect(...)`, so a `Locator` never
+   goes stale, whether it's stored in `__init__` or rebuilt on each access
+   (Playwright's own Page Object example stores one in `__init__`). What *does*
+   go stale on re-render is an `ElementHandle` — a one-time snapshot from an
+   older, lower-level API — so don't reach for that instead. Every locator
+   here is still a `@property`, but that's for read-order and API ergonomics
+   (`page.username`, not `page.username()`), not to dodge staleness.
 
 3. **Page Objects expose intent, not clicks.** `login(user, pw)` — not
    `type_username`, `type_password`, `click_submit`. The test should read like
@@ -62,17 +67,22 @@ class BasePage:
 
     # -- locator helpers ---------------------------------------------------
     def testid(self, value: str) -> Locator:
-        """Prefer data-testid. It is the only selector the product team can't
-        break by redesigning, and the only one a designer can't break by renaming
-        a CSS class. Configure the attribute once in conftest via
-        `playwright.selectors.set_test_id_attribute`."""
+        """Prefer data-testid. It survives a CSS rename or a visual redesign
+        that a class-name selector wouldn't — but it's still just an attribute
+        the markup has to keep emitting; a structural rewrite (or a copy-paste
+        that drops the attribute) breaks it like anything else. Configure the
+        attribute once in conftest via `playwright.selectors.set_test_id_attribute`.
+        """
         return self.page.get_by_test_id(value)
 
     def role(self, role: str, name: str | None = None, **kw: object) -> Locator:
         """Role-based lookup — the closest a test gets to 'what the user sees'.
-        Use it for anything a screen reader would announce; it doubles as a
-        cheap accessibility signal (if `get_by_role` can't find it, neither can
-        assistive tech)."""
+        Use it for anything a screen reader would announce; a `get_by_role`
+        match is a *positive* accessibility signal, but the reverse isn't a
+        reliable proof of brokenness — a miss can just as easily be the wrong
+        role/name guess as a real accessibility gap. Confirm with a real
+        accessibility check (see test_accessibility_and_visual.py) before
+        treating a miss as a defect."""
         return self.page.get_by_role(role, name=name, **kw)  # type: ignore[arg-type]
 
     # -- state -------------------------------------------------------------

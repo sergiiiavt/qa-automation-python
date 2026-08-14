@@ -34,8 +34,12 @@ RETRYABLE_STATUS = {429, 502, 503, 504}
 class ApiError(AssertionError):
     """Raised when a response fails an expected-status check.
 
-    Inherits AssertionError so pytest renders it as a failure, not an error —
-    a wrong status code is a test failure, not an infrastructure crash.
+    Inherits AssertionError for assertion-style semantics/output (e.g. pytest's
+    assertion introspection), not to control FAILED vs ERROR — that outcome is
+    determined by which phase raises (setup/teardown -> ERROR, the test body
+    itself -> FAILED), independent of the exception type. A wrong status code
+    raised here happens during the call phase, so it reports FAILED regardless
+    of what ApiError inherits from.
     """
 
     def __init__(self, response: httpx.Response, expected: int | tuple[int, ...]):
@@ -125,6 +129,7 @@ class ApiClient:
 
     def _send_with_retries(self, method: str, url: str, **kwargs: Any) -> httpx.Response:
         attempts = self.retries + 1 if method.upper() in IDEMPOTENT_METHODS else 1
+        last_response: httpx.Response | None = None
 
         @retry(
             stop=stop_after_attempt(attempts),
@@ -133,7 +138,9 @@ class ApiClient:
             reraise=True,
         )
         def _do() -> httpx.Response:
+            nonlocal last_response
             response = self._client.request(method, url, **kwargs)
+            last_response = response
             if response.status_code in RETRYABLE_STATUS and attempts > 1:
                 raise RetryableStatus(f"{response.status_code} from {url}")
             return response
@@ -141,9 +148,11 @@ class ApiClient:
         try:
             return _do()
         except RetryableStatus:
-            # Exhausted retries on a retryable status: return the last response so
-            # the assertion (and the report) shows the real server answer.
-            return self._client.request(method, url, **kwargs)
+            # Exhausted retries on a retryable status: return the last response
+            # tenacity already fetched instead of sending one more request —
+            # otherwise the true request count is `attempts + 1`, not `attempts`.
+            assert last_response is not None
+            return last_response
 
     # Convenience verbs -----------------------------------------------------
     def get(self, url: str, **kw: Any) -> httpx.Response:

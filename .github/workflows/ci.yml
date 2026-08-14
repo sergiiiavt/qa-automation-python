@@ -206,8 +206,22 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "20" }
       - name: Install Appium 3 and drivers
+        # NOT appium@next: on npm's own registry that dist-tag currently
+        # resolves to 2.0.1, an OLDER release than `latest` (3.6.0) — `next`
+        # is not the bleeding edge for this particular package. Installing it
+        # pulled in Appium 2.x underneath a uiautomator2 driver build (8.4.0)
+        # that expects Appium 3's package layout, which broke Node's module
+        # resolution: "Cannot find package 'appium' imported from
+        # .../appium-android-driver/build/lib/driver.js" — every mobile test
+        # errored at driver setup with no test-level failure to point at.
+        # Confirmed by checking https://registry.npmjs.org/appium's
+        # dist-tags directly rather than assuming what `next` means here.
+        # `@3`, not `@latest`: this course's docs and framework are written
+        # against Appium 3's capability/driver model specifically — pin the
+        # major version so a future Appium 4 can't silently break this job
+        # the same way `next` unexpectedly did.
         run: |
-          npm install -g appium@next
+          npm install -g appium@3
           appium driver install uiautomator2
           appium --version
 
