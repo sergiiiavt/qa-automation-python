@@ -1,0 +1,18 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/products?q=%C2%98%C3%93%C3%9A%C3%A0%02%7F%C2%93%14%C3%99%C2%85%26%C3%B9W0%13%C2%99%3A%C3%A0
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+
+<empty body>
+
+--- RESPONSE (1 ms) ---
+200
+date: Fri, 14 Aug 2026 07:39:19 GMT
+server: uvicorn
+content-length: 2
+content-type: application/json
+
+[]

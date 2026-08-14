@@ -1,0 +1,2 @@
+07:40:21 | [32mINFO    [0m | test | START tests/web/test_accessibility_and_visual.py::test_keyboard_focus_is_visible[firefox]
+07:40:22 | [32mINFO    [0m | test | END   tests/web/test_accessibility_and_visual.py::test_keyboard_focus_is_visible[firefox] (1.26s)

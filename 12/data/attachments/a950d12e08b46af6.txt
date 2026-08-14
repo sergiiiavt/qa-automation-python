@@ -1,0 +1,6 @@
+2026-08-14 07:39:19,972 | INFO    | test | START tests/services/test_products.py::test_filter_by_category_is_a_subset_of_the_full_catalogue
+2026-08-14 07:39:19,996 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products "HTTP/1.1 200 OK"
+2026-08-14 07:39:19,996 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products -> 200 (1 ms)
+2026-08-14 07:39:19,998 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?category=audio "HTTP/1.1 200 OK"
+2026-08-14 07:39:19,998 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?category=audio -> 200 (1 ms)
+2026-08-14 07:39:20,000 | INFO    | test | END   tests/services/test_products.py::test_filter_by_category_is_a_subset_of_the_full_catalogue (0.03s)

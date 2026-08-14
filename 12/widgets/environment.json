@@ -1,0 +1,1 @@
+[{"values":["local"],"name":"Environment"},{"values":["http://127.0.0.1:8000"],"name":"API.BaseUrl"},{"values":["http://127.0.0.1:8000"],"name":"Web.BaseUrl"},{"values":["chromium"],"name":"Browser"},{"values":["android"],"name":"Mobile.Platform"},{"values":["3.12.13"],"name":"Python"},{"values":["true"],"name":"CI"}]

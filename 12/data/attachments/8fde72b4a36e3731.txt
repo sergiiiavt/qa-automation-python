@@ -1,0 +1,4 @@
+2026-08-14 07:39:20,056 | INFO    | test | START tests/services/test_products.py::test_search_is_case_insensitive_substring_match[phone-Headphones]
+2026-08-14 07:39:20,082 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?q=phone "HTTP/1.1 200 OK"
+2026-08-14 07:39:20,082 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?q=phone -> 200 (3 ms)
+2026-08-14 07:39:20,084 | INFO    | test | END   tests/services/test_products.py::test_search_is_case_insensitive_substring_match[phone-Headphones] (0.03s)

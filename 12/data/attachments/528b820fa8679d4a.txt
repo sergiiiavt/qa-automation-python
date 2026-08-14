@@ -1,0 +1,4 @@
+07:39:18 | [32mINFO    [0m | test | START tests/services/test_auth.py::test_protected_endpoint_requires_valid_bearer_token[Basic YWxpY2U6d29uZGVy]
+07:39:18 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 401 Unauthorized"
+07:39:18 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/cart -> 401 (2 ms)
+07:39:18 | [32mINFO    [0m | test | END   tests/services/test_auth.py::test_protected_endpoint_requires_valid_bearer_token[Basic YWxpY2U6d29uZGVy] (0.02s)

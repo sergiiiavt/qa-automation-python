@@ -1,0 +1,44 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/auth/login
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+content-length: 34
+content-type: application/json
+
+{
+  "username": 12345,
+  "password": true
+}
+
+--- RESPONSE (1 ms) ---
+422
+date: Fri, 14 Aug 2026 07:39:18 GMT
+server: uvicorn
+content-length: 215
+content-type: application/json
+
+{
+  "detail": [
+    {
+      "type": "string_type",
+      "loc": [
+        "body",
+        "username"
+      ],
+      "msg": "Input should be a valid string",
+      "input": 12345
+    },
+    {
+      "type": "string_type",
+      "loc": [
+        "body",
+        "password"
+      ],
+      "msg": "Input should be a valid string",
+      "input": true
+    }
+  ]
+}

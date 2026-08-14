@@ -1,0 +1,6 @@
+2026-08-14 07:39:18,352 | INFO    | test | START tests/services/test_auth.py::test_tokens_are_unique_per_login
+2026-08-14 07:39:18,377 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 07:39:18,377 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (1 ms)
+2026-08-14 07:39:18,379 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+2026-08-14 07:39:18,379 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (1 ms)
+2026-08-14 07:39:18,381 | INFO    | test | END   tests/services/test_auth.py::test_tokens_are_unique_per_login (0.03s)

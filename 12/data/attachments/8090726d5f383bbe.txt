@@ -1,0 +1,16 @@
+--- REQUEST ---
+GET http://sut.test/api/products
+host: sut.test
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+
+<empty body>
+
+--- RESPONSE (0 ms) ---
+200
+content-length: 2
+content-type: application/json
+
+[]

@@ -1,0 +1,27 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/auth/login
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+content-length: 44
+content-type: application/json
+
+{
+  "username": "alice",
+  "password": "wonderland"
+}
+
+--- RESPONSE (1 ms) ---
+200
+date: Fri, 14 Aug 2026 07:39:18 GMT
+server: uvicorn
+content-length: 81
+content-type: application/json
+
+{
+  "token": "a14b768e2566511a7fb75c4a6daab73d",
+  "expires_in": 3600,
+  "username": "alice"
+}

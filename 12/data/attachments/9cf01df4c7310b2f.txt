@@ -1,0 +1,31 @@
+--- REQUEST ---
+DELETE http://127.0.0.1:8000/api/cart/items/2
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+
+<empty body>
+
+--- RESPONSE (2 ms) ---
+200
+date: Fri, 14 Aug 2026 07:39:19 GMT
+server: uvicorn
+content-length: 134
+content-type: application/json
+
+{
+  "items": [
+    {
+      "product_id": 3,
+      "name": "Comet Keyboard",
+      "unit_price": 129.0,
+      "quantity": 2,
+      "line_total": 258.0
+    }
+  ],
+  "total": 258.0,
+  "currency": "USD"
+}

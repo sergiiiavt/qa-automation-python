@@ -1,0 +1,4 @@
+2026-08-14 07:39:18,419 | INFO    | test | START tests/services/test_auth.py::test_protected_endpoint_requires_valid_bearer_token[]
+2026-08-14 07:39:18,440 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 401 Unauthorized"
+2026-08-14 07:39:18,440 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 401 (1 ms)
+2026-08-14 07:39:18,442 | INFO    | test | END   tests/services/test_auth.py::test_protected_endpoint_requires_valid_bearer_token[] (0.02s)
