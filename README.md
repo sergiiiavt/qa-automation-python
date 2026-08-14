@@ -99,6 +99,16 @@ not writing assertions.
 | Reviewing a sibling framework | This repo's own `browser_context_args` always recorded video and never deleted it — 222 files after one local run, contradicting the "failure-only artifacts" principle the docs teach. Fixed by using pytest-playwright's own `--video=retain-on-failure` instead of hand-rolling the policy |
 | Same review | The native-mobile driver factory set `noReset=False` while its comment claimed the opposite — the comment was never checked against the code |
 
+## The full mobile pipeline
+
+The nightly `mobile` CI job doesn't just install the apk committed at
+`apps/`. A `build-mobile-app` job compiles that same app fresh from its
+upstream source (pinned to the exact commit that produced the bundled
+binary) and the `mobile` job installs and tests *that* build instead — a
+real build → deploy → test → gate chain, not just a test job. See
+["The full pipeline"](docs/05-mobile.md#the-full-pipeline-a-real-build-stage-not-just-a-bundled-binary)
+in Module 5.
+
 ## Requirements
 
 - Python 3.11+ (developed on 3.14)

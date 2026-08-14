@@ -112,10 +112,53 @@ jobs:
             artifacts/sut.log
           retention-days: 7
 
+  build-mobile-app:
+    # The real "build" stage of the mobile pipeline: compile the app this
+    # course tests from ITS OWN source, rather than only ever installing the
+    # binary already committed at apps/mda-2.2.0-25.apk. Nightly/on-demand
+    # only, same reasoning as the `mobile` job below.
+    #
+    # Pinned to the exact commit tagged 2.2.0 upstream — the tag that produced
+    # the release asset literally named mda-2.2.0-25.apk, i.e. the same build
+    # apps/README.md documents and every locator in
+    # framework/mobile/screens.py was verified against. Building from that
+    # repo's default branch instead would let upstream silently change the
+    # app (and break every locator here) with no warning and no diff in this
+    # repository to review.
+    #
+    # JDK 11 + android-actions/setup-android@v3 + `app:assembleDebug` mirror
+    # that repo's own working release workflow
+    # (.github/workflows/publish-on-release.yml as of this commit) rather
+    # than a guessed toolchain — an old (2021-era) Gradle/AGP combination that
+    # is proven to build, not assumed to.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the upstream app source at the pinned commit
+        uses: actions/checkout@v4
+        with:
+          repository: saucelabs/my-demo-app-android
+          ref: 36b012eecdf6a2b488b9504e16b3d0c3ca9a0e7b
+          path: my-demo-app-android
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "11" }
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "tools platform-tools platforms;android-31 build-tools;30.0.2"
+      - name: Compile a fresh debug apk from source
+        working-directory: my-demo-app-android
+        run: ./gradlew app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: freshly-built-apk
+          path: my-demo-app-android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 7
+
   mobile:
     # Real devices are slow and cost money — nightly and on demand only.
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    needs: services
+    needs: [services, build-mobile-app]
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -138,6 +181,14 @@ jobs:
           appium driver install uiautomator2
           appium --version
 
+      # This is the "deploy" half of build -> deploy -> test -> gate: the
+      # artifact build-mobile-app just compiled, not the binary committed to
+      # apps/, is what gets installed onto the emulator and tested below.
+      - uses: actions/download-artifact@v4
+        with:
+          name: freshly-built-apk
+          path: apps/ci-build
+
       - name: Run Android tests on an emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -149,7 +200,8 @@ jobs:
           script: |
             appium --log appium.log &
             npx wait-on http://127.0.0.1:4723/status -t 60000
-            pytest tests/mobile -m "smoke or mobile_web" \
+            QA_APP_PATH=apps/ci-build/app-debug.apk \
+              pytest tests/mobile -m "smoke or mobile_web" \
               --alluredir=allure-results --junitxml=junit-mobile.xml
       - uses: actions/upload-artifact@v4
         if: always()

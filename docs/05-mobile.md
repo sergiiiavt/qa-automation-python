@@ -320,6 +320,52 @@ were deliberately left unmodelled so Exercise 22b in
 [Module 10](10-exercises.md) asks you to do this yourself rather than read
 locators someone else already found.
 
+### The full pipeline: a real build stage, not just a bundled binary
+
+`apps/mda-2.2.0-25.apk` is a *binary*, committed so `pytest tests/mobile`
+works offline in seconds with nothing else installed — consistent with every
+other layer of this course. But a binary sitting in git is not a build
+pipeline, and "mobile testing" in a real job usually means the whole chain:
+compile the app, install the fresh build onto a target, test it, gate on the
+result. The `build-mobile-app` job in
+[.github/workflows/ci.yml](../.github/workflows/ci.yml) closes that gap for
+real, nightly:
+
+```
+build-mobile-app                          mobile
+┌─────────────────────────────┐          ┌──────────────────────────────┐
+│ checkout my-demo-app-android │          │ download the freshly-built   │
+│ at the pinned 2.2.0 commit   │  ──────▶ │ apk (not apps/mda-*.apk)     │
+│ ./gradlew app:assembleDebug  │ artifact │ boot an emulator, install it,│
+│ upload app-debug.apk         │          │ run pytest tests/mobile      │
+└─────────────────────────────┘          └──────────────────────────────┘
+```
+
+Three things worth noticing:
+
+**Pinned, not floating.** The checkout targets an exact commit SHA — the one
+tagged `2.2.0` upstream, which is the release that produced the file
+literally named `mda-2.2.0-25.apk`. Building against that repository's
+default branch instead would let upstream change the app at any time, with
+no diff in *this* repository to review, and silently break every locator in
+`framework/mobile/screens.py`. Pin the thing your tests were verified
+against, not "whatever is newest."
+
+**Mirrored, not guessed.** The JDK version, the Android SDK setup action, and
+the `./gradlew app:assembleDebug` command were copied from that repository's
+own `.github/workflows/publish-on-release.yml` — the workflow that produced
+the exact apk this course bundles — rather than assembled from a generic
+Android CI tutorial. An old (2021-era) Gradle/AGP toolchain like this one is
+worth treating as fragile until proven otherwise; the proof here is "this
+exact command, on this exact commit, is what the app's own maintainers use."
+
+**The `mobile` job now depends on `build-mobile-app`** and installs *that*
+artifact, via `QA_APP_PATH`, instead of the committed reference binary. If
+the build breaks, the pipeline reports that at the build stage — fast,
+specific — rather than the test job failing forty minutes later with a
+confusing "could not install app" error, which is what happens when a build
+problem is only discovered downstream.
+
 ### Device clouds
 
 BrowserStack, Sauce Labs, LambdaTest. The driver factory already handles it:

@@ -44,6 +44,19 @@ those up, using Appium Inspector to find the real ids yourself, is
 `CartScreen` against a real app is a more useful exercise than reading one
 somebody else already built.
 
+## Provenance
+
+This exact binary is the release asset GitHub built for the upstream `2.2.0`
+tag (commit `36b012eecdf6a2b488b9504e16b3d0c3ca9a0e7b`), released 2024-11-14 —
+not something downloaded from a random mirror. The nightly `build-mobile-app`
+job in [.github/workflows/ci.yml](../.github/workflows/ci.yml) additionally
+compiles that same pinned commit from source and tests *that* fresh build
+instead of this committed one, so the pipeline exercises a real build stage
+rather than only ever installing a static file. See
+["The full pipeline"](../docs/05-mobile.md#the-full-pipeline-a-real-build-stage-not-just-a-bundled-binary)
+in Module 5 for why the commit is pinned rather than tracking upstream's
+default branch.
+
 ## Using your own app instead
 
 Drop your `.apk` (Android) or `.app`/`.ipa` (iOS) here, then either set
