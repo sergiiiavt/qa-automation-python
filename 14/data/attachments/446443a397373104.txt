@@ -1,0 +1,2 @@
+2026-08-14 07:43:48,612 | INFO    | test | START tests/web/test_mobile_web.py::test_content_is_readable_without_zooming[Pixel 7-chromium]
+2026-08-14 07:43:49,179 | INFO    | test | END   tests/web/test_mobile_web.py::test_content_is_readable_without_zooming[Pixel 7-chromium] (0.57s)

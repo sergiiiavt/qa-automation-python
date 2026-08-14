@@ -1,0 +1,22 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/orders
+host: 127.0.0.1:8000
+content-length: 0
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+
+<empty body>
+
+--- RESPONSE (3 ms) ---
+422
+date: Fri, 14 Aug 2026 07:42:36 GMT
+server: uvicorn
+content-length: 53
+content-type: application/json
+
+{
+  "detail": "Cannot place an order with an empty cart"
+}

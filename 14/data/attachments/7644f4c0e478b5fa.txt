@@ -1,0 +1,2 @@
+2026-08-14 07:43:43,148 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPhone 15-chromium]
+2026-08-14 07:43:43,766 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPhone 15-chromium] (0.62s)

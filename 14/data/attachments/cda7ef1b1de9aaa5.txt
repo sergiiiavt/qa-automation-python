@@ -1,0 +1,39 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/cart/items
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+content-length: 29
+content-type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 0
+}
+
+--- RESPONSE (3 ms) ---
+422
+date: Fri, 14 Aug 2026 07:42:36 GMT
+server: uvicorn
+content-length: 144
+content-type: application/json
+
+{
+  "detail": [
+    {
+      "type": "greater_than_equal",
+      "loc": [
+        "body",
+        "quantity"
+      ],
+      "msg": "Input should be greater than or equal to 1",
+      "input": 0,
+      "ctx": {
+        "ge": 1
+      }
+    }
+  ]
+}

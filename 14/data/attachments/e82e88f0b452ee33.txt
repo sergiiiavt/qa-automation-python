@@ -1,0 +1,33 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/orders/ord_f7af28608a26
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+
+<empty body>
+
+--- RESPONSE (4 ms) ---
+200
+date: Fri, 14 Aug 2026 07:42:36 GMT
+server: uvicorn
+content-length: 198
+content-type: application/json
+
+{
+  "id": "ord_f7af28608a26",
+  "status": "confirmed",
+  "total": 199.99,
+  "items": [
+    {
+      "product_id": 1,
+      "name": "Aurora Headphones",
+      "unit_price": 199.99,
+      "quantity": 1,
+      "line_total": 199.99
+    }
+  ],
+  "created_at": 1786693356.88728
+}

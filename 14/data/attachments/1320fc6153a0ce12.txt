@@ -1,0 +1,27 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/products?in_stock=false
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+
+<empty body>
+
+--- RESPONSE (2 ms) ---
+200
+date: Fri, 14 Aug 2026 07:42:38 GMT
+server: uvicorn
+content-length: 93
+content-type: application/json
+
+[
+  {
+    "id": 4,
+    "name": "Drift Mouse",
+    "category": "input",
+    "price": 49.0,
+    "in_stock": false,
+    "rating": 3.9
+  }
+]

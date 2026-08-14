@@ -1,0 +1,10 @@
+07:44:06 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_removing_an_item_updates_the_total[firefox]
+07:44:08 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
+07:44:08 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (8 ms)
+07:44:08 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
+07:44:08 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (4 ms)
+07:44:09 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
+07:44:09 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (7 ms)
+07:44:09 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/cart/items "HTTP/1.1 201 Created"
+07:44:09 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/cart/items -> 201 (9 ms)
+07:44:10 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_removing_an_item_updates_the_total[firefox] (3.15s)

@@ -1,0 +1,2 @@
+2026-08-14 07:44:13,436 | INFO    | test | START tests/web/test_login.py::test_user_can_log_in_with_valid_credentials[webkit]
+2026-08-14 07:44:14,586 | INFO    | test | END   tests/web/test_login.py::test_user_can_log_in_with_valid_credentials[webkit] (1.15s)

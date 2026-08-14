@@ -1,0 +1,4 @@
+2026-08-14 07:42:38,239 | INFO    | test | START tests/services/test_contract_and_properties.py::test_search_rejects_injection_payloads_safely[../../etc/passwd]
+2026-08-14 07:42:38,282 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?q=..%2F..%2Fetc%2Fpasswd "HTTP/1.1 200 OK"
+2026-08-14 07:42:38,283 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?q=..%2F..%2Fetc%2Fpasswd -> 200 (3 ms)
+2026-08-14 07:42:38,286 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_search_rejects_injection_payloads_safely[../../etc/passwd] (0.05s)

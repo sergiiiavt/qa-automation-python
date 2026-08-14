@@ -1,0 +1,2 @@
+2026-08-14 07:43:48,039 | INFO    | test | START tests/web/test_mobile_web.py::test_no_horizontal_scrolling[Pixel 7-chromium]
+2026-08-14 07:43:48,507 | INFO    | test | END   tests/web/test_mobile_web.py::test_no_horizontal_scrolling[Pixel 7-chromium] (0.47s)

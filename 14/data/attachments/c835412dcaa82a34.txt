@@ -1,0 +1,25 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/auth/login
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+content-length: 45
+content-type: application/json
+
+{
+  "username": "alice",
+  "password": "wonderland "
+}
+
+--- RESPONSE (3 ms) ---
+401
+date: Fri, 14 Aug 2026 07:42:35 GMT
+server: uvicorn
+content-length: 32
+content-type: application/json
+
+{
+  "detail": "Invalid credentials"
+}

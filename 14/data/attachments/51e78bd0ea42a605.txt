@@ -1,0 +1,2 @@
+2026-08-14 07:44:19,765 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_survives_rotation[firefox-landscape]
+2026-08-14 07:44:21,914 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_survives_rotation[firefox-landscape] (2.15s)

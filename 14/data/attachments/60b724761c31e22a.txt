@@ -1,0 +1,4 @@
+2026-08-14 07:42:38,913 | INFO    | test | START tests/services/test_products.py::test_limit_caps_the_result_size
+2026-08-14 07:42:38,958 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?limit=2 "HTTP/1.1 200 OK"
+2026-08-14 07:42:38,958 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?limit=2 -> 200 (6 ms)
+2026-08-14 07:42:38,961 | INFO    | test | END   tests/services/test_products.py::test_limit_caps_the_result_size (0.05s)

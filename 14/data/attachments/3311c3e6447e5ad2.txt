@@ -1,0 +1,2 @@
+07:42:39 | [32mINFO    [0m | test | START tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[DELETE /api/cart/items/{product_id}]
+07:42:39 | [32mINFO    [0m | test | END   tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[DELETE /api/cart/items/{product_id}] (0.41s)

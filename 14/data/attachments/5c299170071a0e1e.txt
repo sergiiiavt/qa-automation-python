@@ -1,0 +1,4 @@
+2026-08-14 07:42:38,340 | INFO    | test | START tests/services/test_contract_and_properties.py::test_api_client_does_not_retry_post
+2026-08-14 07:42:38,375 | INFO    | httpx | HTTP Request: POST http://sut.test/api/orders "HTTP/1.1 503 Service Unavailable"
+2026-08-14 07:42:38,375 | INFO    | framework.http | POST http://sut.test/api/orders -> 503 (1 ms)
+2026-08-14 07:42:38,377 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_api_client_does_not_retry_post (0.04s)
