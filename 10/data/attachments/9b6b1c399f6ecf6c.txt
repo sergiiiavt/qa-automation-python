@@ -1,0 +1,20 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/products/999999
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+
+<empty body>
+
+--- RESPONSE (4 ms) ---
+404
+date: Fri, 14 Aug 2026 07:34:49 GMT
+server: uvicorn
+content-length: 37
+content-type: application/json
+
+{
+  "detail": "Product 999999 not found"
+}

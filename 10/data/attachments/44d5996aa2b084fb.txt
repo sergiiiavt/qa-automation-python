@@ -1,0 +1,2 @@
+2026-08-14 07:36:42,138 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[firefox-alice--Username and password are required]
+2026-08-14 07:36:43,523 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[firefox-alice--Username and password are required] (1.38s)

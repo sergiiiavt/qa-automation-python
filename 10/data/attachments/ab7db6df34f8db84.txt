@@ -1,0 +1,2 @@
+07:36:08 | [32mINFO    [0m | test | START tests/web/test_login.py::test_login_form_is_keyboard_operable[webkit]
+07:36:10 | [32mINFO    [0m | test | END   tests/web/test_login.py::test_login_form_is_keyboard_operable[webkit] (1.54s)

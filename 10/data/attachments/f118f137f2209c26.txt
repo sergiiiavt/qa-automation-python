@@ -1,0 +1,2 @@
+2026-08-14 07:36:36,410 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPad (gen 7)-webkit]
+2026-08-14 07:36:38,720 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPad (gen 7)-webkit] (2.31s)

@@ -1,0 +1,2 @@
+2026-08-14 07:36:01,272 | INFO    | test | START tests/web/test_login.py::test_password_field_is_masked[chromium]
+2026-08-14 07:36:01,641 | INFO    | test | END   tests/web/test_login.py::test_password_field_is_masked[chromium] (0.37s)

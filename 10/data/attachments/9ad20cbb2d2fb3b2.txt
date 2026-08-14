@@ -1,0 +1,2 @@
+2026-08-14 07:36:12,317 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit-alice-nope-Invalid credentials]
+2026-08-14 07:36:13,736 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit-alice-nope-Invalid credentials] (1.42s)

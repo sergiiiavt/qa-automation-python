@@ -1,0 +1,36 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/cart/items
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+content-length: 31
+content-type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 1.5
+}
+
+--- RESPONSE (3 ms) ---
+422
+date: Fri, 14 Aug 2026 07:34:47 GMT
+server: uvicorn
+content-length: 153
+content-type: application/json
+
+{
+  "detail": [
+    {
+      "type": "int_from_float",
+      "loc": [
+        "body",
+        "quantity"
+      ],
+      "msg": "Input should be a valid integer, got a number with a fractional part",
+      "input": 1.5
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+2026-08-14 07:34:47,790 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/health "HTTP/1.1 200 OK"
+2026-08-14 07:34:47,792 | INFO    | test | START tests/services/test_auth.py::test_login_rejects_malformed_payloads[payload3-empty strings]
+2026-08-14 07:34:47,828 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+2026-08-14 07:34:47,828 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 422 (4 ms)
+2026-08-14 07:34:47,831 | INFO    | test | END   tests/services/test_auth.py::test_login_rejects_malformed_payloads[payload3-empty strings] (0.04s)

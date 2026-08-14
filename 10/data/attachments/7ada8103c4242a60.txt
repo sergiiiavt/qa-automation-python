@@ -1,0 +1,2 @@
+2026-08-14 07:34:50,332 | INFO    | test | START tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[DELETE /api/cart/items/{product_id}]
+2026-08-14 07:34:50,980 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_api_conforms_to_its_openapi_spec[DELETE /api/cart/items/{product_id}] (0.65s)

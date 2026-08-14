@@ -1,0 +1,2 @@
+07:36:04 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[iPhone 15-chromium]
+07:36:04 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[iPhone 15-chromium] (0.49s)

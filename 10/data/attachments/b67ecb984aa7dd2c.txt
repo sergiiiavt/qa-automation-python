@@ -1,0 +1,2 @@
+07:36:06 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_layout_survives_rotation[chromium-portrait]
+07:36:06 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_layout_survives_rotation[chromium-portrait] (0.59s)
