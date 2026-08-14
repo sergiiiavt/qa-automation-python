@@ -13,7 +13,9 @@ mobile:
   appium_url: http://127.0.0.1:4723
   platform: android
   device_name: Pixel_7_API_34
-  platform_version: "14"
+  # Deliberately not pinned here — see MobileSettings.platform_version in
+  # framework/config.py for why a fixed OS version is a hard Appium filter,
+  # not a hint, and breaks the moment a dev's AVD is on a different image.
 
 user:
   name: alice

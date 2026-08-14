@@ -43,6 +43,22 @@ def test_user_can_log_in(login_screen: LoginScreen) -> None:
     assert catalog.is_displayed(CatalogScreen.root), "Catalog did not reappear after login"
 
 
+@pytest.mark.smoke
+def test_add_product_to_cart(catalog_screen: CatalogScreen) -> None:
+    """Catalog -> product detail -> add to cart -> cart: the app's core
+    revenue journey, and independent of login (the app allows browsing and
+    adding to cart as a guest)."""
+    detail = catalog_screen.open_first_product()
+    product_name = detail.title
+
+    detail.add_to_cart()
+    cart = detail.open_cart()
+
+    assert cart.has_product(product_name), (
+        f"'{product_name}' was added to the cart but does not appear in it"
+    )
+
+
 def test_login_requires_a_username(login_screen: LoginScreen) -> None:
     login_screen.login_expecting_failure("", VALID_PASSWORD)
 

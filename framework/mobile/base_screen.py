@@ -91,8 +91,12 @@ class BaseScreen:
     def text_of(self, locator: Locator) -> str:
         element = self.find_visible(locator)
         # Android exposes 'text', iOS exposes 'value'/'label'. Normalise here so
-        # screens stay platform-agnostic. `get_attribute` can return a dict for
-        # some drivers, hence the explicit str() rather than a bare `or`.
+        # screens stay platform-agnostic. Querying 'value' on Android isn't just
+        # unsupported, UiAutomator2 raises UnknownMethodException for it rather
+        # than returning None, so it has to be skipped rather than merely
+        # falling through.
+        if self.is_android:
+            return (element.text or "").strip()
         value = element.get_attribute("value")
         return (element.text or (value if isinstance(value, str) else "") or "").strip()
 

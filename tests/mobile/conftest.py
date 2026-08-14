@@ -65,6 +65,19 @@ def driver(request: pytest.FixtureRequest) -> Iterator:
                     attach_text("logcat", "\n".join(entry["message"] for entry in logs))
             except Exception as exc:  # noqa: BLE001 - diagnostics must never mask the failure
                 attach_text("diagnostics-error", f"Could not capture diagnostics: {exc}")
+        # noReset=True (see driver_factory.py) keeps the app process alive
+        # between sessions for install-speed, but that means the *next*
+        # session's launch just resumes wherever this one left the activity
+        # stack (e.g. mid-checkout) instead of a fresh Catalog landing.
+        # Terminating here, not on next launch, keeps that entirely inside
+        # this fixture's teardown rather than leaking into every test's setup.
+        if settings.mobile.platform is Platform.ANDROID and settings.mobile.app_path:
+            from framework.mobile.screens import APP_PACKAGE
+
+            try:
+                session.terminate_app(APP_PACKAGE)
+            except Exception:  # noqa: BLE001 - best-effort cleanup, must never mask the real result
+                pass
         session.quit()
 
 

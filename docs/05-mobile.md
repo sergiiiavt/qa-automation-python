@@ -276,7 +276,7 @@ Reference: [tests/mobile/test_native_app.py](../tests/mobile/test_native_app.py)
 
 ```bash
 # Android
-# 1. Install Android Studio -> SDK + an AVD (Pixel 7, API 34)
+# 1. Install Android Studio -> SDK + an AVD (Pixel 7, any recent API level)
 adb devices                       # confirm the device is visible
 npm install -g appium
 appium driver install uiautomator2
@@ -287,6 +287,24 @@ appium driver install xcuitest
 brew install carthage ios-deploy
 xcrun simctl list devices
 ```
+
+**Your AVD's name and OS version almost certainly won't match this doc's
+examples**, and that's fine. Android Studio names and versions an AVD based on
+whatever it currently recommends — that drifts over time (API 34 today, a
+newer one next year) and isn't something this course controls. Check what you
+actually got:
+
+```bash
+emulator -list-avds                                  # the real AVD name
+adb shell getprop ro.build.version.release            # the real OS version
+```
+
+Then set `QA_MOBILE__DEVICE_NAME` in `.env` (note the `__` — nested settings
+need it, a single `_` is rejected as an unknown top-level field, not silently
+ignored). `QA_MOBILE__PLATFORM_VERSION` is deliberately left unset by default
+(see `MobileSettings` in [framework/config.py](../framework/config.py)) —
+it's a hard filter in Appium's device lookup, not a hint, so only set it if
+you're disambiguating between multiple running emulators.
 
 Then, with no extra download — the app is bundled at
 [apps/mda-2.2.0-25.apk](../apps/mda-2.2.0-25.apk), Sauce Labs' MIT-licensed
@@ -299,6 +317,26 @@ pytest tests/mobile -m smoke
 Without a running Appium server the mobile tests **skip cleanly** — see
 `pytest_collection_modifyitems` in [conftest.py](../conftest.py). A framework
 that explodes on a laptop without Appium is a framework developers route around.
+
+### Bringing the stack up after a reboot
+
+Three long-running processes, each in its own terminal, started in this order:
+
+```bash
+# 1. Emulator — wait for it to fully boot before continuing
+emulator -avd <your-avd-name>
+adb devices                       # confirm "device", not "offline"
+
+# 2. Appium server
+appium
+
+# 3. Tests — the bundled FastAPI demo app (`sut`) starts itself automatically,
+#    nothing else to run first
+pytest tests/mobile -m smoke
+```
+
+Nothing else needs redoing after a restart — `.env` and your IDE's interpreter
+selection both persist.
 
 ### Finding real locators: Appium Inspector
 

@@ -40,11 +40,19 @@ class CatalogScreen(BaseScreen):
     root = (AppiumBy.ID, f"{APP_PACKAGE}:id/menuIV")
     MENU_BUTTON: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/menuIV")
     PRODUCT_LIST: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/productRV")
+    # Resource id is shared by every card in the RecyclerView; `tap` resolves
+    # to the first match, i.e. the first product in catalog order.
+    FIRST_PRODUCT: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/productIV")
 
     def open_menu(self) -> MenuScreen:
         with step("Mobile: open the hamburger menu"):
             self.tap(self.MENU_BUTTON, "Menu")
         return MenuScreen(self.driver).wait_until_loaded()
+
+    def open_first_product(self) -> ProductDetailScreen:
+        with step("Mobile: open the first product in the catalog"):
+            self.tap(self.FIRST_PRODUCT, "First product")
+        return ProductDetailScreen(self.driver).wait_until_loaded()
 
 
 class MenuScreen(BaseScreen):
@@ -113,6 +121,52 @@ class LoginScreen(BaseScreen):
     @property
     def password_error(self) -> str:
         return self.text_of(self.PASSWORD_ERROR)
+
+
+class ProductDetailScreen(BaseScreen):
+    """Reached by tapping a product card from the catalog.
+
+    Locators verified against the bundled app with Appium Inspector / a
+    uiautomator dump — this screen and `CartScreen` were the two the course
+    deliberately left unmodelled (see apps/README.md); this is that exercise.
+    """
+
+    root = (AppiumBy.ID, f"{APP_PACKAGE}:id/cartBt")
+    TITLE: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/productTV")
+    PRICE: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/priceTV")
+    ADD_TO_CART_BUTTON: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/cartBt")
+    # Shared header, same element on every screen in the app.
+    CART_ICON: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/cartRL")
+    CART_BADGE: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/cartTV")
+
+    @property
+    def title(self) -> str:
+        return self.text_of(self.TITLE)
+
+    def add_to_cart(self) -> ProductDetailScreen:
+        with step("Mobile: add product to cart"):
+            self.tap(self.ADD_TO_CART_BUTTON, "Add to cart")
+        return self
+
+    def open_cart(self) -> CartScreen:
+        with step("Mobile: open the cart"):
+            self.tap(self.CART_ICON, "Cart")
+        return CartScreen(self.driver).wait_until_loaded()
+
+
+class CartScreen(BaseScreen):
+    """The cart, reached via the header cart icon from any screen."""
+
+    # Unique to a cart line item — not reused elsewhere in the app, unlike
+    # most of this app's other resource ids.
+    root = (AppiumBy.ID, f"{APP_PACKAGE}:id/removeBt")
+    ITEM_TITLE: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/titleTV")
+    ITEM_PRICE: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/priceTV")
+    ITEMS_COUNT: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/itemsTV")
+    CHECKOUT_BUTTON: Locator = (AppiumBy.ID, f"{APP_PACKAGE}:id/cartBt")
+
+    def has_product(self, name: str) -> bool:
+        return self.text_of(self.ITEM_TITLE) == name
 
 
 # ---------------------------------------------------------------------------

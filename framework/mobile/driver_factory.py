@@ -41,7 +41,8 @@ def _android_options(*, browser: str | None, app: str | None) -> UiAutomator2Opt
     opts = UiAutomator2Options()
     opts.platform_name = "Android"
     opts.device_name = m.device_name
-    opts.platform_version = m.platform_version
+    if m.platform_version:
+        opts.platform_version = m.platform_version
     opts.automation_name = "UiAutomator2"
     opts.new_command_timeout = m.new_command_timeout
 
@@ -70,6 +71,13 @@ def _android_options(*, browser: str | None, app: str | None) -> UiAutomator2Opt
     opts.set_capability("appium:disableWindowAnimation", True)
     opts.set_capability("appium:ignoreHiddenApiPolicyError", True)
     opts.set_capability("appium:uiautomator2ServerLaunchTimeout", 60_000)
+    # Default ~20s. A cold launch (dex2oat, ART compilation, an emulator
+    # sharing the host with other heavy processes) routinely runs longer than
+    # that without anything being actually wrong — observed in practice as
+    # ensureAppStarts killing ~1 in 3 sessions at the default while every
+    # other run launched fine in under 10s. Same rationale as the
+    # uiautomator2ServerLaunchTimeout bump above.
+    opts.set_capability("appium:appWaitDuration", 60_000)
     return opts
 
 
@@ -78,7 +86,8 @@ def _ios_options(*, browser: str | None, app: str | None) -> XCUITestOptions:
     opts = XCUITestOptions()
     opts.platform_name = "iOS"
     opts.device_name = m.device_name
-    opts.platform_version = m.platform_version
+    if m.platform_version:
+        opts.platform_version = m.platform_version
     opts.automation_name = "XCUITest"
     opts.new_command_timeout = m.new_command_timeout
 

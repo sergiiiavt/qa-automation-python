@@ -83,11 +83,18 @@ class MobileSettings(_StrictModel):
     appium_url: str = "http://127.0.0.1:4723"
     platform: Platform = Platform.ANDROID
     device_name: str = "Pixel_7_API_34"
-    platform_version: str = "14"
+    # Not set by default: `platformVersion` is a *hard filter* for Appium's
+    # device lookup, not a hint — pin it here and Appium will refuse to see an
+    # otherwise-perfectly-good emulator running any other OS version. Every
+    # dev's AVD ends up on whatever system image Android Studio recommends at
+    # the time (14 one year, 17 the next), so a fixed default is a guaranteed
+    # eventual "Unable to find an active device" for someone. Set it only when
+    # you actually need exact-match selection, e.g. a multi-emulator CI matrix.
+    platform_version: str | None = None
     # Sauce Labs' MIT-licensed "My Demo App" — see apps/README.md. Bundled so
     # tests/mobile runs offline, the same way sut/ keeps the web+API layers
     # offline. Point this elsewhere for your own app.
-    app_path: str | None = "apps/mda-2.2.0-25.apk"
+    app_path: str | None = Field(default="apps/mda-2.2.0-25.apk", validate_default=True)
     mobile_browser: str | None = None  # set -> drive the browser, not an app
     new_command_timeout: int = 120
     # Real-device cloud (BrowserStack / Sauce / LambdaTest). Empty -> local Appium.
