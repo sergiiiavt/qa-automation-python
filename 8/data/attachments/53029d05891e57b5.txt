@@ -1,0 +1,2 @@
+2026-08-14 04:10:14,248 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_survives_rotation[webkit-portrait]
+2026-08-14 04:10:16,582 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_survives_rotation[webkit-portrait] (2.33s)

@@ -1,0 +1,2 @@
+04:10:08 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_product_grid_renders_the_catalogue[webkit]
+04:10:09 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_product_grid_renders_the_catalogue[webkit] (1.30s)

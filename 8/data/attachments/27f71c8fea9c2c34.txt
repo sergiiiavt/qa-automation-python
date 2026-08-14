@@ -1,0 +1,2 @@
+2026-08-14 04:09:29,391 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_survives_rotation[chromium-landscape]
+2026-08-14 04:09:30,098 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_survives_rotation[chromium-landscape] (0.71s)

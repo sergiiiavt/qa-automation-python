@@ -1,0 +1,57 @@
+--- REQUEST ---
+POST http://127.0.0.1:8000/api/cart/items
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+authorization: ***REDACTED***
+content-length: 29
+content-type: application/json
+
+{
+  "product_id": 5,
+  "quantity": 1
+}
+
+--- RESPONSE (2 ms) ---
+201
+date: Fri, 14 Aug 2026 04:08:21 GMT
+server: uvicorn
+content-length: 417
+content-type: application/json
+
+{
+  "items": [
+    {
+      "product_id": 1,
+      "name": "Aurora Headphones",
+      "unit_price": 199.99,
+      "quantity": 3,
+      "line_total": 599.97
+    },
+    {
+      "product_id": 2,
+      "name": "Bassline Speaker",
+      "unit_price": 89.5,
+      "quantity": 3,
+      "line_total": 268.5
+    },
+    {
+      "product_id": 3,
+      "name": "Comet Keyboard",
+      "unit_price": 129.0,
+      "quantity": 1,
+      "line_total": 129.0
+    },
+    {
+      "product_id": 5,
+      "name": "Ember Monitor",
+      "unit_price": 349.0,
+      "quantity": 1,
+      "line_total": 349.0
+    }
+  ],
+  "total": 1346.47,
+  "currency": "USD"
+}

@@ -1,0 +1,4 @@
+04:08:21 | [32mINFO    [0m | test | START tests/services/test_auth.py::test_login_rejects_malformed_payloads[payload2-missing username]
+04:08:21 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 422 Unprocessable Entity"
+04:08:21 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 422 (4 ms)
+04:08:21 | [32mINFO    [0m | test | END   tests/services/test_auth.py::test_login_rejects_malformed_payloads[payload2-missing username] (0.04s)

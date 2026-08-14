@@ -1,0 +1,2 @@
+04:10:03 | [32mINFO    [0m | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[firefox-alice--Username and password are required]
+04:10:04 | [32mINFO    [0m | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[firefox-alice--Username and password are required] (1.42s)

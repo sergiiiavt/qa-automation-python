@@ -1,0 +1,2 @@
+04:09:23 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_category_filter[chromium]
+04:09:24 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_category_filter[chromium] (0.54s)

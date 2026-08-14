@@ -1,0 +1,2 @@
+2026-08-14 04:10:07,342 | INFO    | test | START tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[iPad (gen 7)-firefox]
+2026-08-14 04:10:10,164 | INFO    | test | END   tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[iPad (gen 7)-firefox] (2.82s)

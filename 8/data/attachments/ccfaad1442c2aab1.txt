@@ -1,0 +1,30 @@
+--- REQUEST ---
+GET http://127.0.0.1:8000/api/products/not-a-number
+host: 127.0.0.1:8000
+accept-encoding: gzip, deflate
+connection: keep-alive
+user-agent: python-httpx/0.28.1
+accept: application/json
+
+<empty body>
+
+--- RESPONSE (2 ms) ---
+422
+date: Fri, 14 Aug 2026 04:08:22 GMT
+server: uvicorn
+content-length: 164
+content-type: application/json
+
+{
+  "detail": [
+    {
+      "type": "int_parsing",
+      "loc": [
+        "path",
+        "product_id"
+      ],
+      "msg": "Input should be a valid integer, unable to parse string as an integer",
+      "input": "not-a-number"
+    }
+  ]
+}

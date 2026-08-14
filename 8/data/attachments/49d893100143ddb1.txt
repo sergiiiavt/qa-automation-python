@@ -1,0 +1,2 @@
+2026-08-14 04:09:58,462 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_every_interactive_control_has_an_accessible_name[webkit]
+2026-08-14 04:09:59,686 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_every_interactive_control_has_an_accessible_name[webkit] (1.23s)
