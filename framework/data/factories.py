@@ -28,7 +28,11 @@ Faker.seed(int(os.getenv("QA_FAKER_SEED", "0")) or None)
 
 
 def unique_suffix() -> str:
-    """Unique across xdist workers *and* across reruns of the same worker."""
+    """Collision-resistant across xdist workers and across reruns of the same
+    worker -- not collision-proof. 8 hex chars is 32 bits of entropy per worker
+    (~1e-6 collision odds even at thousands of calls), fine for throwaway test
+    data. If a test's correctness depends on true uniqueness rather than "so
+    unlikely it won't happen in this suite's lifetime," use the full UUID."""
     worker = os.getenv("PYTEST_XDIST_WORKER", "gw0")
     return f"{worker}-{uuid.uuid4().hex[:8]}"
 

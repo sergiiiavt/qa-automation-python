@@ -18,6 +18,12 @@ class Strict(BaseModel):
     test suite: a new undocumented field in a response is exactly the drift you
     want a build to tell you about. Relax it per-model if your API is additive
     by design.
+
+    `frozen=True` blocks reassigning a field on the model itself (`resp.total =
+    5` raises) and makes the model hashable. It does *not* deep-freeze: a field
+    typed `list[Item]` still holds a plain, mutable list, so `resp.items.append(...)`
+    succeeds silently. Reach for a tuple/frozen-collection field type if a
+    nested value genuinely needs to be immutable too.
     """
 
     model_config = ConfigDict(extra="forbid", frozen=True)
