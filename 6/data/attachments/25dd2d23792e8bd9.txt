@@ -1,2 +1,0 @@
-2026-08-13 21:04:24,989 | INFO    | test | START tests/web/test_mobile_web.py::test_content_is_readable_without_zooming[Galaxy S9+-chromium]
-2026-08-13 21:04:25,699 | INFO    | test | END   tests/web/test_mobile_web.py::test_content_is_readable_without_zooming[Galaxy S9+-chromium] (0.71s)

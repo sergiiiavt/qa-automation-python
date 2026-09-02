@@ -1,2 +1,0 @@
-2026-08-13 21:05:43,290 | INFO    | test | START tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[iPad (gen 7)-webkit]
-2026-08-13 21:05:45,262 | INFO    | test | END   tests/web/test_mobile_web.py::test_device_reports_a_mobile_user_agent[iPad (gen 7)-webkit] (1.97s)

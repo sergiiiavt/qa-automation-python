@@ -1,2 +1,0 @@
-21:04:53 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_slow_api_does_not_break_the_page[firefox]
-21:04:59 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_slow_api_does_not_break_the_page[firefox] (5.22s)

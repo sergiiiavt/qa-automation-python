@@ -1,2 +1,0 @@
-2026-08-13 21:05:16,544 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_page_has_exactly_one_h1_and_a_language[webkit]
-2026-08-13 21:05:17,718 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_page_has_exactly_one_h1_and_a_language[webkit] (1.17s)

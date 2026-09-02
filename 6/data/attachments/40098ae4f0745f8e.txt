@@ -1,4 +1,0 @@
-2026-08-13 21:03:12,124 | INFO    | test | START tests/services/test_products.py::test_filter_by_category_returns_only_that_category[audio]
-2026-08-13 21:03:12,156 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?category=audio "HTTP/1.1 200 OK"
-2026-08-13 21:03:12,157 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?category=audio -> 200 (3 ms)
-2026-08-13 21:03:12,160 | INFO    | test | END   tests/services/test_products.py::test_filter_by_category_returns_only_that_category[audio] (0.04s)

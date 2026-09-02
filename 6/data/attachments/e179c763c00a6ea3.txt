@@ -1,2 +1,0 @@
-21:04:24 | [32mINFO    [0m | test | START tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[chromium-/login]
-21:04:25 | [32mINFO    [0m | test | END   tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[chromium-/login] (0.81s)

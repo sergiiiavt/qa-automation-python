@@ -1,4 +1,0 @@
-2026-08-13 21:03:08,831 | INFO    | test | START tests/services/test_auth.py::test_login_rejects_bad_credentials[alice-wrong-password-wrong password]
-2026-08-13 21:03:08,869 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 401 Unauthorized"
-2026-08-13 21:03:08,870 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 401 (2 ms)
-2026-08-13 21:03:08,873 | INFO    | test | END   tests/services/test_auth.py::test_login_rejects_bad_credentials[alice-wrong-password-wrong password] (0.04s)

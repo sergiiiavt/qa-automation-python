@@ -1,3 +1,0 @@
-21:04:16 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
-21:04:16 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_page_works_on_a_slow_3g_connection[chromium]
-21:04:19 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_page_works_on_a_slow_3g_connection[chromium] (2.71s)

@@ -1,2 +1,0 @@
-21:04:36 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[firefox]
-21:04:40 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[firefox] (4.16s)

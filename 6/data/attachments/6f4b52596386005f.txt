@@ -1,2 +1,0 @@
-2026-08-13 21:04:25,708 | INFO    | test | START tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[iPad (gen 7)-chromium]
-2026-08-13 21:04:26,287 | INFO    | test | END   tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[iPad (gen 7)-chromium] (0.58s)

@@ -1,8 +1,0 @@
-2026-08-13 21:03:11,886 | INFO    | test | START tests/services/test_products.py::test_in_stock_filter_partitions_the_catalogue
-2026-08-13 21:03:11,921 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=true "HTTP/1.1 200 OK"
-2026-08-13 21:03:11,922 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=true -> 200 (2 ms)
-2026-08-13 21:03:11,924 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?in_stock=false "HTTP/1.1 200 OK"
-2026-08-13 21:03:11,924 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?in_stock=false -> 200 (1 ms)
-2026-08-13 21:03:11,925 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products "HTTP/1.1 200 OK"
-2026-08-13 21:03:11,926 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products -> 200 (1 ms)
-2026-08-13 21:03:11,928 | INFO    | test | END   tests/services/test_products.py::test_in_stock_filter_partitions_the_catalogue (0.04s)

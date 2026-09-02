@@ -1,2 +1,0 @@
-2026-08-13 21:05:34,122 | INFO    | test | START tests/web/test_mobile_web.py::test_no_horizontal_scrolling[Pixel 7-webkit]
-2026-08-13 21:05:35,950 | INFO    | test | END   tests/web/test_mobile_web.py::test_no_horizontal_scrolling[Pixel 7-webkit] (1.83s)

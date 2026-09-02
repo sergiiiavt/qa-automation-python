@@ -1,2 +1,0 @@
-21:05:15 | [32mINFO    [0m | test | START tests/web/test_login.py::test_password_field_is_masked[webkit]
-21:05:16 | [32mINFO    [0m | test | END   tests/web/test_login.py::test_password_field_is_masked[webkit] (1.00s)

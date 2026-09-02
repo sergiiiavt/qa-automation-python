@@ -1,3 +1,0 @@
-2026-08-13 21:04:10,621 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/health "HTTP/1.1 200 OK"
-2026-08-13 21:04:13,132 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_product_grid_matches_the_visual_baseline[chromium]
-2026-08-13 21:04:14,804 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_product_grid_matches_the_visual_baseline[chromium] (1.67s)

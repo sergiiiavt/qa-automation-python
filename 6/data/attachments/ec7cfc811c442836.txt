@@ -1,2 +1,0 @@
-2026-08-13 21:04:35,031 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPhone 15-firefox]
-2026-08-13 21:04:38,708 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPhone 15-firefox] (3.68s)

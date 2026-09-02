@@ -1,2 +1,0 @@
-2026-08-13 21:05:21,700 | INFO    | test | START tests/web/test_mobile_web.py::test_page_works_on_a_slow_3g_connection[webkit]
-2026-08-13 21:05:22,666 | INFO    | test | END   tests/web/test_mobile_web.py::test_page_works_on_a_slow_3g_connection[webkit] (0.97s)

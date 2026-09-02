@@ -1,2 +1,0 @@
-2026-08-13 21:05:41,605 | INFO    | test | START tests/web/test_mobile_web.py::test_no_horizontal_scrolling[iPad (gen 7)-webkit]
-2026-08-13 21:05:43,601 | INFO    | test | END   tests/web/test_mobile_web.py::test_no_horizontal_scrolling[iPad (gen 7)-webkit] (2.00s)
