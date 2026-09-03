@@ -1,4 +1,0 @@
-21:39:58 | [32mINFO    [0m | test | START tests/services/test_auth.py::test_login_rejects_bad_credentials[ALICE-wonderland-username case mismatch]
-21:39:58 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 401 Unauthorized"
-21:39:58 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 401 (2 ms)
-21:39:58 | [32mINFO    [0m | test | END   tests/services/test_auth.py::test_login_rejects_bad_credentials[ALICE-wonderland-username case mismatch] (0.04s)

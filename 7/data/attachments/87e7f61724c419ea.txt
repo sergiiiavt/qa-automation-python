@@ -1,8 +1,0 @@
-2026-08-13 21:41:22,987 | INFO    | test | START tests/web/test_mobile_web.py::test_can_complete_a_purchase_on_a_phone[iPad (gen 7)-chromium]
-2026-08-13 21:41:23,379 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
-2026-08-13 21:41:23,379 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (6 ms)
-2026-08-13 21:41:23,386 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
-2026-08-13 21:41:23,386 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (4 ms)
-2026-08-13 21:41:23,392 | INFO    | httpx | HTTP Request: DELETE http://127.0.0.1:8000/api/cart/items/1 "HTTP/1.1 200 OK"
-2026-08-13 21:41:23,393 | INFO    | framework.http | DELETE http://127.0.0.1:8000/api/cart/items/1 -> 200 (6 ms)
-2026-08-13 21:41:23,973 | INFO    | test | END   tests/web/test_mobile_web.py::test_can_complete_a_purchase_on_a_phone[iPad (gen 7)-chromium] (0.99s)

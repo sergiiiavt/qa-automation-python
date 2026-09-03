@@ -1,2 +1,0 @@
-21:41:46 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Galaxy S9+-firefox]
-21:41:48 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Galaxy S9+-firefox] (1.96s)

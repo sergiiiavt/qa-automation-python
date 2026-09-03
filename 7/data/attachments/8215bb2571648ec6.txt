@@ -1,2 +1,0 @@
-2026-08-13 21:41:52,275 | INFO    | test | START tests/web/test_mobile_web.py::test_no_horizontal_scrolling[iPad (gen 7)-firefox]
-2026-08-13 21:41:55,126 | INFO    | test | END   tests/web/test_mobile_web.py::test_no_horizontal_scrolling[iPad (gen 7)-firefox] (2.85s)

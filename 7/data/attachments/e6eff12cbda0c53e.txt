@@ -1,2 +1,0 @@
-2026-08-13 21:41:14,716 | INFO    | test | START tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[chromium]
-2026-08-13 21:41:15,656 | INFO    | test | END   tests/web/test_mobile_web.py::test_offline_mode_does_not_show_a_blank_page[chromium] (0.94s)

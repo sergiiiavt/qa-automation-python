@@ -1,2 +1,0 @@
-2026-08-13 21:41:35,959 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit-ghost-wonderland-Invalid credentials]
-2026-08-13 21:41:37,098 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[webkit-ghost-wonderland-Invalid credentials] (1.14s)

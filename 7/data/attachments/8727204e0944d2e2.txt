@@ -1,2 +1,0 @@
-2026-08-13 21:41:14,037 | INFO    | test | START tests/web/test_shopping_flow.py::test_category_filter[chromium]
-2026-08-13 21:41:14,585 | INFO    | test | END   tests/web/test_shopping_flow.py::test_category_filter[chromium] (0.55s)

@@ -1,2 +1,0 @@
-2026-08-13 21:41:41,551 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_survives_rotation[webkit-landscape]
-2026-08-13 21:41:43,845 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_survives_rotation[webkit-landscape] (2.29s)

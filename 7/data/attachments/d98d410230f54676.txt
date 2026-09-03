@@ -1,6 +1,0 @@
-2026-08-13 21:41:41,188 | INFO    | test | START tests/web/test_mobile_web.py::test_can_complete_a_purchase_on_a_phone[Pixel 7-firefox]
-2026-08-13 21:41:43,352 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
-2026-08-13 21:41:43,353 | INFO    | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (9 ms)
-2026-08-13 21:41:43,372 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 200 OK"
-2026-08-13 21:41:43,373 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 200 (12 ms)
-2026-08-13 21:41:48,048 | INFO    | test | END   tests/web/test_mobile_web.py::test_can_complete_a_purchase_on_a_phone[Pixel 7-firefox] (6.86s)

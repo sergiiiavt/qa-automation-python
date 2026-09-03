@@ -1,2 +1,0 @@
-2026-08-13 21:41:13,225 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_page_has_exactly_one_h1_and_a_language[firefox]
-2026-08-13 21:41:14,458 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_page_has_exactly_one_h1_and_a_language[firefox] (1.23s)

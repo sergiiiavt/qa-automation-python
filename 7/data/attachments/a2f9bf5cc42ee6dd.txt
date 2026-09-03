@@ -1,2 +1,0 @@
-2026-08-13 21:41:32,016 | INFO    | test | START tests/web/test_shopping_flow.py::test_add_to_cart_updates_the_badge[firefox]
-2026-08-13 21:41:35,746 | INFO    | test | END   tests/web/test_shopping_flow.py::test_add_to_cart_updates_the_badge[firefox] (3.73s)

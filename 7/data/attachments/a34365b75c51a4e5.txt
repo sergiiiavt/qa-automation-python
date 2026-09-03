@@ -1,2 +1,0 @@
-2026-08-13 21:41:12,367 | INFO    | test | START tests/web/test_login.py::test_login_errors_are_shown_to_the_user[chromium-alice-nope-Invalid credentials]
-2026-08-13 21:41:12,961 | INFO    | test | END   tests/web/test_login.py::test_login_errors_are_shown_to_the_user[chromium-alice-nope-Invalid credentials] (0.59s)

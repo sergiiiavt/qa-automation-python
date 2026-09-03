@@ -1,4 +1,0 @@
-2026-08-13 21:39:58,635 | INFO    | test | START tests/services/test_auth.py::test_protected_endpoint_requires_valid_bearer_token[bearer lowercase-scheme-valid-token-shape]
-2026-08-13 21:39:58,672 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/cart "HTTP/1.1 401 Unauthorized"
-2026-08-13 21:39:58,673 | INFO    | framework.http | GET http://127.0.0.1:8000/api/cart -> 401 (3 ms)
-2026-08-13 21:39:58,675 | INFO    | test | END   tests/services/test_auth.py::test_protected_endpoint_requires_valid_bearer_token[bearer lowercase-scheme-valid-token-shape] (0.04s)

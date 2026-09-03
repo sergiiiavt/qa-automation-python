@@ -1,2 +1,0 @@
-2026-08-13 21:41:29,398 | INFO    | test | START tests/web/test_shopping_flow.py::test_out_of_stock_products_cannot_be_added[webkit]
-2026-08-13 21:41:31,893 | INFO    | test | END   tests/web/test_shopping_flow.py::test_out_of_stock_products_cannot_be_added[webkit] (2.49s)
