@@ -1,3 +1,0 @@
-2026-08-14 04:09:20,613 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/health "HTTP/1.1 200 OK"
-2026-08-14 04:09:24,220 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[firefox-/]
-2026-08-14 04:09:28,450 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[firefox-/] (4.23s)

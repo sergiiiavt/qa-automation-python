@@ -1,2 +1,0 @@
-04:09:21 | [32mINFO    [0m | test | START tests/web/test_login.py::test_user_can_log_in_with_valid_credentials[chromium]
-04:09:22 | [32mINFO    [0m | test | END   tests/web/test_login.py::test_user_can_log_in_with_valid_credentials[chromium] (0.83s)

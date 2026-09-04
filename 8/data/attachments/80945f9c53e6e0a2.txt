@@ -1,2 +1,0 @@
-2026-08-14 04:09:53,400 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[firefox-/login]
-2026-08-14 04:09:54,913 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_public_pages_have_no_serious_accessibility_violations[firefox-/login] (1.51s)

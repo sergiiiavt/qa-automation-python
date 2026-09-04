@@ -1,3 +1,0 @@
-2026-08-14 04:10:01,510 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
-2026-08-14 04:10:02,654 | INFO    | test | START tests/web/test_login.py::test_session_persists_across_reload[webkit]
-2026-08-14 04:10:05,260 | INFO    | test | END   tests/web/test_login.py::test_session_persists_across_reload[webkit] (2.61s)

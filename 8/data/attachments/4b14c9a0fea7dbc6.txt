@@ -1,2 +1,0 @@
-2026-08-14 04:09:30,114 | INFO    | test | START tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Galaxy S9+-chromium]
-2026-08-14 04:09:30,880 | INFO    | test | END   tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Galaxy S9+-chromium] (0.77s)

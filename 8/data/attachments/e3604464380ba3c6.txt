@@ -1,2 +1,0 @@
-2026-08-14 04:09:34,481 | INFO    | test | START tests/web/test_shopping_flow.py::test_search_with_no_results_shows_zero_and_no_error[firefox]
-2026-08-14 04:09:36,104 | INFO    | test | END   tests/web/test_shopping_flow.py::test_search_with_no_results_shows_zero_and_no_error[firefox] (1.62s)

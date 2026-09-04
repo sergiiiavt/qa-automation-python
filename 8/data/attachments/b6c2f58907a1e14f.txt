@@ -1,2 +1,0 @@
-2026-08-14 04:09:50,444 | INFO    | test | START tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Pixel 7-firefox]
-2026-08-14 04:09:53,634 | INFO    | test | END   tests/web/test_mobile_web.py::test_mobile_nav_opens_and_is_announced[Pixel 7-firefox] (3.19s)

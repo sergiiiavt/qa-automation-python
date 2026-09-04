@@ -1,2 +1,0 @@
-2026-08-14 04:09:28,489 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_every_interactive_control_has_an_accessible_name[firefox]
-2026-08-14 04:09:29,694 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_every_interactive_control_has_an_accessible_name[firefox] (1.21s)

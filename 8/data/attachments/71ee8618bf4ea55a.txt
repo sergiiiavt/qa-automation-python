@@ -1,3 +1,0 @@
-2026-08-14 04:09:22,801 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
-2026-08-14 04:09:23,269 | INFO    | test | START tests/web/test_shopping_flow.py::test_out_of_stock_products_cannot_be_added[chromium]
-2026-08-14 04:09:24,237 | INFO    | test | END   tests/web/test_shopping_flow.py::test_out_of_stock_products_cannot_be_added[chromium] (0.97s)

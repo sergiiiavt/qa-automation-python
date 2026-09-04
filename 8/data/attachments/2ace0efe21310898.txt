@@ -1,6 +1,0 @@
-04:10:09 | [32mINFO    [0m | test | START tests/web/test_shopping_flow.py::test_ui_and_api_agree_on_the_catalogue[webkit]
-04:10:10 | [32mINFO    [0m | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/login "HTTP/1.1 200 OK"
-04:10:10 | [32mINFO    [0m | framework.http | POST http://127.0.0.1:8000/api/auth/login -> 200 (10 ms)
-04:10:10 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products "HTTP/1.1 200 OK"
-04:10:10 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/products -> 200 (13 ms)
-04:10:11 | [32mINFO    [0m | test | END   tests/web/test_shopping_flow.py::test_ui_and_api_agree_on_the_catalogue[webkit] (1.52s)

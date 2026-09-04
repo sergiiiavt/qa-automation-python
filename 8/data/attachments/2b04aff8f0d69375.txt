@@ -1,4 +1,0 @@
-2026-08-14 04:08:23,476 | INFO    | test | START tests/services/test_products.py::test_limit_parameter_boundaries[0-422]
-2026-08-14 04:08:23,516 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?limit=0 "HTTP/1.1 422 Unprocessable Entity"
-2026-08-14 04:08:23,516 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?limit=0 -> 422 (2 ms)
-2026-08-14 04:08:23,520 | INFO    | test | END   tests/services/test_products.py::test_limit_parameter_boundaries[0-422] (0.04s)

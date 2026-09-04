@@ -1,2 +1,0 @@
-2026-08-14 04:09:21,409 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_keyboard_focus_is_visible[chromium]
-2026-08-14 04:09:22,144 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_keyboard_focus_is_visible[chromium] (0.74s)

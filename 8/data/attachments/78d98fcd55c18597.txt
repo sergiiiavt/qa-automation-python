@@ -1,2 +1,0 @@
-2026-08-14 04:09:20,081 | INFO    | test | START tests/web/test_accessibility_and_visual.py::test_every_interactive_control_has_an_accessible_name[chromium]
-2026-08-14 04:09:20,760 | INFO    | test | END   tests/web/test_accessibility_and_visual.py::test_every_interactive_control_has_an_accessible_name[chromium] (0.68s)

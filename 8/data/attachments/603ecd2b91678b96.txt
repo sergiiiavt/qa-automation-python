@@ -1,2 +1,0 @@
-2026-08-14 04:09:28,327 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Pixel 7-chromium]
-2026-08-14 04:09:29,002 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Pixel 7-chromium] (0.67s)

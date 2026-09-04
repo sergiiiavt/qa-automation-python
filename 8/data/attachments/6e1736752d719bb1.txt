@@ -1,2 +1,0 @@
-04:10:14 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_layout_survives_rotation[webkit-portrait]
-04:10:16 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_layout_survives_rotation[webkit-portrait] (2.33s)

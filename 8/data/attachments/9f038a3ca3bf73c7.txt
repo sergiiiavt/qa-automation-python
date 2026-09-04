@@ -1,4 +1,0 @@
-2026-08-14 04:08:22,757 | INFO    | test | START tests/services/test_contract_and_properties.py::test_search_rejects_injection_payloads_safely[{{7*7}}]
-2026-08-14 04:08:22,796 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products?q=%7B%7B7%2A7%7D%7D "HTTP/1.1 200 OK"
-2026-08-14 04:08:22,796 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products?q=%7B%7B7%2A7%7D%7D -> 200 (3 ms)
-2026-08-14 04:08:22,799 | INFO    | test | END   tests/services/test_contract_and_properties.py::test_search_rejects_injection_payloads_safely[{{7*7}}] (0.04s)

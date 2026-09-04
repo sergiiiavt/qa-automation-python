@@ -1,2 +1,0 @@
-04:09:21 | [32mINFO    [0m | test | START tests/web/test_mobile_web.py::test_no_horizontal_scrolling[iPhone 15-chromium]
-04:09:22 | [32mINFO    [0m | test | END   tests/web/test_mobile_web.py::test_no_horizontal_scrolling[iPhone 15-chromium] (0.81s)

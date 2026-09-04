@@ -1,2 +1,0 @@
-2026-08-14 04:10:30,540 | INFO    | test | START tests/web/test_mobile_web.py::test_content_is_readable_without_zooming[iPad (gen 7)-webkit]
-2026-08-14 04:10:32,804 | INFO    | test | END   tests/web/test_mobile_web.py::test_content_is_readable_without_zooming[iPad (gen 7)-webkit] (2.26s)
