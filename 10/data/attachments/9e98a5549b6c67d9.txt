@@ -1,3 +1,0 @@
-2026-08-14 07:36:07,157 | INFO    | httpx | HTTP Request: POST http://127.0.0.1:8000/api/auth/register "HTTP/1.1 201 Created"
-2026-08-14 07:36:08,908 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPhone 15-firefox]
-2026-08-14 07:36:12,233 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[iPhone 15-firefox] (3.32s)

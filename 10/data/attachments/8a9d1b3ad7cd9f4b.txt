@@ -1,2 +1,0 @@
-2026-08-14 07:36:06,957 | INFO    | test | START tests/web/test_shopping_flow.py::test_api_failure_is_surfaced_to_the_user[chromium]
-2026-08-14 07:36:07,765 | INFO    | test | END   tests/web/test_shopping_flow.py::test_api_failure_is_surfaced_to_the_user[chromium] (0.81s)

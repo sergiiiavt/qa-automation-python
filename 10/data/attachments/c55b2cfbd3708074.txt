@@ -1,2 +1,0 @@
-2026-08-14 07:36:36,256 | INFO    | test | START tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Galaxy S9+-firefox]
-2026-08-14 07:36:42,541 | INFO    | test | END   tests/web/test_mobile_web.py::test_touch_targets_meet_the_minimum_size[Galaxy S9+-firefox] (6.29s)

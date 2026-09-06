@@ -1,4 +1,0 @@
-07:34:50 | [32mINFO    [0m | test | START tests/services/test_products.py::test_non_numeric_product_id_returns_422_not_500
-07:34:50 | [32mINFO    [0m | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products/not-a-number "HTTP/1.1 422 Unprocessable Entity"
-07:34:50 | [32mINFO    [0m | framework.http | GET http://127.0.0.1:8000/api/products/not-a-number -> 422 (2 ms)
-07:34:50 | [32mINFO    [0m | test | END   tests/services/test_products.py::test_non_numeric_product_id_returns_422_not_500 (0.03s)

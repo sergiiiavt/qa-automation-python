@@ -1,2 +1,0 @@
-2026-08-14 07:36:02,789 | INFO    | test | START tests/web/test_login.py::test_user_can_log_in_with_valid_credentials[chromium]
-2026-08-14 07:36:03,395 | INFO    | test | END   tests/web/test_login.py::test_user_can_log_in_with_valid_credentials[chromium] (0.61s)

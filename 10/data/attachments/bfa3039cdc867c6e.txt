@@ -1,3 +1,0 @@
-2026-08-14 07:34:50,768 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/openapi.json "HTTP/1.1 200 OK"
-2026-08-14 07:34:50,769 | INFO    | test | START tests/services/test_products.py::test_openapi_declares_every_endpoint_the_tests_use
-2026-08-14 07:34:50,771 | INFO    | test | END   tests/services/test_products.py::test_openapi_declares_every_endpoint_the_tests_use (0.00s)

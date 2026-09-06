@@ -1,2 +1,0 @@
-2026-08-14 07:36:40,835 | INFO    | test | START tests/web/test_mobile_web.py::test_no_horizontal_scrolling[Galaxy S9+-firefox]
-2026-08-14 07:36:43,333 | INFO    | test | END   tests/web/test_mobile_web.py::test_no_horizontal_scrolling[Galaxy S9+-firefox] (2.50s)

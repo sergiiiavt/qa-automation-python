@@ -1,2 +1,0 @@
-07:36:08 | [32mINFO    [0m | test | START tests/web/test_accessibility_and_visual.py::test_dark_mode_renders_with_readable_contrast[webkit]
-07:36:10 | [32mINFO    [0m | test | END   tests/web/test_accessibility_and_visual.py::test_dark_mode_renders_with_readable_contrast[webkit] (2.41s)

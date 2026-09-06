@@ -1,4 +1,0 @@
-2026-08-14 07:34:50,631 | INFO    | test | START tests/services/test_products.py::test_unknown_product_returns_404[-1]
-2026-08-14 07:34:50,653 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products/-1 "HTTP/1.1 404 Not Found"
-2026-08-14 07:34:50,655 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products/-1 -> 404 (4 ms)
-2026-08-14 07:34:50,658 | INFO    | test | END   tests/services/test_products.py::test_unknown_product_returns_404[-1] (0.03s)

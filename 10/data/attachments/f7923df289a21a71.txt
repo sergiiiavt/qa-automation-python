@@ -1,4 +1,0 @@
-2026-08-14 07:34:50,661 | INFO    | test | START tests/services/test_products.py::test_every_product_matches_the_published_schema
-2026-08-14 07:34:50,684 | INFO    | httpx | HTTP Request: GET http://127.0.0.1:8000/api/products "HTTP/1.1 200 OK"
-2026-08-14 07:34:50,684 | INFO    | framework.http | GET http://127.0.0.1:8000/api/products -> 200 (3 ms)
-2026-08-14 07:34:50,690 | INFO    | test | END   tests/services/test_products.py::test_every_product_matches_the_published_schema (0.03s)

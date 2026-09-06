@@ -1,2 +1,0 @@
-2026-08-14 07:36:25,734 | INFO    | test | START tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[Pixel 7-webkit]
-2026-08-14 07:36:27,427 | INFO    | test | END   tests/web/test_mobile_web.py::test_layout_collapses_to_a_mobile_nav[Pixel 7-webkit] (1.69s)
